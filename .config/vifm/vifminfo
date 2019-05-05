@@ -28,72 +28,6 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/home/dylansavoia/.config/i3/scripts
-	laser
-5
-d/home/dylansavoia/.config/i3
-	scripts
-1
-d/home/dylansavoia/.config/i3/scripts
-	udev_kb
-17
-d/home/dylansavoia
-	.arch_setup
-43
-d/home/dylansavoia/.config/i3
-	scripts
-1
-d/home/dylansavoia/.config/i3/scripts
-	qutebrowser
-12
-d/home/dylansavoia/Dropbox
-	texts
-5
-d/home/dylansavoia/Dropbox/texts
-	entries_prototypes
-1
-d/home/dylansavoia/Dropbox/texts/entries_prototypes
-	soraya.txt
-7
-d/home/dylansavoia/Dropbox/texts
-	worldview
-3
-d/home/dylansavoia/Dropbox/texts/worldview
-	collection.txt
-1
-d/home/dylansavoia/Dropbox/texts
-	entries_prototypes
-1
-d/home/dylansavoia/Dropbox/texts/entries_prototypes
-	soraya.txt
-7
-d/home/dylansavoia/Dropbox/texts
-	entries_prototypes
-1
-d/home/dylansavoia/Dropbox
-	texts
-5
-d/home/dylansavoia/Dropbox/texts
-	worldview
-3
-d/home/dylansavoia/Dropbox/texts/worldview
-	collection.txt
-1
-d/home/dylansavoia/Dropbox/texts
-	entries_prototypes
-1
-d/home/dylansavoia/Dropbox/texts/entries_prototypes
-	soraya.txt
-7
-d/home/dylansavoia/Dropbox/texts
-	summaries
-2
-d/home/dylansavoia/Dropbox
-	texts
-5
-d/home/dylansavoia/Dropbox/texts
-	worldview
-3
 d/home/dylansavoia/Dropbox/texts/worldview
 	collection.txt
 1
@@ -328,6 +262,72 @@ d/home/dylansavoia/.local
 d/home/dylansavoia/.local/bin
 	qutebrowser
 1
+d/home/dylansavoia
+	.xinitrc
+45
+d/home/dylansavoia/.local
+	bin
+1
+d/home/dylansavoia/.local/bin
+	vifm
+4
+d/home/dylansavoia/.local
+	bin
+1
+d/home/dylansavoia
+	.torcs
+15
+d/home/dylansavoia/.config
+	..
+0
+d/home/dylansavoia/.config/i3
+	scripts
+1
+d/home/dylansavoia/.config/i3/scripts
+	laser
+5
+d/home/dylansavoia/.config/i3
+	config
+1
+d/home/dylansavoia
+	Documents
+16
+d/home/dylansavoia/Documents
+	dotfiles
+2
+d/home/dylansavoia/Documents/dotfiles
+	.config
+1
+d/home/dylansavoia/Documents/dotfiles/.config
+	..
+0
+d/home/dylansavoia/Documents/dotfiles
+	.local
+2
+d/home/dylansavoia/Documents/dotfiles/.local
+	..
+0
+d/home/dylansavoia/Documents/dotfiles
+	.local
+2
+d/home/dylansavoia/Documents
+	dotfiles
+2
+d/home/dylansavoia/Documents/dotfiles
+	.local
+2
+d/home/dylansavoia/Documents/dotfiles/.local
+	scripts
+2
+d/home/dylansavoia/Documents/dotfiles
+	.config
+1
+d/home/dylansavoia/Documents/dotfiles/.config
+	compton
+1
+d/home/dylansavoia/Documents/dotfiles
+	arch_setup.sh
+9
 d
 
 # Right window history (oldest to newest):
@@ -500,12 +500,32 @@ D/media/dylansavoia/server
 	content
 1
 D/media/dylansavoia
-	
+	server
+2
+D/home/dylansavoia/.config
+	compton
+6
+D/home/dylansavoia/.config/compton
+	compton.conf
+1
+D/home/dylansavoia/.config
+	compton
+6
+D/home/dylansavoia
+	.local
+17
+D/home/dylansavoia/.local
+	scripts
+3
+D/home/dylansavoia/.local/scripts
+	..
 0
+D/home/dylansavoia/.local
+	scripts
+3
 D
 
 # Command line history (oldest to newest):
-:touch csc.html
 :touch csc.js
 :mkdir CG
 :mkdir project_minimal
@@ -605,11 +625,9 @@ D
 :touch .gitignore
 :soraya.txt
 :file
+:mkdir compton
 
 # Search history (oldest to newest):
-/xinit
-/v
-/ga
 /etc
 /sha
 /texli
@@ -687,7 +705,6 @@ D
 /setx
 /ude
 /confi
-/doc
 /secre
 /loca
 /qute
@@ -707,7 +724,10 @@ D
 /another
 /bash
 /arch
+/xini
 /local
+/xinit
+/doc
 
 # Prompt history (oldest to newest):
 plove.tx
@@ -793,7 +813,6 @@ pBehave.pdf
 |^st
 
 # Registers:
-""/media/default/.vifm-Trash-1000/000_I Live For That Energy.mp3
 
 # Directory stack (oldest to newest):
 
@@ -1186,6 +1205,8 @@ t/home/dylansavoia/.config/vifm/Trash/000_elem_estinti.png
 	/home/dylansavoia/Downloads/elem_estinti.png
 t/media/default/.vifm-Trash-1000/000_I Live For That Energy.mp3
 	/media/default/I Live For That Energy.mp3
+t/home/dylansavoia/.config/vifm/Trash/000_compton.conf
+	/home/dylansavoia/.config/i3/compton.conf
 
 # State:
 f
@@ -1194,6 +1215,6 @@ i1
 [F
 F
 I1
-].1
+].0
 ]F
 s0

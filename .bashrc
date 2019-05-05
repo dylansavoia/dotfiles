@@ -47,7 +47,7 @@ alias normalize="mp3gain -r *"
 alias ffplay="ffplay -x 1"
 alias extract="~/.config/i3/scripts/extract"
 alias math="bpython3 -i ~/.config/i3/scripts/math.py"
-alias vifm="/home/dylansavoia/.config/i3/scripts/vifmrun"
+# alias vifm="/home/dylansavoia/.config/i3/scripts/vifmrun"
 
 alias mserver="sshfs dylansavoia@dylansavoia.sytes.net:/var/www/html/Main /media/dylansavoia/server"
 alias umserver="sudo umount /media/dylansavoia/server"
@@ -150,12 +150,12 @@ archive() {
 
         # Home dotfiles
         rsync ~/.bashrc ~/Documents/dotfiles/
-        rsync ~/.profile ~/Documents/dotfiles/
+        rsync ~/.bash_profile ~/Documents/dotfiles/
         rsync ~/.xinitrc ~/Documents/dotfiles/
         rsync ~/.Xresources ~/Documents/dotfiles/
 
         # .config and .local
-        # rsync ~/.config/i3/ ~/Documents/dotfiles/.config/i3/
+        rsync -r ~/.config/i3/ ~/Documents/dotfiles/.config/i3/
         rsync -r ~/.config/compton/ ~/Documents/dotfiles/.config/compton
         rsync -r ~/.config/polybar/ ~/Documents/dotfiles/.config/polybar/
         rsync -r --exclude plugged/ ~/.config/nvim/ ~/Documents/dotfiles/.config/nvim/
