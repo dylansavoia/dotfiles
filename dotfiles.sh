@@ -2,4 +2,4 @@
 
 shopt -s dotglob
 cd dotfiles
-cp --parents -rv --backup=numbered * ~
+cp --parents -av --backup=numbered * ~
