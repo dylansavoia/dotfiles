@@ -1,0 +1,144 @@
+#!/bin/bash
+
+### Info ######################################
+#   .pcache (prettified cache) is a list of prettified_names
+#   When shown, an index is prepended to each item So that you obtain:
+#   | N | prettified_name | 
+#
+#   N is then used to access .cache at the Nth record:
+#   | category | full_name |
+#   
+#   This record is the format used in the "Run" Section.
+#   Category can be:
+#   - 0: Other (including not in cache)
+#   - 1: File
+#   - 2: Binaries
+#   - 3: Binaries with GUI
+#
+#   Every command followed by a ';' is executed opening a terminal
+#   es. 'htop;'
+#
+#   Shortcuts are defined in their own file with the following structure:
+#   | alias | command
+
+
+### Create ####################################
+config="$HOME/.config/laser/"
+cache="$config/.cache"
+pcache="$config/.pcache"
+
+[[ -e $config ]] || mkdir $config
+
+if [[ ! -e $cache ]] || [[ $1 == "-r" ]]; then
+    # Shortcuts
+    touch "$config/shortcuts"
+    cut -d ':' -f 2- "$config/shortcuts" | awk '{print "0", $0}' > "$cache"
+    cut -d ':' -f 1 "$config/shortcuts" > "$pcache"
+
+    # Binaries
+    minipath=( /usr/local/bin /bin/ /usr/bin )
+    bins=`echo ${minipath[*]} | tr ' ' '\n' | xargs -n 1 ls -1`
+    guis=`paste -s -d '|' "$config/binaries_gui"`
+    echo "$bins" | awk '{print "2", $0}' | sed -re "/$guis/ s/^2/3/"  >> "$cache"
+    echo "$bins" | awk '{print "" "\t" $0}' >> "$pcache"
+
+    # Files and Dirs
+    files=`find "$HOME" -mindepth 1 \( -name ".*" -o -path "$HOME/code/*" \) -prune -o -printf "%A@\t%y\t%d\t%h/%f\n" |
+        awk -F '\t' '
+            $2=="d" {print 9999999999 - $3, "\t\t"$4}
+            $2!="d" {
+                sub(/\.[0-9]+/, "", $1);
+                ext = "";
+                icon = ""
+                print $1 "\t" ext "\t" $4;
+            }' | sort -r -n -k 1` 
+
+    echo "$files" | tee "$config/log" | awk -F '\t' '{print "1", $3}' >> "$cache" 
+    echo "$files" | awk -F '\t' '{
+        match($3, /((\/[^\/]+){1,3}\/?)$/);
+        print $2 "\t" substr($3, RSTART, RLENGTH)
+    }' >> "$pcache"
+        
+    # sed -re "s/\/.*(\/[^/]+){1,4}$/\1/" >> "$pcache"
+
+    [[ $1 == "-r" ]] && exit
+fi
+
+### Show #######################################
+# ...in prettified form
+sel=`cat $pcache | nl | rofi -columns 3 -terminal -dmenu -i -p "Run: "` 
+
+## If in list select original line from file,
+## otherwise print directly.
+n=`echo $sel | awk '{print $1}'` 
+
+if [[ $n =~ ^[0-9]+$ ]]; then
+    sel=`sed -ne "$n p" $cache`
+else
+    sel=`echo "0 $sel"`
+fi
+
+echo "$sel"
+
+
+### Run #########################################
+
+# Check if shell
+
+split=( $sel )
+category=${split[0]}
+name="${split[*]:1: ${#split[*]}}"
+
+echo $category
+echo $name
+
+[[ ${#name} -lt 3 ]] && exit
+
+if [[ ${name: -1} == ";" ]] || [[ $category == 2 ]]; then
+    [[ ${name: -1} == ";" ]] && name=${name:0: -1}
+    $TERMINAL -e bash -ic "$name; read -p 'Press to continue... '"
+
+elif [[ $category == 3 ]]; then
+    "$name" &
+
+else
+    # first try matching by filename or pathname
+    case "${name,,}" in
+        http*)
+            $BROWSER "$name" &
+            ;;
+        *.txt)
+            $TERMINAL $EDITOR "$name" &
+            ;;
+        *.pdf | *.epub)
+            zathura "$name" &
+            ;;
+        *.mp3)
+            $TERMINAL mpg123 -opulse "$name" &
+            ;;
+        *.od[tsp]|*.doc|*.docx|*.ppt|*.pptx|*.xls|*.xlsx)
+            libreoffice "$name" &
+            ;;
+        *)
+            # then try matching by mimetype
+            mimetype=$(file -Lb --mime-type "$name")
+            case "$mimetype" in
+                # text/html)
+                #     $BROWSER "$name" &
+                #     ;;
+                text/* | inode/x-empty | message/rfc822)
+                    $TERMINAL $EDITOR "$name" &
+                    ;;
+                inode/directory)
+                    $TERMINAL vifm "$name"
+                    ;;
+                image/*)
+                    sxiv "$name" &
+                    ;;
+                *)
+                    exit 1
+                    ;;
+            esac
+            ;;
+    esac
+fi
