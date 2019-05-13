@@ -13,7 +13,7 @@ echo "noarp" >> /etc/dhcpcd.conf
 
 # Install Packages
 ## Essential
-pacman -S xorg-server xorg-xinit xorg-xrandr xsel
+pacman -S xorg-server xorg-xinit xorg-xrandr xsel bash-completion
 pacman -S bspwm sxhkd rofi libnotify dunst compton pulseaudio
 pacman -S git openssh feh python jupyter-notebook bpython unzip
 pacman -S ttf-liberation noto-fonts
@@ -31,6 +31,9 @@ sudo pip install pynvim
 
 ## AUR
 mkdir -p "/home/$username/.local/bin/"
+mkdir -p "/media/$username/phone"
+mkdir -p "/media/$username/server"
+mkdir -p "/media/$username/default"
 cd "/home/$username/.local/bin/"
 
 ## rclone
@@ -41,6 +44,8 @@ git clone https://aur.archlinux.org/polybar.git
 git clone https://aur.archlinux.org/xst-git.git
 git clone https://aur.archlinux.org/mp3gain.git
 git clone https://aur.archlinux.org/jmtpfs.git
+git clone https://aur-dev.archlinux.org/tesseract-git.git
+pacman -S tesseract-data-eng
 
 echo "Install youtube-dl:"
 sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl

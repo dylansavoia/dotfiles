@@ -2,7 +2,7 @@
 # Autorun
 sxhkd &
 compton --config ~/.config/compton/compton.conf &
-feh --bg-fill ~/.config/i3/wallpaper.jpg
+feh --bg-fill ~/.config/bspwm/wallpaper.jpg
 dunst &
 dropbox &
 polybar mainbar & 

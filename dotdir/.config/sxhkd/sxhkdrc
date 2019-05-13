@@ -23,7 +23,7 @@ super + shift + {0-9}
 	bspc node --to-desktop {0-9} --focus
 
 super + shift + {s, b}
-    bspc node --to-desktop {sidebrowser, browser} --focus
+    bspc node --to-desktop {1, 6} --focus
 
 # - Windows ------------------------
 # set the window state

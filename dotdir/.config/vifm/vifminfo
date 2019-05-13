@@ -28,189 +28,6 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/home/dylansavoia/.local/bin/xst-git/src
-	xst
-1
-d/home/dylansavoia/.local/bin/xst-git
-	src
-3
-d/home/dylansavoia/.local/bin
-	xst-git
-1
-d/home/dylansavoia/.config/i3
-	inputrc
-3
-d/home/dylansavoia/.config
-	bspwm
-1
-d/home/dylansavoia/.config/bspwm
-	bspwmrc
-1
-d/home/dylansavoia/.config
-	sxhkd
-13
-d/home/dylansavoia/.config/sxhkd
-	sxhkdrc
-1
-d/home/dylansavoia/.config
-	sxhkd
-13
-d/home/dylansavoia
-	.pki
-6
-d/home
-	dylansavoia
-1
-d/home/dylansavoia
-	.config
-2
-d/home/dylansavoia/.config
-	compton
-2
-d/home/dylansavoia/.config/compton
-	compton.conf
-1
-d/home/dylansavoia/.config
-	compton
-2
-d/home/dylansavoia
-	.config
-2
-d/home/dylansavoia/.config
-	bspwm
-1
-d/home/dylansavoia/.config/bspwm
-	bspwmrc
-1
-d/home/dylansavoia/.config
-	zathura
-15
-d/home/dylansavoia/.config/zathura
-	..
-0
-d/home/dylansavoia/.config
-	sxhkd
-13
-d/home/dylansavoia/.config/sxhkd
-	sxhkdrc
-1
-d/home/dylansavoia/.config
-	sxhkd
-13
-d/home/dylansavoia/.config/sxhkd
-	sxhkdrc
-1
-d/home/dylansavoia/.config
-	bspwm
-1
-d/home/dylansavoia/.config/bspwm
-	bspwmrc
-1
-d/home/dylansavoia
-	Downloads
-7
-d/home/dylansavoia/Downloads
-	..
-0
-d/home/dylansavoia
-	Downloads
-7
-d/media
-	HDD
-1
-d/media/HDD
-	Downloads
-1
-d/media/HDD/Downloads
-	..
-0
-d/media/HDD
-	Downloads
-1
-d/media
-	HDD
-1
-d/
-	media
-8
-d/media
-	HDD
-1
-d/media/HDD
-	Downloads
-1
-d/media/HDD/Downloads
-	..
-0
-d/media/HDD
-	Downloads
-1
-d/home/dylansavoia
-	Downloads
-7
-d/home/dylansavoia/Downloads
-	dotfiles
-1
-d/home/dylansavoia/Downloads/dotfiles
-	arch_setup.sh
-4
-d/home/dylansavoia/.config/i3
-	config_win_mode
-2
-d/home/dylansavoia
-	.Xresources
-9
-d/home/dylansavoia/.config
-	vifm
-14
-d/home/dylansavoia/.config/vifm
-	colors
-1
-d/home/dylansavoia/.config
-	sxhkd
-13
-d/home/dylansavoia/.config/sxhkd
-	sxhkdrc
-1
-d/home/dylansavoia/.config
-	sxhkd
-15
-d/media
-	HDD
-1
-d/media/HDD
-	..
-0
-d/media
-	dylansavoia
-2
-d/media/dylansavoia
-	..
-0
-d/media
-	dylansavoia
-2
-d/
-	media
-8
-d/media
-	dylansavoia
-2
-d/media/dylansavoia
-	HDD
-1
-d/media/dylansavoia/HDD
-	..
-0
-d/media/dylansavoia
-	HDD
-1
-d/media
-	dylansavoia
-1
-d/
-	media
-8
 d/media
 	dylansavoia
 1
@@ -326,8 +143,191 @@ d/home/dylansavoia/.config/polybar
 	config
 1
 d/home/dylansavoia
-	.xinitrc
-26
+	.config
+2
+d/home/dylansavoia/.config
+	gtk-3.0
+6
+d/home/dylansavoia/.config/gtk-3.0
+	..
+0
+d/home/dylansavoia/.config
+	bspwm
+1
+d/home/dylansavoia/.config/bspwm
+	bspwmrc
+1
+d/home/dylansavoia/.config/polybar
+	config
+1
+d/home/dylansavoia/.config/qutebrowser
+	config.py
+4
+d/home/dylansavoia/.config
+	bspwm
+1
+d/home/dylansavoia/.config/bspwm
+	bspwmrc
+1
+d/home/dylansavoia/.config
+	sxhkd
+16
+d/home/dylansavoia/.config/sxhkd
+	sxhkdrc
+1
+d/home/dylansavoia/.config
+	sxhkd
+16
+d/home/dylansavoia/Downloads
+	dotfiles
+1
+d/home/dylansavoia/Downloads/dotfiles
+	arch_setup.sh
+5
+d/home/dylansavoia/.config
+	i3
+8
+d/home/dylansavoia/.config/i3
+	inputrc
+3
+d/home/dylansavoia/.config
+	bspwm
+1
+d/home/dylansavoia/.config/bspwm
+	bspwmrc
+1
+d/home/dylansavoia/.config
+	i3
+8
+d/home/dylansavoia/.config/i3
+	inputrc
+3
+d/home/dylansavoia/.config
+	bspwm
+1
+d/home/dylansavoia/.config/bspwm
+	wallpaper.jpg
+3
+d/home/dylansavoia/.config
+	i3
+8
+d/home/dylansavoia/.config/i3
+	config_win_mode
+2
+d/home/dylansavoia/.config
+	inputrc
+19
+d/home/dylansavoia
+	.npm
+9
+d/home/dylansavoia/.local
+	bin
+1
+d/home/dylansavoia/.local/bin
+	jmtpfs
+2
+d/home/dylansavoia/.local
+	share
+3
+d/home/dylansavoia
+	.local
+7
+d/home
+	dylansavoia
+1
+d/media
+	dylansavoia
+1
+d/media/dylansavoia
+	HDD
+1
+d/media/dylansavoia/HDD
+	Downloads
+1
+d/media/dylansavoia/HDD/Downloads
+	Tracks
+1
+d/media/dylansavoia/HDD/Downloads/Tracks
+	Ambient - Kerala - Bonobo .mp3
+1
+d/media/dylansavoia/HDD/Downloads
+	Tracks
+1
+d/media/dylansavoia/HDD
+	Downloads
+1
+d/media/dylansavoia
+	server
+3
+d/home/dylansavoia/.local
+	scripts
+2
+d/home/dylansavoia/.local/scripts
+	calc.py
+1
+d/home/dylansavoia/.local
+	scripts
+2
+d/home/dylansavoia/.local/scripts
+	calc.py
+1
+d/home/dylansavoia/.local
+	scripts
+2
+d/home/dylansavoia/.local/scripts
+	clear_yt_playlist
+2
+d/media
+	dylansavoia
+1
+d/media/dylansavoia
+	server
+3
+d/media/dylansavoia/server
+	..
+0
+d/media/dylansavoia
+	HDD
+1
+d/media/dylansavoia/HDD
+	Downloads
+1
+d/media/dylansavoia/HDD/Downloads
+	Tracks
+1
+d/media/dylansavoia/HDD/Downloads/Tracks
+	Happy Hardcore - Elements (Neo Cortex Original) - Styles & Breeze.mp3
+1
+d/home/dylansavoia/.local
+	scripts
+2
+d/home/dylansavoia/.local/scripts
+	set_volume
+11
+d/home/dylansavoia/.local
+	bin
+1
+d/home/dylansavoia/.local/bin
+	jmtpfs
+2
+d/
+	usr
+18
+d/usr
+	share
+8
+d/usr/share
+	tessdata
+30
+d/usr/share/tessdata
+	configs
+1
+d/usr/share
+	tessdata
+30
+d/usr/share/tessdata
+	configs
+1
 d
 
 # Right window history (oldest to newest):
@@ -616,9 +616,6 @@ D/home/dylansavoia/.local
 D
 
 # Command line history (oldest to newest):
-:BKP_DOTFILES
-:set title false
-:help vifm-'title'
 :set title="True"
 :set notitle
 :set title=False
@@ -717,11 +714,10 @@ D
 :file
 :file nvim
 :mkdir Downloads
+:mkdir server
+:touch archive
 
 # Search history (oldest to newest):
-/outp
-/fon
-/arial
 /font
 /uti
 /vis
@@ -768,7 +764,6 @@ D
 /home
 /ranger
 /de
-/conf
 /tra
 /ml
 /grap
@@ -819,6 +814,10 @@ D
 /loca
 /polyba
 /po
+/conf
+/i3
+/sha
+/tess
 
 # Prompt history (oldest to newest):
 pdotfiles_dir
@@ -902,14 +901,18 @@ pHomework1.pdf
 pBehave.epub
 platexsheet.pdf
 pBehave.pdf
+pset_volume
+pTrance - Elements (Neo Cortex Original) - Styles & Breeze.mp3
+pHappy Hardcore - Elements (Neo Cortex Original) - Styles & Breeze.mp3
+parchive
+pmmake
 
 # Local filter history (oldest to newest):
 |*.pdf
 |^st
 
 # Registers:
-""/home/dylansavoia/.local/share/vifm/Trash/000_add_to_playlist.js.~1~
-""/home/dylansavoia/.local/share/vifm/Trash/000_google_tab.js.~1~
+""/home/dylansavoia/.local/share/vifm/Trash/000_create_entr
 
 # Directory stack (oldest to newest):
 
@@ -1310,6 +1313,8 @@ t/home/dylansavoia/.local/share/vifm/Trash/000_google_tab.js.~1~
 	/home/dylansavoia/.local/qutebrowser/greasemonkey/google_tab.js.~1~
 t/home/dylansavoia/.local/share/vifm/Trash/000_dotfiles
 	/home/dylansavoia/Downloads/DOTFILES_BACKUP/dotfiles
+t/home/dylansavoia/.local/share/vifm/Trash/000_create_entr
+	/home/dylansavoia/.local/scripts/create_entr
 
 # State:
 f
