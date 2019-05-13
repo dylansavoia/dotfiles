@@ -28,42 +28,6 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/media
-	dylansavoia
-1
-d/media/dylansavoia
-	phone
-2
-d/home/dylansavoia/.local
-	bin
-1
-d/home/dylansavoia/.local/bin
-	jmtpfs
-1
-d/home/dylansavoia
-	.bashrc
-14
-d/home/dylansavoia/.local
-	bin
-1
-d/home/dylansavoia/Downloads
-	dotfiles
-1
-d/home/dylansavoia/Downloads/dotfiles
-	arch_setup.sh
-4
-d/
-	bin
-0
-d/bin
-	..
-0
-d/
-	usr
-18
-d/usr
-	local
-6
 d/usr/local
 	bin
 1
@@ -328,6 +292,42 @@ d/usr/share
 d/usr/share/tessdata
 	configs
 1
+d/home/dylansavoia/.local
+	scripts
+2
+d/home/dylansavoia/.local/scripts
+	mnt
+7
+d/media
+	dylansavoia
+1
+d/media/dylansavoia
+	server
+2
+d/media/dylansavoia/server
+	..
+0
+d/media/dylansavoia
+	HDD
+1
+d/media
+	dylansavoia
+1
+d/media/dylansavoia
+	HDD
+1
+d/media
+	dylansavoia
+1
+d/media/dylansavoia
+	HDD
+1
+d/home/dylansavoia/.local
+	scripts
+2
+d/home/dylansavoia/.local/scripts
+	mnt
+7
 d
 
 # Right window history (oldest to newest):
@@ -616,7 +616,6 @@ D/home/dylansavoia/.local
 D
 
 # Command line history (oldest to newest):
-:set title="True"
 :set notitle
 :set title=False
 :set
@@ -716,6 +715,7 @@ D
 :mkdir Downloads
 :mkdir server
 :touch archive
+:touch mnt
 
 # Search history (oldest to newest):
 /font
