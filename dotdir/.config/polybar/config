@@ -1,0 +1,186 @@
+[colors]
+background = ${xrdb:background:#555} 
+background-alt = ${xrdb:color8:#555} 
+foreground = ${xrdb:foreground:#fff}
+foreground-alt = ${xrdb:color15:#fff}
+primary = ${xrdb:color16:#000}
+
+[bar/mainbar]
+monitor = HDMI-0
+
+width = 100%
+height = 20
+
+radius = 0.0
+bottom = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-size = 1
+border-color = ${colors.background-alt}
+
+font-0 = Noto Sans:pixelsize=10;2
+font-1 = Font Awesome 5 Free:pixelsize=10;2
+font-2 = Font Awesome 5 Brands:pixelsize=10;2
+font-3 = Font Awesome 5 Free Solid:pixelsize=10;2
+
+modules-left = bspwm
+modules-center = 
+modules-right = volume date
+
+module-margin-left = 0
+
+tray-position = center
+tray-padding = 3
+
+[bar/secondary]
+monitor = VGA-0
+
+width = 100%
+height = 25
+
+radius = 0.0
+bottom = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-size = 1
+border-color = ${colors.background-alt}
+
+font-0 = Noto Sans:pixelsize=10;2
+font-1 = Font Awesome 5 Free:pixelsize=10;2
+font-2 = Font Awesome 5 Brands:pixelsize=10;2
+font-3 = Font Awesome 5 Free Solid:pixelsize=10;2
+
+modules-left = bspwm
+modules-center = 
+modules-right = volume date
+
+module-margin-left = 0
+
+tray-position = center
+tray-padding = 3
+
+
+[module/bspwm]
+type = internal/bspwm
+pin-workspaces = true
+
+format = <label-state>
+format-padding = 0
+
+ws-icon-0 = 6;
+ws-icon-1 = 1;
+ws-icon-2 = 5;
+ws-icon-3 = 0;
+ws-icon-default = 
+
+label-focused = %icon%
+label-focused-padding = 3
+label-focused-foreground = ${colors.foreground}
+label-focused-background = ${colors.background-alt}
+
+label-occupied = %icon%
+label-occupied-background = ${colors.background}
+label-occupied-foreground = ${colors.foreground}
+label-occupied-padding = 3
+
+label-dimmed-background = ${colors.background}
+label-dimmed-padding = 3
+
+label-urgent-foreground = #000000
+label-urgent-background = #bd2c40
+label-urgent-underline = #9b0a20
+label-urgent-padding = 3
+
+label-empty = %icon%
+label-empty-foreground = #555
+label-empty-background = ${colors.background}
+label-empty-padding = 3
+
+
+[module/i3]
+type = internal/i3
+format = <label-state><label-mode>
+index-sort = true
+format-padding = 0
+
+label-mode = %mode%
+label-mode-padding = 8
+label-mode-background = ${colors.primary}
+
+label-focused = %index%
+label-focused-padding = 5
+label-focused-background = ${colors.primary}
+
+label-unfocused = %index%
+label-unfocused-padding = 5
+label-unfocused-background = ${colors.background-alt}
+
+label-visible = %index%
+label-visible-padding = 5
+label-visible-background = ${colors.background-alt}
+
+label-urgent = %index%
+label-urgent-padding = 5
+
+
+[module/wireless-network]
+type = internal/network
+interface = wlp2s0
+interval = 3.0
+
+format-connected = %{A1:st -n applet -e nmtui:}<ramp-signal>      <label-connected>%{A}
+label-connected = "%essid%"
+format-foreground = #fff
+
+format-disconnected = %{A1:st -n applet -e nmtui:}<label-disconnected>%{A}
+label-disconnected = "   disconnected"
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+
+[module/date]
+type = internal/date
+interval = 1
+
+format-background = ${colors.primary}
+
+date = "%d %b %y"
+time = "%H:%M:%S"
+
+label = "%time%       %date%"
+format-padding = 8
+
+[module/volume]
+type = internal/pulseaudio
+
+format-volume = "<ramp-volume>    <label-volume>"
+label-volume = "%percentage% %"
+label-volume-foreground = ${root.foreground}
+
+format-muted = "<label-muted>"
+format-muted-foreground = ${colors.foreground}
+label-muted = "  muted"
+format-muted-padding = 8
+
+ramp-volume-0 = ""
+ramp-volume-1 = ""
+ramp-volume-2 = ""
+
+[settings]
+screenchange-reload = true
+;compositing-background = xor
+;compositing-background = screen
+;compositing-foreground = source
+;compositing-border = over
+format-background = ${colors.background-alt}
+format-padding = 7
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+; vim:ft=dosini

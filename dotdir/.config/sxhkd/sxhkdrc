@@ -1,0 +1,70 @@
+# - Applications ------------------
+# Launcher
+super + Return
+	laser
+
+# Terminal
+super + space
+	xst
+
+# close and kill
+super + {_,shift + }w
+	bspc node -{c,k}
+
+# - Focus --------------------------
+# side / browser
+super + {s, b}
+    bspc desktop -f {1, 6}
+
+super + {0-9}
+	bspc desktop -f {0-9}
+
+super + shift + {0-9}
+	bspc node --to-desktop {0-9} --focus
+
+super + shift + {s, b}
+    bspc node --to-desktop {sidebrowser, browser} --focus
+
+# - Windows ------------------------
+# set the window state
+super + {t,shift + t,f}
+	bspc node -t {tiled,pseudo_tiled,floating}
+
+# focus the node in the given direction
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+# swap the current node and the biggest node
+super + {_, shift + } g
+	bspc node -s {biggest.local, biggest} --follow
+
+# alternate between the tiled and monocle layout
+super + m
+	bspc desktop -l next
+
+# focus the next/previous node in the current desktop
+super + {_,shift + }n
+	bspc node -f {next,prev}.local
+
+# focus the last desktop
+super + Tab 
+	bspc desktop -f last
+
+# Resize
+# expand a window by moving one of its side outward
+super + alt + {h,j,k,l}
+	bspc node -z {left -20 0,bottom 0 20,top 0 -20,right 20 0}
+
+# contract a window by moving one of its side inward
+super + alt + shift + {h,j,k,l}
+	bspc node -z {right -20 0,top 0 20,bottom 0 -20,left 20 0}
+
+# balance
+super + o
+    bspc node @/ --equalize
+
+
+# - bspwm -----------------------
+# quit/restart bspwm
+super + alt + {q,r}
+	bspc {quit,wm -r; pkill -USR1 -x sxhkd}

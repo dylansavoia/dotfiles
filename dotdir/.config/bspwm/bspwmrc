@@ -1,0 +1,25 @@
+#! /bin/sh
+# Autorun
+sxhkd &
+compton --config ~/.config/compton/compton.conf &
+feh --bg-fill ~/.config/i3/wallpaper.jpg
+dunst &
+dropbox &
+polybar mainbar & 
+polybar secondary & 
+
+# Monitors and Desktops
+bspc monitor HDMI-0 -d 6 7 8 9 0
+bspc monitor VGA-0  -d 1 2 3 4 5
+
+# Config
+bspc config border_width         1
+bspc config window_gap          15
+
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config external_rules_command ~/.config/bspwm/ext_rules.sh
+
+# Rules
+bspc rule --add qutebrowser      desktop='6'      follow=on

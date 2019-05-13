@@ -1,0 +1,84 @@
+o! Color
+
+#define bkg0      #1B1B1B
+#define bkg1      #555555
+#define fg0       #CFCFCF
+#define fg1       #FFFFFF
+#define acc0      #5879AF
+#define acc1      #B3D1FF
+
+!!Other useful color names
+#define black0    #1B1B1B
+#define black1    #555555
+#define red0      #A9635D
+#define red1      #FFBBB2
+#define green0    #246237
+#define green1    #9DDEAF
+#define yellow0   #84763D
+#define yellow1   #E0CE91
+#define blue0     #5879AF
+#define blue1     #B3D1FF
+#define magenta0  #9C6594
+#define magenta1  #FABDF0
+#define cyan0     #008592
+#define cyan1     #79E0ED
+#define white0    #CFCFCF
+#define white1    #FFFFFF
+
+*background:  bkg0
+*foreground:  fg0
+
+! ACCENT
+*color16:     acc0
+*color17:     acc1
+
+! BLACK
+*color0:      black0  
+*color8:      black1  
+! RED         
+*color1:      red0    
+*color9:      red1    
+! GREEN       
+*color2:      green0  
+*color10:     green1  
+! YELLOW      
+*color3:      yellow0 
+*color11:     yellow1 
+! BLUE        
+*color4:      blue0   
+*color12:     blue1   
+! MAGENTA     
+*color5:      magenta0
+*color13:     magenta1
+! CYAN        
+*color6:      cyan0   
+*color14:     cyan1   
+! WHITE       
+*color7:      white0  
+*color15:     white1  
+
+! Basic UI
+Xcursor.size: 12
+rofi.terminal: st
+rofi.font: System San Francisco Display 12
+! rofi.fuzzy: true
+rofi.color-enabled: true
+
+rofi.hide-scrollbar: true
+rofi.separator-style: none
+rofi.lines: 7
+rofi.location: 7
+rofi.yoffset: -20
+rofi.xoffset: 20
+rofi.monitor: -1
+rofi.width: 600
+rofi.padding: 20
+rofi.eh: 2
+rofi.bw: 1
+rofi.columns: 1
+
+! State:           bg       fg      bgalt   hlbg    hlfg
+rofi.color-normal: bkg0,    fg0,    bkg0,   bkg0,   acc1
+rofi.color-active: bkg0,    acc0,   bkg0,   bkg0,   acc1
+rofi.color-urgent: bkg0,    fg0,    bkg0,   bkg0,   fg0
+rofi.color-window: bkg0,            bkg1

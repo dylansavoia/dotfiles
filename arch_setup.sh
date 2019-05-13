@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Create User  
-echo -e"Create default user and edit /etc/sudoers file\n(You may just want to uncomment the wheel option)\nUsername: "
+echo -e "Create default user and edit /etc/sudoers file\n(You may just want to uncomment the wheel option)\nUsername: "
 read username
 
 adduser -m -g wheel $username
@@ -13,16 +13,20 @@ echo "noarp" >> /etc/dhcpcd.conf
 
 # Install Packages
 ## Essential
-pacman -S xorg-server xorg-xinit xorg-xrandr
+pacman -S xorg-server xorg-xinit xorg-xrandr xsel
 pacman -S bspwm sxhkd rofi libnotify dunst compton pulseaudio
-pacman -S git openssh feh python jupyter-notebook bpython
+pacman -S git openssh feh python jupyter-notebook bpython unzip
+pacman -S ttf-liberation noto-fonts
 # pacman -S networkmanager
 
 ## Applications
 pacman -S ffmpeg imagemagick arandr mpv sxiv                    # Image/Video
 pacman -S vifm neovim qutebrowser zathura libreoffice-fresh     # Office
-pacman -S firefox virtualbox                                    # Office
-pacman -S entr rsync wget curl                                  # Utilities
+pacman -S firefox virtualbox                                    
+pacman -S entr rsync rclone wget curl tree htop                 # Utilities
+
+pacman -S python-numpy python-eyed3 python-pip                  # Python Essentials
+sudo pip install pynvim
 
 
 ## AUR
@@ -34,8 +38,13 @@ curl https://rclone.org/install.sh | sudo bash
 
 git clone https://aur.archlinux.org/dropbox.git
 git clone https://aur.archlinux.org/polybar.git
-git clone https://aur.archlinux.org/st.git
+git clone https://aur.archlinux.org/xst-git.git
+git clone https://aur.archlinux.org/mp3gain.git
 git clone https://aur.archlinux.org/jmtpfs.git
+
+echo "Install youtube-dl:"
+sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+sudo chmod a+rx /usr/local/bin/youtube-dl
 
 ## Other
 ### Create RSA key for server

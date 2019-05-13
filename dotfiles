@@ -1,0 +1,43 @@
+#!/bin/bash
+cmd="$1"
+dotdir="$HOME/Downloads/dotfiles/dotdir/"
+
+
+case "$cmd" in
+    "collect" )
+        # Home dotfiles
+        rsync ~/.bashrc "$dotdir"
+        rsync ~/.bash_profile   "$dotdir"
+        rsync ~/.xinitrc        "$dotdir"
+        rsync ~/.Xresources     "$dotdir"
+
+        # .config
+        mkdir -p "$dotdir/.config"
+        rsync -a --delete ~/.config/bspwm        "$dotdir/.config"
+        rsync -a --delete ~/.config/sxhkd        "$dotdir/.config"
+        rsync -a --delete ~/.config/compton      "$dotdir/.config"
+        rsync -a --delete ~/.config/polybar      "$dotdir/.config"
+        rsync -a --delete ~/.config/rclone       "$dotdir/.config"
+        rsync -a --delete ~/.config/dunst        "$dotdir/.config"
+        rsync -a --delete ~/.config/zathura      "$dotdir/.config"
+        rsync -a --delete ~/.config/laser        "$dotdir/.config"
+        rsync -a --delete ~/.config/qutebrowser  "$dotdir/.config"
+        rsync -a --delete ~/.config/nvim --exclude plugged   "$dotdir/.config"
+        rsync -a --delete ~/.config/vifm --exclude Trash     "$dotdir/.config"
+
+        # .local
+        mkdir -p "$dotdir/.local"
+        mkdir -p "$dotdir/.local/bin/qutebrowser"
+        rsync -a --delete ~/.local/scripts       "$dotdir/.local"
+        rsync -a --delete ~/.local/share/qutebrowser/greasemonkey "$dotdir/.local/bin/qutebrowser"
+
+        ;;
+    "restore" )
+        shopt -s dotglob
+        cd "$dotdir"
+        cp --parents -a * ~
+        ;;
+    *)
+        echo "Usage: dotfiles [collect|restore]"
+    ;;
+esac
