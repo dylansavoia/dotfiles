@@ -5,7 +5,7 @@ super + Return
 
 # Terminal
 super + space
-	xst
+	$TERMINAL
 
 # close and kill
 super + {_,shift + }w
@@ -68,3 +68,6 @@ super + o
 # quit/restart bspwm
 super + alt + {q,r}
 	bspc {quit,wm -r; pkill -USR1 -x sxhkd}
+
+super + {F9, F10, F11, F12}
+    ~/.local/scripts/set_volume {switch, -10%, +10%, toggle}

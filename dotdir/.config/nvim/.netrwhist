@@ -1,6 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/home/dylansavoia/Downloads/dotfiles'
-let g:netrw_dirhist_2='/home/dylansavoia'
-let g:netrw_dirhist_3='/home/dylansavoia/Downloads'
-let g:netrw_dirhist_4='/home/dylansavoia/Downloads/dotfiles'
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/dylansavoia/Dropbox/texts/year_summaries/new'
+let g:netrw_dirhist_2='/home/dylansavoia/Dropbox/texts/year_summaries'
+let g:netrw_dirhist_3='/home/dylansavoia/Dropbox/Projects/CG/ig-hw2-dylansavoia'
+let g:netrw_dirhist_4='/home/dylansavoia/Dropbox/Texts/Entries Prototypes'
+let g:netrw_dirhist_5='/home/dylansavoia/Dropbox/Texts'
+let g:netrw_dirhist_6='/home/dylansavoia/Dropbox/Texts/Entries Prototypes/LS'

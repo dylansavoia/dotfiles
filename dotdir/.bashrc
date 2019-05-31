@@ -40,7 +40,7 @@ export TERMINAL=xst
 export BROWSER=qutebrowser
 
 # set PATH so it includes user's private bin directories
-PATH="$PATH:/.local/scripts/:."
+PATH="$PATH:$HOME/.local/scripts/:."
 
 alias normalize="mp3gain -r *"
 alias ffplay="ffplay -x 1"

@@ -13,8 +13,9 @@ read mpoint
 
 [[ "$mpoint" == "" ]] && mpoint="default"
 
-mpoint="$mpoint"
-mountpoint -q $mpoint && umount $mpoint
+mpoint="/media/dylansavoia/$mpoint"
+[ -e "$mpoint" ] || mkdir -p "$mpoint"
+mountpoint -q "$mpoint" && umount "$mpoint"
 
-mount "$sel" "$mpoint"
-vifm "/media/dylansavoia/$mpoint"
+`sudo mount -o gid=users,fmask=113,dmask=002 "/dev/$sel" "$mpoint"`
+vifm "$mpoint"

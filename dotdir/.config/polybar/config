@@ -5,6 +5,30 @@ foreground = ${xrdb:foreground:#fff}
 foreground-alt = ${xrdb:color15:#fff}
 primary = ${xrdb:color16:#000}
 
+[bar/sidebar]
+monitor = HDMI-0
+width = 20
+height = 100%
+
+modules-left = bspwm
+modules-center = 
+
+font-0 = Noto Sans:pixelsize=10;2
+font-1 = Font Awesome 5 Free:pixelsize=10;2
+font-2 = Font Awesome 5 Brands:pixelsize=10;2
+font-3 = Font Awesome 5 Free Solid:pixelsize=10;2
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+module-margin-left = 0
+
+tray-position = center
+tray-padding = 3
+
+border-size = 1
+border-color = ${colors.background-alt}
+
 [bar/mainbar]
 monitor = HDMI-0
 
@@ -13,6 +37,7 @@ height = 20
 
 radius = 0.0
 bottom = false
+wm-restack = bspwm 
 
 background = ${colors.background}
 foreground = ${colors.foreground}

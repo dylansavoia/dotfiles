@@ -21,12 +21,12 @@ pacman -S ttf-liberation noto-fonts
 
 ## Applications
 pacman -S ffmpeg imagemagick arandr mpv sxiv                    # Image/Video
-pacman -S vifm neovim qutebrowser zathura libreoffice-fresh     # Office
+pacman -S vifm neovim qutebrowser zathura zathura-pdf-mupdf libreoffice-fresh     # Office
 pacman -S firefox virtualbox                                    
 pacman -S entr rsync rclone wget curl tree htop                 # Utilities
 
 pacman -S python-numpy python-eyed3 python-pip                  # Python Essentials
-sudo pip install pynvim
+pip install pynvim
 
 
 ## AUR
@@ -48,8 +48,8 @@ git clone https://aur-dev.archlinux.org/tesseract-git.git
 pacman -S tesseract-data-eng
 
 echo "Install youtube-dl:"
-sudo curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
-sudo chmod a+rx /usr/local/bin/youtube-dl
+curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+chmod a+rx /usr/local/bin/youtube-dl
 
 ## Other
 ### Create RSA key for server

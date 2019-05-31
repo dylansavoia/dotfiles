@@ -28,381 +28,309 @@ l2
 r2
 
 # Left window history (oldest to newest):
-d/usr/local
-	bin
-1
-d/usr/local/bin
-	youtube-dl
-2
-d/home/dylansavoia/.config
-	sxhkd
-16
-d/home/dylansavoia/.config/sxhkd
-	sxhkdrc
-1
-d/home/dylansavoia/.config
-	bspwm
-1
-d/home/dylansavoia/.config/bspwm
-	bspwmrc
-1
-d/home/dylansavoia/.config
-	..
-0
-d/home/dylansavoia/.config/polybar
-	config
-1
-d/home/dylansavoia/.config
-	bspwm
-1
-d/home/dylansavoia/.config/bspwm
-	bspwmrc
-1
-d/home/dylansavoia/.config
-	bspwm
-1
-d/home/dylansavoia/.config/bspwm
-	bspwmrc
-1
-d/home/dylansavoia/.config
-	bspwm
-1
-d/home/dylansavoia/.config/bspwm
-	bspwmrc
-1
-d/home/dylansavoia/.config
-	sxhkd
-16
-d/home/dylansavoia/.config/sxhkd
-	sxhkdrc
-1
-d/home/dylansavoia/.config
-	polybar
-12
-d/home/dylansavoia/.config/polybar
-	config
-1
-d/home/dylansavoia/.config
-	bspwm
-1
-d/home/dylansavoia/.config/bspwm
-	ext_rules.sh
-2
-d/home/dylansavoia/.config
-	polybar
-12
-d/home/dylansavoia/.config/polybar
-	config
-1
-d/home/dylansavoia/.config
-	bspwm
-1
-d/home/dylansavoia/.config/bspwm
-	bspwmrc
-1
-d/home/dylansavoia/.config
-	polybar
-12
-d/home/dylansavoia/.config/polybar
-	config
-1
-d/home/dylansavoia
-	.config
-2
-d/home/dylansavoia/.config
-	gtk-3.0
-6
-d/home/dylansavoia/.config/gtk-3.0
+d/media/dylansavoia/default
 	..
 0
 d/home/dylansavoia/.config
-	bspwm
-1
-d/home/dylansavoia/.config/bspwm
-	bspwmrc
-1
-d/home/dylansavoia/.config/polybar
-	config
-1
-d/home/dylansavoia/.config/qutebrowser
-	config.py
+	htop
+7
+d/home/dylansavoia/.config/htop
+	..
+0
+d/home/dylansavoia/.config
+	htop
+7
+d/home/dylansavoia/.config/htop
+	..
+0
+d/home/dylansavoia/.config
+	vifm
+18
+d/home/dylansavoia/.config/vifm
+	filetype
+3
+d/home/dylansavoia/Dropbox
+	Texts
 4
-d/home/dylansavoia/.config
-	bspwm
-1
-d/home/dylansavoia/.config/bspwm
-	bspwmrc
-1
-d/home/dylansavoia/.config
-	sxhkd
-16
-d/home/dylansavoia/.config/sxhkd
-	sxhkdrc
-1
-d/home/dylansavoia/.config
-	sxhkd
-16
-d/home/dylansavoia/Downloads
-	dotfiles
-1
-d/home/dylansavoia/Downloads/dotfiles
-	arch_setup.sh
-5
-d/home/dylansavoia/.config
-	i3
-8
-d/home/dylansavoia/.config/i3
-	inputrc
+d/home/dylansavoia/Dropbox/Texts
+	Worldview
 3
-d/home/dylansavoia/.config
-	bspwm
-1
-d/home/dylansavoia/.config/bspwm
-	bspwmrc
-1
-d/home/dylansavoia/.config
-	i3
-8
-d/home/dylansavoia/.config/i3
-	inputrc
-3
-d/home/dylansavoia/.config
-	bspwm
-1
-d/home/dylansavoia/.config/bspwm
-	wallpaper.jpg
-3
-d/home/dylansavoia/.config
-	i3
-8
-d/home/dylansavoia/.config/i3
-	config_win_mode
+d/home/dylansavoia/Dropbox/Texts/Worldview
+	..
+0
+d/home/dylansavoia/Dropbox/Texts
+	Entries Prototypes
 2
-d/home/dylansavoia/.config
-	inputrc
-19
+d/home/dylansavoia/Dropbox/Texts/Entries Prototypes
+	LS_structure.txt
+2
+d/home/dylansavoia/Dropbox/Texts
+	Entries Prototypes
+2
+d/home/dylansavoia/Dropbox
+	Texts
+4
 d/home/dylansavoia
-	.npm
-9
+	.dropbox
+3
 d/home/dylansavoia/.local
 	bin
 1
 d/home/dylansavoia/.local/bin
-	jmtpfs
+	nvidia-beta
+4
+d/home/dylansavoia/.local/bin/nvidia-beta
+	..
+0
+d/home/dylansavoia/.local/bin
+	nvidia-beta
+4
+d/home/dylansavoia/.local/bin/nvidia-beta
+	.SRCINFO
 2
-d/home/dylansavoia/.local
-	share
-3
-d/home/dylansavoia
-	.local
+d/media
+	dylansavoia
+1
+d/
+	etc
+4
+d/etc
+	default
+12
+d/etc/default
+	..
+0
+d/etc
+	default
+12
+d/
+	boot
+2
+d/boot
+	GRUB
+2
+d/boot/GRUB
+	GRUB.CFG
 7
-d/home
-	dylansavoia
-1
+d/boot
+	GRUB
+2
+d/
+	var
+20
+d/var
+	empty
+3
+d/var/empty
+	..
+0
+d/var
+	log
+8
+d/var/log
+	..
+0
+d/var
+	.updated
+14
+d/
+	etc
+4
+d/etc
+	X11
+3
+d/etc/X11
+	xorg.conf.d
+2
+d/etc/X11/xorg.conf.d
+	..
+0
+d/etc/X11
+	xorg.conf.d
+2
+d/etc
+	X11
+3
+d/
+	etc
+4
+d/etc
+	X11
+3
+d/
+	var
+20
+d/var
+	log
+8
+d/var/log
+	..
+0
 d/media
 	dylansavoia
 1
 d/media/dylansavoia
-	HDD
-1
-d/media/dylansavoia/HDD
-	Downloads
-1
-d/media/dylansavoia/HDD/Downloads
-	Tracks
-1
-d/media/dylansavoia/HDD/Downloads/Tracks
-	Ambient - Kerala - Bonobo .mp3
-1
-d/media/dylansavoia/HDD/Downloads
-	Tracks
-1
-d/media/dylansavoia/HDD
-	Downloads
-1
-d/media/dylansavoia
 	server
-3
-d/home/dylansavoia/.local
-	scripts
-2
-d/home/dylansavoia/.local/scripts
-	calc.py
-1
-d/home/dylansavoia/.local
-	scripts
-2
-d/home/dylansavoia/.local/scripts
-	calc.py
-1
-d/home/dylansavoia/.local
-	scripts
-2
-d/home/dylansavoia/.local/scripts
-	clear_yt_playlist
-2
-d/media
-	dylansavoia
-1
-d/media/dylansavoia
-	server
-3
+4
 d/media/dylansavoia/server
 	..
 0
 d/media/dylansavoia
-	HDD
-1
-d/media/dylansavoia/HDD
-	Downloads
-1
-d/media/dylansavoia/HDD/Downloads
-	Tracks
-1
-d/media/dylansavoia/HDD/Downloads/Tracks
-	Happy Hardcore - Elements (Neo Cortex Original) - Styles & Breeze.mp3
-1
-d/home/dylansavoia/.local
-	scripts
+	default
 2
-d/home/dylansavoia/.local/scripts
-	set_volume
-11
-d/home/dylansavoia/.local
-	bin
+d/media/dylansavoia/default
+	..
+0
+d/media/dylansavoia
+	default
+2
+d/media
+	dylansavoia
 1
-d/home/dylansavoia/.local/bin
-	jmtpfs
+d/
+	etc
+4
+d/etc
+	X11
+3
+d/etc/X11
+	xorg.conf.d
+2
+d/etc/X11/xorg.conf.d
+	..
+0
+d/etc/X11
+	..
+0
+d/etc
+	X11
 2
 d/
 	usr
-18
+20
 d/usr
 	share
 8
 d/usr/share
-	tessdata
-30
-d/usr/share/tessdata
-	configs
-1
-d/usr/share
-	tessdata
-30
-d/usr/share/tessdata
-	configs
-1
-d/home/dylansavoia/.local
-	scripts
-2
-d/home/dylansavoia/.local/scripts
-	mnt
-7
-d/media
-	dylansavoia
-1
-d/media/dylansavoia
-	server
-2
-d/media/dylansavoia/server
+	nvim
+43
+d/usr
+	share
+8
+d/
+	usr
+20
+d/usr
+	lib
+3
+d/usr/lib
 	..
 0
-d/media/dylansavoia
-	HDD
+d/usr
+	lib
+3
+d/
+	usr
+20
+d/usr
+	lib
+3
+d/usr/lib
+	..
+0
+d/usr
+	lib
+3
+d/
+	usr
+20
+d/usr
+	bin
 1
-d/media
-	dylansavoia
+d/usr/bin
+	..
+0
+d/usr
+	bin
 1
-d/media/dylansavoia
-	HDD
+d/
+	usr
+20
+d/usr
+	bin
 1
-d/media
-	dylansavoia
+d/usr/bin
+	pluginviewer
+43
+d/usr
+	bin
 1
-d/media/dylansavoia
-	HDD
-1
-d/home/dylansavoia/.local
-	scripts
+d/
+	usr
+20
+d/usr
+	lib
+3
+d/usr/lib
+	libnvoptix.so
+40
+d/usr
+	lib
+3
+d/
+	etc
+4
+d/etc
+	X11
 2
-d/home/dylansavoia/.local/scripts
-	mnt
-7
+d/etc/X11
+	xinit
+1
+d/etc/X11/xinit
+	..
+0
+d/etc/X11
+	xinit
+1
+d/etc
+	X11
+2
+d/media/dylansavoia/default
+	NVIDIA-Linux-x86_64-418.74.run
+6
+d/media/dylansavoia
+	HDD
+1
+d/media/dylansavoia/HDD
+	Downloads
+3
+d/media/dylansavoia/HDD/Downloads
+	NVIDIA-Linux-x86_64-418.74.run
+4
+d/home/dylansavoia
+	.dropbox
+3
+d/home/dylansavoia/.dropbox
+	..
+0
+d/home/dylansavoia
+	.dropbox
+3
+d/home/dylansavoia/.dropbox
+	..
+0
+d/home/dylansavoia
+	Dropbox
+15
+d/home/dylansavoia/Dropbox
+	Texts
+4
+d/home/dylansavoia/Dropbox/Texts
+	Entries Prototypes
+2
 d
 
 # Right window history (oldest to newest):
-D/home/dylansavoia/.config/laser
-	shortcuts
-5
-D/home/dylansavoia/.local/share/qutebrowser
-	greasemonkey
-1
-D/home/dylansavoia/.local/share/qutebrowser/greasemonkey
-	..
-0
-D/home/dylansavoia/.local/share/qutebrowser
-	greasemonkey
-1
-D/home/dylansavoia/Downloads/dotfiles
-	dotfiles
-2
-D/home/dylansavoia/Downloads/dotfiles/dotfiles
-	.local
-2
-D/home/dylansavoia/Downloads/dotfiles/dotfiles/.local
-	qutebrowser
-1
-D/home/dylansavoia/Downloads/dotfiles/dotfiles/.local/qutebrowser
-	greasemonkey
-1
-D/home/dylansavoia/Downloads/dotfiles/dotfiles/.local/qutebrowser/greasemonkey
-	..
-0
-D/home/dylansavoia/Downloads/dotfiles/dotfiles/.local/qutebrowser
-	greasemonkey
-1
-D/home/dylansavoia/Downloads/dotfiles/dotfiles/.local
-	qutebrowser
-1
-D/home/dylansavoia/Downloads/dotfiles/dotfiles
-	.local
-2
-D/home/dylansavoia/Downloads/dotfiles/dotfiles/.local
-	scripts
-2
-D/home/dylansavoia/Downloads/dotfiles/dotfiles/.local/scripts
-	..
-0
-D/home/dylansavoia/Downloads/dotfiles/dotfiles/.local
-	qutebrowser
-1
-D/home/dylansavoia/Downloads/dotfiles/dotfiles/.local/qutebrowser
-	greasemonkey
-1
-D/home/dylansavoia/Downloads/dotfiles/dotfiles/.local/qutebrowser/greasemonkey
-	..
-0
-D/home/dylansavoia/Downloads/dotfiles/dotfiles/.local/qutebrowser
-	greasemonkey
-1
-D/home/dylansavoia/Downloads/dotfiles/dotfiles/.local
-	qutebrowser
-1
-D/home/dylansavoia/Downloads/dotfiles/dotfiles/.local/qutebrowser
-	greasemonkey
-1
-D/home/dylansavoia/Downloads/dotfiles/dotfiles/.local
-	qutebrowser
-1
-D/home/dylansavoia/.local/share/qutebrowser
-	qutebrowser
-1
-D/home/dylansavoia/.local/bin/pdf.js
-	docs
-3
-D/home/dylansavoia/.local/bin/pdf.js/src
-	..
-0
 D/home/dylansavoia/.local/bin/pdf.js
 	docs
 3
@@ -612,13 +540,100 @@ D/home/dylansavoia/.local/scripts
 0
 D/home/dylansavoia/.local
 	scripts
+2
+D/media
+	dylansavoia
+1
+D/media/dylansavoia
+	server
+3
+D/media/dylansavoia/server
+	content
+1
+D/media/dylansavoia/server/content
+	Journal
+1
+D/media/dylansavoia/server/content/Journal
+	2019
+4
+D/media/dylansavoia/server/content
+	Journal
+1
+D/media/dylansavoia/server/content/Journal
+	2015_2016
+1
+D/media/dylansavoia/server/content/Journal/2015_2016
+	Index
+1
+D/media/dylansavoia/server/content/Journal/2015_2016/Index
+	2016, until end
+3
+D/media/dylansavoia/server/content/Journal/2015_2016
+	Index
+1
+D/media/dylansavoia/server/content/Journal
+	2017
+2
+D/media/dylansavoia/server/content/Journal/2017
+	Index
+1
+D/media/dylansavoia/server/content/Journal/2017/Index
+	2017
+1
+D/media/dylansavoia/server/content/Journal/2017
+	imgs
+2
+D/media/dylansavoia/server/content/Journal
+	2018
+3
+D/media/dylansavoia/server/content/Journal/2018
+	Index
+1
+D/media/dylansavoia/server/content/Journal/2018/Index
+	2018
+2
+D/media/dylansavoia/server/content/Journal/2018
+	Index
+1
+D/media/dylansavoia/server/content/Journal
+	2018
+3
+D/media/dylansavoia/server/content/Journal/2018
+	Index
+1
+D/media/dylansavoia/server/content/Journal
+	2019
+4
+D/media/dylansavoia/server/content/Journal/2019
+	Index
+1
+D/media/dylansavoia/server/content/Journal/2019/Index
+	..
+0
+D/media/dylansavoia/server/content/Journal/2019
+	Index
+1
+D/media/dylansavoia/server/content/Journal
+	Memories
+6
+D/media/dylansavoia/server
+	..
+0
+D/home/dylansavoia/Downloads
+	dotfiles
+1
+D/home/dylansavoia/Downloads/dotfiles
+	dotdir
+2
+D/home/dylansavoia/Downloads/dotfiles/dotdir
+	.Xresources
+3
+D/home/dylansavoia/Downloads/dotfiles
+	pending
 3
 D
 
 # Command line history (oldest to newest):
-:set notitle
-:set title=False
-:set
 :set title=notitle
 :mkdir model_v2
 :set title="true"
@@ -711,24 +726,16 @@ D
 :filter! 1
 :filter
 :file
-:file nvim
 :mkdir Downloads
-:mkdir server
-:touch archive
-:touch mnt
+:file nvim
+:mkdir Originals
+:touch life_snapshot_2.txt
+:touch 2019
+:filter nvidia
+:filter *nvidia*
+:filter .*nvidia.*
 
 # Search history (oldest to newest):
-/font
-/uti
-/vis
-/sap
-/lincurs
-/libnc
-/quick
-/make
-/fi
-/aut
-/torcs
 /test
 /semopen
 /octa
@@ -757,7 +764,6 @@ D
 /biljl
 /ue
 /lil
-/lib
 /ueve
 /p
 /uebe
@@ -772,7 +778,6 @@ D
 /ulti
 /basj
 /auto
-/et
 /apt
 /tex
 /review.te
@@ -783,7 +788,6 @@ D
 /ude
 /confi
 /secre
-/qute
 /za
 /las
 /ele
@@ -795,9 +799,7 @@ D
 /pdf
 /text
 /laser
-/vifm
 /another
-/bash
 /arch
 /xini
 /local
@@ -806,20 +808,49 @@ D
 /:find 1
 /xres
 /sx
-/res
 /comp
 /xre
-/bashrc
 /usr
 /loca
 /polyba
 /po
 /conf
-/i3
+/bash
+/comple
+/bashrc
+/pro
+/qute
+/expo
+/pol
+/res
+/vifm
+/defa
+/boot
+/log
+/et
 /sha
-/tess
+/libnv
+/bin
+/nvidi
+/nvi
+/lib
+/opti
+/etc
 
 # Prompt history (oldest to newest):
+pWorldview
+pYear Summaries
+pSummaries
+pBook Summaries
+ptext
+ptexts
+pmachine_learning
+pML
+pset_volume
+pTrance - Elements (Neo Cortex Original) - Styles & Breeze.mp3
+pHappy Hardcore - Elements (Neo Cortex Original) - Styles & Breeze.mp3
+parchive
+pmmake
 pdotfiles_dir
 pdotfiles
 pdotdir
@@ -901,18 +932,21 @@ pHomework1.pdf
 pBehave.epub
 platexsheet.pdf
 pBehave.pdf
-pset_volume
-pTrance - Elements (Neo Cortex Original) - Styles & Breeze.mp3
-pHappy Hardcore - Elements (Neo Cortex Original) - Styles & Breeze.mp3
-parchive
-pmmake
+p playlist
+pplaylist
+poriginals
+pnew
+pnew_summaries
+pTextss
+pTexts
 
 # Local filter history (oldest to newest):
 |*.pdf
 |^st
 
 # Registers:
-""/home/dylansavoia/.local/share/vifm/Trash/000_create_entr
+""/home/dylansavoia/.local/share/vifm/Trash/000_2015.txt
+""/home/dylansavoia/.local/share/vifm/Trash/000_2015_new.txt
 
 # Directory stack (oldest to newest):
 
@@ -1315,9 +1349,61 @@ t/home/dylansavoia/.local/share/vifm/Trash/000_dotfiles
 	/home/dylansavoia/Downloads/DOTFILES_BACKUP/dotfiles
 t/home/dylansavoia/.local/share/vifm/Trash/000_create_entr
 	/home/dylansavoia/.local/scripts/create_entr
+t/home/dylansavoia/.local/share/vifm/Trash/000_Homework2.js
+	/home/dylansavoia/Dropbox/Projects/CG/ig-hw2-dylansavoia/Homework2.js
+t/home/dylansavoia/.local/share/vifm/Trash/000_BKP
+	/home/dylansavoia/Dropbox/texts/year_summaries/BKP
+t/home/dylansavoia/.local/share/vifm/Trash/000_2015.txt
+	/home/dylansavoia/Dropbox/texts/year_summaries/2015.txt
+t/home/dylansavoia/.local/share/vifm/Trash/000_2015_new.txt
+	/home/dylansavoia/Dropbox/texts/year_summaries/2015_new.txt
+t/home/dylansavoia/.local/share/vifm/Trash/000_RL_problems.txt
+	/home/dylansavoia/Dropbox/texts/RL_problems.txt
+t/home/dylansavoia/.local/share/vifm/Trash/001_default
+	/media/dylansavoia/default
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_out.jpg
+	/media/dylansavoia/HDD/Camera/photos/out.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190221_195428.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190221_195428.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190221_214615.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190221_214615.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190223_214119.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190223_214119.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190223_222851.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190223_222851.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190223_230309.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190223_230309.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190223_231529.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190223_231529.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190223_234012.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190223_234012.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190223_235927.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190223_235927.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190224_114257.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190224_114257.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190224_114338.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190224_114338.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190224_114349.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190224_114349.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190224_114354.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190224_114354.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190224_120139.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190224_120139.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190224_120809.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190224_120809.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190224_121149.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190224_121149.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190224_121304.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190224_121304.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190224_121738.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190224_121738.jpg
+t/media/dylansavoia/HDD/.vifm-Trash-1000/000_20190224_121827.jpg
+	/media/dylansavoia/HDD/Camera/photos/20190224_121827.jpg
+t/home/dylansavoia/.local/share/vifm/Trash/000_.dropbox
+	/home/dylansavoia/Dropbox/.dropbox
 
 # State:
-f
+f.*nvidia.*
 i1
 [.0
 [F

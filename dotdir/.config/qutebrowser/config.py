@@ -96,14 +96,14 @@ c.colors.hints.bg = bkg
 c.colors.hints.match.fg = accent
 c.hints.border = "1px solid " + accent_alt
 
-c.fonts.tabs = "13px SFNS Display"
-c.fonts.statusbar = "13px SFNS Display"
-c.fonts.prompts = "14px SFNS Display"
-c.fonts.downloads = "14px SFNS Display"
-c.fonts.keyhint = "14px SFNS Display"
-c.fonts.hints = "bold 14px SFNS Display Thin"
-c.fonts.completion.category = "14px SFNS Display"
-c.fonts.completion.entry = "14px SFNS Display"
+c.fonts.tabs = "13px Hack"
+c.fonts.statusbar = "13px Hack"
+c.fonts.prompts = "14px Hack"
+c.fonts.downloads = "14px Hack"
+c.fonts.keyhint = "14px Hack"
+c.fonts.hints = "bold 14px Hack"
+c.fonts.completion.category = "14px Hack"
+c.fonts.completion.entry = "14px Hack"
 
 c.scrolling.smooth = True
 

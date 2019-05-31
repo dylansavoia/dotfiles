@@ -38,6 +38,7 @@
 	alsa_out
 	alsatplg
 	alsaucm
+	ambiguous_words
 	amidi
 	amixer
 	analyze
@@ -220,6 +221,7 @@
 	cifs.upcall
 	cjpeg
 	cksum
+	classifier_tester
 	cleanupdelta
 	clear
 	clockdiff
@@ -231,11 +233,14 @@
 	cmx2raw
 	cmx2text
 	cmx2xhtml
+	cntraining
 	col
 	colcrt
 	colormgr
 	colrm
 	column
+	combine_lang_model
+	combine_tessdata
 	comm
 	compare
 	compile_et
@@ -246,7 +251,14 @@
 	conjure
 	conplay
 	convert
+	convertfilestopdf
+	convertfilestops
+	convertformat
 	convert-mans
+	convertsegfilestopdf
+	convertsegfilestops
+	converttopdf
+	converttops
 	coredumpctl
 	core_perl
 	cp
@@ -278,6 +290,7 @@
 	cwebp
 	cx18-ctl
 	date
+	dawg2wordlist
 	db_archive
 	db_checkpoint
 	db_deadlock
@@ -439,6 +452,7 @@
 	file
 	filecap
 	filefrag
+	fileinfo
 	fincore
 	find
 	findfs
@@ -475,6 +489,7 @@
 	funzip
 	fuser
 	fusermount
+	fusermount3
 	g++
 	gapplication
 	gawk
@@ -696,6 +711,7 @@
 	ifcfg
 	ifnames
 	ifstat
+	imagetops
 	img2txt
 	img2webp
 	imgcmp
@@ -794,6 +810,7 @@
 	jack_unload
 	jack_wait
 	jasper
+	jbig2dec
 	jemalloc-config
 	jemalloc.sh
 	jeprof
@@ -861,6 +878,7 @@
 	ktutil
 	kvno
 	lame
+	language-specific.sh
 	last
 	lastb
 	lastlog
@@ -961,6 +979,8 @@
 	lsmod
 	lsns
 	lspci
+	lstmeval
+	lstmtraining
 	lsusb
 	lsusb.py
 	lua5.2
@@ -1033,8 +1053,10 @@
 	media-ctl
 	memusage
 	memusagestat
+	merge_unicharsets
 	mesg
 	metaflac
+	mftraining
 	mk_cmds
 	mkdir
 	mkdosfs
@@ -1077,8 +1099,10 @@
 	mount.cifs
 	mount.fuse
 	mount.fuse.jmtpfs
+	mount.fuse.sshfs
 	mount.jmtpfs
 	mountpoint
+	mount.sshfs
 	mouse-dpi-tool
 	mp3gain
 	mpg123
@@ -1585,6 +1609,7 @@
 	setpriv
 	setsid
 	setterm
+	set_unicharset_properties
 	setvtrgb
 	setxkbmap
 	sexp-conv
@@ -1598,6 +1623,7 @@
 	sha256sum
 	sha384sum
 	sha512sum
+	shapeclustering
 	shlibsign
 	showconsolefont
 	showdb
@@ -1664,6 +1690,7 @@
 	ssh-agent
 	ssh-copy-id
 	sshd
+	sshfs
 	ssh-keygen
 	ssh-keyscan
 	ssltap
@@ -1739,6 +1766,9 @@
 	telinit
 	telnet
 	telnetd
+	tesseract
+	tesstrain.sh
+	tesstrain_utils.sh
 	test
 	testlibraw
 	testpkg
@@ -1746,6 +1776,7 @@
 	texi2dvi
 	texi2pdf
 	texindex
+	text2image
 	tfmtodit
 	tftpd
 	thin_check
@@ -1827,6 +1858,7 @@
 	uname26
 	uncompress
 	unexpand
+	unicharset_extractor
 	unicode_start
 	unicode_stop
 	uniq
@@ -1950,6 +1982,7 @@
 	wks2raw
 	wks2text
 	wordforms
+	wordlist2dawg
 	wordlist2hunspell
 	wpd2html
 	wpd2raw
@@ -2029,6 +2062,7 @@
 	xtables-nft-multi
 	xtotroff
 	xtrace
+	xtractprotos
 	xz
 	xzcat
 	xzcmp
@@ -2070,23 +2104,25 @@
 	zstdmt
 	/home/dylansavoia/Dropbox
 	/home/dylansavoia/Downloads
-	/dylansavoia/Dropbox/texts
+	/dylansavoia/Dropbox/Texts
 	/dylansavoia/Dropbox/Projects
 	/dylansavoia/Dropbox/PDFs
 	/dylansavoia/Downloads/dotfiles
-	/Dropbox/texts/year_summaries
-	/Dropbox/texts/worldview
-	/Dropbox/texts/summaries
-	/Dropbox/texts/entries_prototypes
+	/Dropbox/Texts/Year Summaries
+	/Dropbox/Texts/Worldview
+	/Dropbox/Texts/Entries Prototypes
+	/Dropbox/Texts/Book Summaries
 	/Dropbox/Projects/Web
 	/Dropbox/Projects/Python
-	/Dropbox/Projects/machine_learning
+	/Dropbox/Projects/ML
 	/Dropbox/Projects/C_lang
 	/Dropbox/Projects/CG
 	/Dropbox/PDFs/papers
 	/Dropbox/PDFs/ML
-	/Downloads/dotfiles/dotfiles
-	/texts/year_summaries/BKP
+	/Downloads/dotfiles/pending
+	/Downloads/dotfiles/dotdir
+	/Texts/Year Summaries/originals
+	/Texts/Year Summaries/new_summaries
 	/Projects/Web/Utilities
 	/Projects/Web/monitors
 	/Projects/Web/Main
@@ -2094,15 +2130,16 @@
 	/Projects/Python/memory_analysis
 	/Projects/Python/GLMs
 	/Projects/Python/drfm
-	/Projects/machine_learning/RL-Adventure-2
-	/Projects/machine_learning/NLP
-	/Projects/machine_learning/DDPG_TORCS
-	/Projects/machine_learning/DDPG
-	/Projects/machine_learning/convNet
-	/Projects/machine_learning/cart_pole
+	/Projects/ML/RL-Adventure-2
+	/Projects/ML/NLP
+	/Projects/ML/DDPG_TORCS
+	/Projects/ML/DDPG
+	/Projects/ML/convNet
+	/Projects/ML/cart_pole
 	/Projects/C_lang/Utils
 	/Projects/CG/WebGL
 	/Projects/CG/Tests
+	/Projects/CG/ig-hw2-dylansavoia
 	/Projects/CG/homework
 	/Web/monitors/js
 	/Web/monitors/imgs
@@ -2113,18 +2150,18 @@
 	/Web/Main/content
 	/Python/GLMs/datasets
 	/Python/drfm/hilbert
-	/machine_learning/RL-Adventure-2/__pycache__
-	/machine_learning/RL-Adventure-2/common
-	/machine_learning/NLP/__pycache__
-	/machine_learning/NLP/dir3
-	/machine_learning/NLP/dir
-	/machine_learning/DDPG_TORCS/test_battimuro
-	/machine_learning/DDPG_TORCS/tb
-	/machine_learning/DDPG_TORCS/review
-	/machine_learning/DDPG_TORCS/__pycache__
-	/machine_learning/DDPG_TORCS/gym_torcs
-	/machine_learning/convNet/tests
-	/machine_learning/convNet/__pycache__
+	/ML/RL-Adventure-2/__pycache__
+	/ML/RL-Adventure-2/common
+	/ML/NLP/__pycache__
+	/ML/NLP/dir3
+	/ML/NLP/dir
+	/ML/DDPG_TORCS/test_battimuro
+	/ML/DDPG_TORCS/tb
+	/ML/DDPG_TORCS/review
+	/ML/DDPG_TORCS/__pycache__
+	/ML/DDPG_TORCS/gym_torcs
+	/ML/convNet/tests
+	/ML/convNet/__pycache__
 	/CG/WebGL/Common
 	/CG/WebGL/Chap9
 	/CG/WebGL/Chap7
@@ -2137,6 +2174,7 @@
 	/CG/WebGL/Chap10
 	/CG/Tests/cube_shadow_camera
 	/CG/Tests/Common
+	/CG/ig-hw2-dylansavoia/Common
 	/CG/homework/PDF
 	/CG/homework/Common
 	/Main/text_edit/plugins
@@ -2148,6 +2186,7 @@
 	/RL-Adventure-2/common/__pycache__
 	/DDPG_TORCS/review/sapthesis
 	/DDPG_TORCS/gym_torcs/vtorcs-RL-color
+	/DDPG_TORCS/gym_torcs/__pycache__
 	/DDPG_TORCS/gym_torcs/mdl_longstr
 	/DDPG_TORCS/gym_torcs/mdl_def_redone2
 	/DDPG_TORCS/gym_torcs/mdl_def_redone
@@ -2738,7 +2777,95 @@
 	/navigation/images/down
 	/navigation/images/up
 	/navigation/images/down
-	/machine_learning/NLP/NLP_docs_similarity.ipynb
+	/C_lang/Utils/utils.h
+	/C_lang/Utils/print_binary.c
+	/Projects/Web/youtube_shortcuts.js
+	/Projects/Web/google_tab.js
+	/Projects/Web/fzfz_search.js
+	/Projects/ML/ddpg.py
+	/Projects/ML/auto_diff_tf.ipynb
+	/ML/DDPG/run.py
+	/ML/DDPG/ddpg.py
+	/gym_torcs/__pycache__/gym_torcs.cpython-37.pyc
+	/DDPG_TORCS/gym_torcs/criticmodel.json
+	/DDPG_TORCS/gym_torcs/snakeoil3_gym.py
+	/DDPG_TORCS/gym_torcs/sample_agent.py
+	/DDPG_TORCS/gym_torcs/practice.xml
+	/DDPG_TORCS/gym_torcs/gym_torcs.py
+	/DDPG_TORCS/gym_torcs/example_experiment.py
+	/DDPG_TORCS/gym_torcs/ddpg.py
+	/Year Summaries/originals/Memories
+	/Year Summaries/originals/2018
+	/Year Summaries/originals/2017
+	/Year Summaries/originals/2016, until end
+	/Year Summaries/originals/2016, until 16 July
+	/Year Summaries/originals/2015
+	/Year Summaries/new_summaries/Memories
+	/Year Summaries/new_summaries/2018
+	/Year Summaries/new_summaries/2017
+	/Year Summaries/new_summaries/2016, until end
+	/Year Summaries/new_summaries/2016, until 16 July
+	/Year Summaries/new_summaries/2015
+	/Texts/Entries Prototypes/uncertainty.txt
+	/Texts/Entries Prototypes/README.txt
+	/Texts/Entries Prototypes/prototype_leftover.txt
+	/Texts/Entries Prototypes/LS_structure.txt
+	/Texts/Entries Prototypes/all.txt
+	/Texts/Book Summaries/wherever_you_go_there_you_are.txt
+	/Texts/Book Summaries/the_wisdom_of_insecurity.txt
+	/Texts/Book Summaries/the_charisma_myth.txt
+	/Texts/Book Summaries/she_comes_first.txt
+	/Texts/Book Summaries/quiet.txt
+	/Texts/Book Summaries/pragmatic_thinking_and_learning.txt
+	/Texts/Book Summaries/method.txt
+	/Texts/Book Summaries/me_myself_and_us.txt
+	/Texts/Book Summaries/mate.txt
+	/Texts/Book Summaries/make_it_stick.txt
+	/Texts/Book Summaries/how_does_it_know.txt
+	/Texts/Worldview/structure.txt
+	/Texts/Worldview/skepticism.txt
+	/Texts/Worldview/religion.txt
+	/Texts/Worldview/preface.txt
+	/Texts/Worldview/notes.txt
+	/Texts/Worldview/models.txt
+	/Texts/Worldview/love.txt
+	/Texts/Worldview/language.txt
+	/Texts/Worldview/insecurity.txt
+	/Texts/Worldview/how_the_mind_works.txt
+	/Texts/Worldview/ethics.txt
+	/Texts/Worldview/communication.txt
+	/Texts/Worldview/shape_your_mind.txt
+	/Dropbox/Texts/best
+	/Texts/Worldview/take_decisions.txt
+	/Texts/Worldview/workspace.txt
+	/Texts/Worldview/collection.txt
+	/CG/ig-hw2-dylansavoia/new.js
+	/Texts/Entries Prototypes/people.txt
+	/CG/ig-hw2-dylansavoia/index.html
+	/CG/ig-hw2-dylansavoia/README.md
+	/CG/ig-hw2-dylansavoia/Homework2.pdf
+	/CG/ig-hw2-dylansavoia/Homework2.js
+	/ig-hw2-dylansavoia/Common/webgl-utils.js
+	/ig-hw2-dylansavoia/Common/MV.js
+	/ig-hw2-dylansavoia/Common/initShaders.js
+	/Downloads/dotfiles/arch_setup.sh
+	/Downloads/dotfiles/arch_install.sh
+	/Projects/CG/Homework2.js
+	/Projects/CG/Homework1.pdf
+	/CG/homework/index.html
+	/CG/homework/homework1.js
+	/ig-hw2-dylansavoia/Common/README.txt
+	/ig-hw2-dylansavoia/Common/initShaders2.js
+	/Tests/Common/webgl-utils.js
+	/Tests/Common/README.txt
+	/Tests/Common/MV2.js
+	/Tests/Common/initShaders.js
+	/Tests/Common/initShaders2.js
+	/ig-hw2-dylansavoia/Common/MV2.js
+	/homework/Common/MV.js
+	/Downloads/dotfiles/dotfiles
+	/dotfiles/pending/set_colors.sh
+	/ML/NLP/NLP_docs_similarity.ipynb
 	/mrracer/opponents/TimeToMinDistanceComparator.java
 	/mrracer/opponents/RectangleXPositionComparator.java
 	/mrracer/functions/GeneralisedLogisticFunction.java
@@ -7283,7 +7410,7 @@
 	/data/CVS/Root
 	/cars/CVS/Tag
 	/cars/CVS/Root
-	/machine_learning/DDPG_TORCS/TensorFlow_DDPG_with_stacked_frames.ipynb
+	/ML/DDPG_TORCS/TensorFlow_DDPG_with_stacked_frames.ipynb
 	/review/sapthesis/sapienza-MLblack-pos.pdf
 	/sapthesis/images/results_only.png
 	/sapthesis/images/critic_graph.png
@@ -7341,8 +7468,8 @@
 	/gym_torcs/mdl_def_redone/actormodel.h5
 	/convNet/__pycache__/visualizations.cpython-35.pyc
 	/Python/drfm/firmware_M3300A_DRFM_revise_2017-06-27T15_15_04.sbp
-	/machine_learning/DDPG_TORCS/prova_training_lungo_thief.pckl
-	/machine_learning/DDPG_TORCS/prova_training_lungo_police.pckl
+	/ML/DDPG_TORCS/prova_training_lungo_thief.pckl
+	/ML/DDPG_TORCS/prova_training_lungo_police.pckl
 	/RL-Adventure-2/common/multiprocessing_env.py
 	/review/sapthesis/sec_theory.tex
 	/review/sapthesis/sec_results.tex
@@ -7367,7 +7494,6 @@
 	/gym_torcs/vtorcs-RL-color/configure
 	/gym_torcs/vtorcs-RL-color/config.h
 	/gym_torcs/mdl_longstr/actormodel.h5
-	/DDPG_TORCS/gym_torcs/example_experiment.py
 	/review/sapthesis/sapthesis.layout
 	/sapthesis/images/texput.log
 	/DDPG_TORCS/__pycache__/utils.cpython-35.pyc
@@ -7376,8 +7502,8 @@
 	/review/sapthesis/sapthesis.cls
 	/review/sapthesis/sapthesis.bst
 	/DDPG_TORCS/__pycache__/car.cpython-35.pyc
-	/machine_learning/RL-Adventure-2/7.soft actor-critic.ipynb
-	/machine_learning/RL-Adventure-2/5.1.tensorflow_ddpg.ipynb
+	/ML/RL-Adventure-2/7.soft actor-critic.ipynb
+	/ML/RL-Adventure-2/5.1.tensorflow_ddpg.ipynb
 	/plugins/Files Upload/upload_files.php
 	/NLP/__pycache__/txt2vec.cpython-35.pyc
 	/review/sapthesis/texput.log
@@ -7390,84 +7516,75 @@
 	/review/sapthesis/review.bbl
 	/review/sapthesis/review.aux
 	/gym_torcs/vtorcs-RL-color/1
-	/DDPG_TORCS/gym_torcs/snakeoil3_gym.py
 	/DDPG_TORCS/gym_torcs/CriticNetwork.py
-	/DDPG_TORCS/gym_torcs/criticmodel.json
 	/review/sapthesis/start.sh
-	/DDPG_TORCS/gym_torcs/sample_agent.py
 	/DDPG_TORCS/gym_torcs/ReplayBuffer.py
 	/DDPG_TORCS/gym_torcs/ActorNetwork.py
 	/DDPG_TORCS/gym_torcs/actormodel.json
-	/machine_learning/RL-Adventure-2/1.actor-critic.ipynb
+	/ML/RL-Adventure-2/1.actor-critic.ipynb
 	/DDPG_TORCS/gym_torcs/criticmodel.h5
 	/review/sapthesis/README
 	/DDPG_TORCS/gym_torcs/actormodel.h5
 	/Python/drfm/awgin_QAM64_rate20MHz_center100MHz.csv
 	/plugins/Files Upload/index.html
 	/review/sapthesis/x.log
-	/DDPG_TORCS/gym_torcs/practice.xml
-	/DDPG_TORCS/gym_torcs/gym_torcs.py
 	/DDPG_TORCS/gym_torcs/autostart.sh
 	/RL-Adventure-2/common/__init__.py
-	/machine_learning/DDPG_TORCS/TensorFlow_DDPG.ipynb
+	/ML/DDPG_TORCS/TensorFlow_DDPG.ipynb
 	/DDPG_TORCS/gym_torcs/README.md
 	/plugins/Link File/search.svg
-	/machine_learning/RL-Adventure-2/expert_traj.npy
+	/ML/RL-Adventure-2/expert_traj.npy
 	/plugins/Link File/index.php
 	/DDPG_TORCS/review/review.tex
 	/DDPG_TORCS/review/review.pdf
 	/DDPG_TORCS/review/review.log
 	/DDPG_TORCS/review/review.aux
 	/DDPG_TORCS/gym_torcs/LICENSE
-	/DDPG_TORCS/gym_torcs/ddpg.py
 	/Dropbox/PDFs/Letters of Note.pdf
-	/machine_learning/RL-Adventure-2/8.gail.ipynb
-	/machine_learning/RL-Adventure-2/5.ddpg.ipynb
-	/machine_learning/RL-Adventure-2/4.acer.ipynb
-	/machine_learning/RL-Adventure-2/9.her.ipynb
-	/machine_learning/RL-Adventure-2/6.td3.ipynb
-	/machine_learning/RL-Adventure-2/3.ppo.ipynb
-	/machine_learning/RL-Adventure-2/2.gae.ipynb
+	/ML/RL-Adventure-2/8.gail.ipynb
+	/ML/RL-Adventure-2/5.ddpg.ipynb
+	/ML/RL-Adventure-2/4.acer.ipynb
+	/ML/RL-Adventure-2/9.her.ipynb
+	/ML/RL-Adventure-2/6.td3.ipynb
+	/ML/RL-Adventure-2/3.ppo.ipynb
+	/ML/RL-Adventure-2/2.gae.ipynb
 	/DDPG_TORCS/review/start.sh
 	/DDPG_TORCS/gym_torcs/OU.py
 	/WebGL/Chap6/shadedSphereObjectSpace.html
-	/machine_learning/DDPG_TORCS/test.ipynb
+	/ML/DDPG_TORCS/test.ipynb
 	/terminal/code/default_commands.js
-	/machine_learning/DDPG_TORCS/Untitled.ipynb
-	/machine_learning/convNet/visualizations.py
-	/machine_learning/DDPG_TORCS/thief.pckl
+	/ML/DDPG_TORCS/Untitled.ipynb
+	/ML/convNet/visualizations.py
+	/ML/DDPG_TORCS/thief.pckl
 	/filebrowser/code/filebrowser.css
-	/machine_learning/RL-Adventure-2/README.md
-	/machine_learning/convNet/MNIST_predict.py
+	/ML/RL-Adventure-2/README.md
+	/ML/convNet/MNIST_predict.py
 	/WebGL/Chap6/shadedSphereObjectSpace.js
 	/filebrowser/code/list_files.php
 	/filebrowser/code/filebrowser.js
 	/WebGL/Chap6/shadedSphereEyeSpace.html
-	/machine_learning/DDPG_TORCS/recorder.py
-	/machine_learning/DDPG_TORCS/cross.ipynb
+	/ML/DDPG_TORCS/recorder.py
+	/ML/DDPG_TORCS/cross.ipynb
 	/convNet/tests/new6.png
-	/machine_learning/convNet/minimal.params
+	/ML/convNet/minimal.params
 	/WebGL/Chap10/particleDiffusion9.html
 	/WebGL/Chap10/particleDiffusion5.html
 	/WebGL/Chap10/particleDiffusion2.html
 	/WebGL/Chap10/particleDiffusion1.html
-	/texts/entries_prototypes/prototype_leftover.txt
 	/GLMs/datasets/AirQualityUCI.csv
-	/machine_learning/DDPG_TORCS/thief1.png
-	/machine_learning/DDPG_TORCS/police.png
-	/machine_learning/DDPG_TORCS/environ.py
+	/ML/DDPG_TORCS/thief1.png
+	/ML/DDPG_TORCS/police.png
+	/ML/DDPG_TORCS/environ.py
 	/WebGL/Chap4/trackballQuaterion.html
 	/PDFs/ML/Elements of Statistical Learning.pdf
-	/machine_learning/RL-Adventure-2/__init__.py
-	/texts/summaries/wherever_you_go_there_you_are.txt
-	/texts/summaries/pragmatic_thinking_and_learning.txt
-	/machine_learning/DDPG_TORCS/police.pckl
-	/machine_learning/DDPG_TORCS/__init__.py
+	/ML/RL-Adventure-2/__init__.py
+	/ML/DDPG_TORCS/police.pckl
+	/ML/DDPG_TORCS/__init__.py
 	/text_edit/code/text_edit.css
 	/terminal/code/velocity.min.js
-	/machine_learning/DDPG_TORCS/thief.png
-	/machine_learning/DDPG_TORCS/README.md
-	/machine_learning/DDPG_TORCS/player.py
+	/ML/DDPG_TORCS/thief.png
+	/ML/DDPG_TORCS/README.md
+	/ML/DDPG_TORCS/player.py
 	/WebGL/Chap7/particleDiffusion.html
 	/WebGL/Chap6/shadedSphereEyeSpace.js
 	/Chap2/shaders/vshader21.glsl
@@ -7490,8 +7607,8 @@
 	/filebrowser/img/terminal.svg
 	/filebrowser/code/windows.css
 	/text_edit/code/text_edit.js
-	/machine_learning/DDPG_TORCS/utils.py
-	/machine_learning/DDPG_TORCS/nn.ipynb
+	/ML/DDPG_TORCS/utils.py
+	/ML/DDPG_TORCS/nn.ipynb
 	/WebGL/Chap7/reflectingSphere.html
 	/WebGL/Chap4/trackballQuaterion.js
 	/monitors/css/materialize.min.css
@@ -7501,13 +7618,13 @@
 	/terminal/code/get_files.php
 	/filebrowser/img/favicon.ico
 	/filebrowser/code/windows.js
-	/machine_learning/NLP/tfidf_clean.py
-	/machine_learning/DDPG_TORCS/ddpg.py
+	/ML/NLP/tfidf_clean.py
+	/ML/DDPG_TORCS/ddpg.py
 	/Python/memory_analysis/PageTable.py
-	/machine_learning/NLP/txt_cluster.py
-	/machine_learning/DDPG_TORCS/car.py
-	/machine_learning/DDPG_TORCS/car.png
-	/machine_learning/convNet/net.params
+	/ML/NLP/txt_cluster.py
+	/ML/DDPG_TORCS/car.py
+	/ML/DDPG_TORCS/car.png
+	/ML/convNet/net.params
 	/WebGL/Chap7/reflectionMap2.html
 	/WebGL/Chap7/reflectingSphere.js
 	/WebGL/Chap7/reflectiingCube.html
@@ -7516,23 +7633,20 @@
 	/WebGL/Chap3/rotatingSquare2.html
 	/WebGL/Chap3/rotatingSquare1.html
 	/WebGL/Chap10/particleSystem.html
-	/machine_learning/cart_pole/cart2.py
-	/Projects/machine_learning/auto_diff_tf.ipynb
-	/texts/summaries/the_wisdom_of_insecurity.txt
-	/texts/entries_prototypes/uncertainty.txt
+	/ML/cart_pole/cart2.py
 	/text_edit/img/code.svg
-	/machine_learning/NLP/txt2vec.py
-	/machine_learning/NLP/similar.py
+	/ML/NLP/txt2vec.py
+	/ML/NLP/similar.py
 	/PDFs/papers/Features Visualization.pdf
 	/filebrowser/img/folder.png
 	/monitors/js/materialize.min.js
 	/filebrowser/img/close.svg
 	/filebrowser/code/exec.php
-	/machine_learning/convNet/relazione
-	/machine_learning/cart_pole/cart.py
+	/ML/convNet/relazione
+	/ML/cart_pole/cart.py
 	/Tests/cube_shadow_camera/csc.js
 	/homework/Common/initShaders2.js
-	/machine_learning/DDPG_TORCS/nn.py
+	/ML/DDPG_TORCS/nn.py
 	/WebGL/Chap7/textureSquare.html
 	/WebGL/Chap7/textureCubev4.html
 	/WebGL/Chap7/textureCubev3.html
@@ -7551,12 +7665,11 @@
 	/Web/Utilities/table_downloader.js
 	/text_edit/img/rewind.svg
 	/filebrowser/img/down.svg
-	/machine_learning/DDPG_TORCS/data
-	/machine_learning/convNet/MNIST.py
+	/ML/DDPG_TORCS/data
+	/ML/convNet/MNIST.py
 	/WebGL/Chap7/textureCube1.html
 	/Dropbox/PDFs/The Elements of Computing Systems.pdf
 	/PDFs/papers/Classification on ImageNet.pdf
-	/texts/entries_prototypes/LS_structure.txt
 	/text_edit/code/save.php
 	/filebrowser/img/pin.svg
 	/Python/drfm/drfm_revise_form.pyc
@@ -7598,18 +7711,14 @@
 	/WebGL/Chap6/shadedSphere2.js
 	/WebGL/Chap6/shadedSphere1.js
 	/WebGL/Chap5/perspective.html
-	/Tests/Common/initShaders2.js
 	/homework/PDF/wiki_light.png
 	/Main/text_edit/index.php
-	/machine_learning/NLP/tfidf.py
+	/ML/NLP/tfidf.py
 	/NLP/dir3/f4
 	/NLP/dir3/f3
 	/NLP/dir3/f2
 	/NLP/dir3/f1
-	/machine_learning/DDPG/ddpg.py
-	/texts/summaries/me_myself_and_us.txt
 	/Main/text_edit/start.sh
-	/machine_learning/DDPG/run.py
 	/PDFs/ML/rf-notes.pdf
 	/drfm/hilbert/reg_99.txt
 	/drfm/hilbert/reg_95.txt
@@ -7636,8 +7745,6 @@
 	/WebGL/Chap5/perspective1.js
 	/WebGL/Chap10/mandelbrot2.js
 	/WebGL/Chap10/mandelbrot1.js
-	/Tests/Common/webgl-utils.js
-	/Tests/Common/initShaders.js
 	/Main/content/wallpaper.jpg
 	/drfm/hilbert/reg_35.txt
 	/drfm/hilbert/reg_31.txt
@@ -7661,18 +7768,13 @@
 	/WebGL/Chap2/gasket1v2.html
 	/homework/Common/README.txt
 	/Dropbox/PDFs/Programming From the Ground Up.pdf
-	/texts/worldview/how_the_mind_works.txt
-	/texts/summaries/the_charisma_myth.txt
 	/Web/Utilities/list_entries.js
 	/terminal/code/tdd.js
 	/Python/memory_analysis/heap.c
 	/drfm/hilbert/reg_7.txt
 	/WebGL/Chap9/robotArm.html
-	/texts/worldview/shape_your_mind.txt
-	/texts/entries_prototypes/soraya.txt
 	/PDFs/papers/Relational Networks.pdf
 	/PDFs/papers/pervasive_attention.pdf
-	/texts/summaries/how_does_it_know.txt
 	/Main/terminal/index.html
 	/Web/Files/add_to_playlist.js
 	/GLMs/datasets/sat.csv
@@ -7696,16 +7798,10 @@
 	/WebGL/Chap11/teapot1.html
 	/PDFs/ML/Machine Learning - Murphy.pdf
 	/PDFs/ML/12_reinforcement_learning.pdf
-	/texts/worldview/take_decisions.txt
-	/texts/worldview/communication.txt
-	/machine_learning/NLP/out
-	/Projects/machine_learning/ddpg.py
+	/ML/NLP/out
 	/homework/PDF/start.sh
-	/CG/homework/homework1.js
-	/homework/Common/MV.js
 	/Main/terminal/index.php
 	/Python/memory_analysis/maps
-	/C_lang/Utils/print_binary.c
 	/WebGL/Chap7/render5.html
 	/WebGL/Chap7/render4.html
 	/WebGL/Chap7/render3.html
@@ -7728,8 +7824,6 @@
 	/WebGL/Chap2/gasket1v2.js
 	/WebGL/Chap2/gasket1.html
 	/WebGL/Chap11/vertices.js
-	/texts/summaries/she_comes_first.txt
-	/texts/entries_prototypes/hobbies.txt
 	/monitors/css/common.css
 	/Main/content/folder.png
 	/WebGL/Common/README.txt
@@ -7750,9 +7844,6 @@
 	/WebGL/Chap11/README.txt
 	/WebGL/Chap11/patches.js
 	/WebGL/Chap10/README.txt
-	/texts/entries_prototypes/README.txt
-	/texts/entries_prototypes/people.txt
-	/Tests/Common/README.txt
 	/Dropbox/PDFs/Behave.pdf
 	/Web/Utilities/kindle.html
 	/Web/monitors/modules.html
@@ -7781,10 +7872,7 @@
 	/WebGL/Chap2/gasket1.js
 	/CG/homework/Homework1.pdf
 	/homework/Common/MV2.js
-	/texts/worldview/workspace.txt
-	/texts/worldview/structure.txt
-	/texts/summaries/make_it_stick.txt
-	/machine_learning/NLP/in
+	/ML/NLP/in
 	/WebGL/Chap9/figure.js
 	/WebGL/Chap5/shadow.js
 	/WebGL/Chap5/ortho2.js
@@ -7797,13 +7885,9 @@
 	/homework/PDF/hw1.pdf
 	/homework/PDF/hw1.log
 	/homework/PDF/hw1.aux
-	/CG/homework/index.html
 	/PDFs/papers/startcraft II.pdf
 	/PDFs/papers/multi-agent PG.pdf
 	/PDFs/ML/Sutton & Barto.pdf
-	/year_summaries/BKP/2015_bkp
-	/texts/entries_prototypes/all.txt
-	/Projects/Web/youtube_shortcuts.js
 	/monitors/js/admin.js
 	/Python/drfm/get_pulse.py
 	/WebGL/Chap7/cubet.js
@@ -7813,21 +7897,12 @@
 	/WebGL/Chap4/cubeq.js
 	/WebGL/Chap3/cad2.html
 	/WebGL/Chap3/cad1.html
-	/texts/worldview/models.txt
-	/texts/worldview/love.txt
-	/texts/worldview/language.txt
-	/texts/summaries/method.txt
-	/Dropbox/texts/best
 	/Projects/Python/votes.py
 	/Projects/CG/hw1.js
 	/Projects/CG/hw1.html
 	/CG/homework/LICENSE
-	/Projects/CG/Homework1.pdf
 	/PDFs/papers/pointer_nets.pdf
 	/PDFs/papers/lstm.pdf
-	/texts/worldview/skepticism.txt
-	/texts/worldview/insecurity.txt
-	/texts/worldview/collection.txt
 	/Web/monitors/views.html
 	/Web/monitors/README.md
 	/monitors/js/grid.js
@@ -7840,7 +7915,6 @@
 	/Projects/Python/find_missing.py
 	/Python/drfm/pulse.csv
 	/Python/drfm/chirp.csv
-	/C_lang/Utils/utils.h
 	/WebGL/Common/MV.js
 	/WebGL/Common/MV2.js
 	/WebGL/Chap5/hat.js
@@ -7849,7 +7923,6 @@
 	/WebGL/Chap3/cad2.js
 	/WebGL/Chap3/cad1.js
 	/Tests/Common/MV.js
-	/Tests/Common/MV2.js
 	/Dropbox/PDFs/Probability - Coursera.pdf
 	/PDFs/papers/Faster R-CNN.pdf
 	/PDFs/ML/optimization_methods.pdf
@@ -7857,18 +7930,9 @@
 	/PDFs/ML/09_factor_analysis.pdf
 	/PDFs/ML/07b_gaussian_mixture.pdf
 	/PDFs/ML/04_learning_theory.pdf
-	/texts/year_summaries/2015
-	/texts/worldview/religion.txt
-	/texts/worldview/preface.txt
-	/texts/worldview/notes.txt
-	/texts/worldview/ethics.txt
-	/texts/summaries/quiet.txt
-	/texts/summaries/mate.txt
 	/Web/Main/robots.txt
 	/Web/Main/mod_777
 	/Web/Main/index.html
-	/Projects/Web/google_tab.js
-	/Projects/Web/fzfz_search.js
 	/Web/Files/post.php
 	/Web/Files/append.php
 	/Projects/Python/rename.py
@@ -7882,8 +7946,6 @@
 	/Dropbox/PDFs/Silberschatz.pdf
 	/monitors/js/views_drag_drop.js
 	/PDFs/papers/PPO.pdf
-	/Dropbox/texts/Session.vim
-	/Dropbox/texts/RL_problems.txt
 	/Projects/Python/no_ip.py
 	/PDFs/papers/torcs.pdf
 	/PDFs/papers/DDPG.pdf
@@ -7893,6 +7955,3 @@
 	/PDFs/ML/10_PCA.pdf
 	/PDFs/ML/08_EM.pdf
 	/PDFs/ML/03_SVMs.pdf
-	/Downloads/dotfiles/arch_setup.sh
-	/Downloads/dotfiles/dotfiles.sh
-	/Downloads/dotfiles/arch_install.sh
