@@ -1,8 +1,0 @@
-:keep:https://keep.google.com/u/0/#home
-:youtube:https://www.youtube.com/
-:calendar:https://calendar.google.com/calendar/
-:server:https://dylansavoia.sytes.net/Main/
-:reload:laser -r;
-:shutdown:shutdown now;
-:suspend:systemctl suspend;
-:reboot:reboot;

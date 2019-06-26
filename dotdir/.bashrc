@@ -44,7 +44,6 @@ PATH="$PATH:$HOME/.local/scripts/:."
 
 alias normalize="mp3gain -r *"
 alias ffplay="ffplay -x 1"
-alias extract="~/.local/scripts/extract"
 alias calc="bpython -i ~/.local/scripts/calc.py"
 
 alias mserver="sshfs dylansavoia@dylansavoia.sytes.net:/var/www/html/Main /media/dylansavoia/server"
@@ -54,14 +53,3 @@ alias umphone="sudo umount /media/dylansavoia/phone"
 
 alias server="mountpoint -q /media/dylansavoia/server/ || mserver; cd /media/dylansavoia/server/"
 alias phone="mountpoint -q /media/dylansavoia/phone/ || mphone; cd /media/dylansavoia/phone/"
-
-bookmark() {
-    path=$(pwd)
-    echo "nnoremap $1 :cd $path<CR>" >> ~/.config/vifm/folders
-}
-
-sortline() {
-    read input
-    output=$( echo $input | tr "," "\n" | sort -n | awk '{printf("%s, ",$1)}')
-    echo ${output%??}
-}

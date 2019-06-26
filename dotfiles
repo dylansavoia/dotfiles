@@ -1,41 +1,77 @@
 #!/bin/bash
 cmd="$1"
-dotdir="$HOME/Downloads/dotfiles/dotdir/"
-
+dotdir="./dotdir"
+devs=('desktop' 'laptop')
 
 case "$cmd" in
     "collect" )
+        name="$2"
+        if [[ $name == '' ]]; then
+            echo "Write dotfolder location:"
+            read name
+        fi
+
+        if [[ -d "$name" ]]; then
+            echo "$name already exists: overwrite? (y|N)"
+            read answ
+            [[ "$answ" != 'y' ]] && exit 1
+        fi
+
+        mkdir -p "$name"
         # Home dotfiles
-        rsync ~/.bashrc "$dotdir"
-        rsync ~/.bash_profile   "$dotdir"
-        rsync ~/.xinitrc        "$dotdir"
-        rsync ~/.Xresources     "$dotdir"
+        rsync ~/.bashrc         "$name"
+        rsync ~/.bash_profile   "$name"
+        rsync ~/.xinitrc        "$name"
+        rsync ~/.Xresources     "$name"
 
         # .config
-        mkdir -p "$dotdir/.config"
-        rsync -a --delete ~/.config/bspwm        "$dotdir/.config"
-        rsync -a --delete ~/.config/sxhkd        "$dotdir/.config"
-        rsync -a --delete ~/.config/compton      "$dotdir/.config"
-        rsync -a --delete ~/.config/polybar      "$dotdir/.config"
-        rsync -a --delete ~/.config/rclone       "$dotdir/.config"
-        rsync -a --delete ~/.config/dunst        "$dotdir/.config"
-        rsync -a --delete ~/.config/zathura      "$dotdir/.config"
-        rsync -a --delete ~/.config/laser        "$dotdir/.config"
-        rsync -a --delete ~/.config/qutebrowser  "$dotdir/.config"
-        rsync -a --delete ~/.config/nvim --exclude plugged   "$dotdir/.config"
-        rsync -a --delete ~/.config/vifm --exclude Trash     "$dotdir/.config"
+        mkdir -p "$name/.config"
+        rsync -a --delete ~/.config/bspwm        "$name/.config"
+        rsync -a --delete ~/.config/sxhkd        "$name/.config"
+        rsync -a --delete ~/.config/compton      "$name/.config"
+        rsync -a --delete ~/.config/polybar      "$name/.config"
+        rsync -a --delete ~/.config/rclone       "$name/.config"
+        rsync -a --delete ~/.config/dunst        "$name/.config"
+        rsync -a --delete ~/.config/zathura      "$name/.config"
+        rsync -a --delete ~/.config/laser        "$name/.config"
+        rsync -a --delete ~/.config/qutebrowser  "$name/.config"
+        rsync -a --delete ~/.config/nvim --exclude plugged --exclude spell  "$name/.config"
+        rsync -a --delete ~/.config/vifm --exclude Trash --exclude vifminfo "$name/.config"
 
         # .local
-        mkdir -p "$dotdir/.local"
-        mkdir -p "$dotdir/.local/bin/qutebrowser"
-        rsync -a --delete ~/.local/scripts       "$dotdir/.local"
-        rsync -a --delete ~/.local/share/qutebrowser/greasemonkey "$dotdir/.local/bin/qutebrowser"
+        mkdir -p "$name/.local"
+        mkdir -p "$name/.local/bin/qutebrowser"
+        rsync -a --delete ~/.local/scripts       "$name/.local"
+        rsync -a --delete ~/.local/share/qutebrowser/greasemonkey "$name/.local/bin/qutebrowser"
 
         ;;
     "restore" )
+        echo "Choose device:"
+        echo ${devs[*]} | tr ' ' '\n' | nl -v 0 -w 1
+        read dev
+        if [ $dev -ge ${#devs[*]} ]; then
+            echo "Ma allur si propr' na fungia?!"
+            exit 1
+        fi
+
+        dev=${devs[$dev]}
+
+        cp -a "$dotdir" "${dotdir}_tmp"
+
+        # bspwm
+        [[ -e  "./patches/bspwm/$dev.diff" ]] &&
+        patch "${dotdir}_tmp/.config/bspwm/bspwmrc" "./patches/bspwm/$dev.diff"
+
+        # .bashrc
+        [[ -e  "./patches/bashrc/$dev.diff" ]] &&
+        patch "${dotdir}_tmp/.bashrc" "./patches/bashrc/$dev.diff"
+
         shopt -s dotglob
-        cd "$dotdir"
+        cd "${dotdir}_tmp"
         cp --parents -a * ~
+        cd ".."
+
+        rm -rf "${dotdir}_tmp"
         ;;
     *)
         echo "Usage: dotfiles [collect|restore]"

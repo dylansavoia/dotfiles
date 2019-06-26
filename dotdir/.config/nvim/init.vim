@@ -47,6 +47,9 @@ nnoremap gk k
 nnoremap j gj
 nnoremap gj j
 
+nnoremap zh zt
+nnoremap zl zb
+
 nnoremap <Leader>lr "rdd
 nnoremap <C-h> <C-w><C-h>
 nnoremap <C-j> <C-w><C-j>

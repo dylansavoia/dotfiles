@@ -1,0 +1,17 @@
+--- ../../dotdir/.config/bspwm/bspwmrc	2019-06-26 18:56:25.013168756 +0200
++++ desktop	2019-06-26 18:56:47.326501106 +0200
+@@ -4,10 +4,13 @@
+ compton --config ~/.config/compton/compton.conf &
+ feh --bg-fill ~/.config/bspwm/wallpaper.jpg
+ dunst &
++dropbox &
+ polybar mainbar & 
++polybar secondary & 
+ 
+ # Monitors and Desktops
+-bspc monitor -d 1 2 3 4 5 6 7 8 9 0
++bspc monitor HDMI-0 -d 6 7 8 9 0
++bspc monitor VGA-0  -d 1 2 3 4 5
+ 
+ # Config
+ bspc config border_width         1

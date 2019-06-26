@@ -23,7 +23,7 @@ pacman -S ttf-liberation noto-fonts
 pacman -S ffmpeg imagemagick arandr mpv sxiv                    # Image/Video
 pacman -S vifm neovim qutebrowser zathura zathura-pdf-mupdf libreoffice-fresh     # Office
 pacman -S firefox virtualbox                                    
-pacman -S entr rsync rclone wget curl tree htop                 # Utilities
+pacman -S entr rsync rclone wget curl tree htop pdfgrep         # Utilities
 
 pacman -S python-numpy python-eyed3 python-pip                  # Python Essentials
 pip install pynvim

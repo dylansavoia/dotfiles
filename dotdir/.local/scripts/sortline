@@ -1,0 +1,5 @@
+#!/bin/sh
+
+read input
+output=$( echo $input | tr "," "\n" | sort -n | awk '{printf("%s, ",$1)}')
+echo ${output%??}

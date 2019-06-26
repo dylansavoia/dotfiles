@@ -1,0 +1,10 @@
+--- ../../dotdir/.config/bspwm/bspwmrc	2019-06-26 18:56:25.013168756 +0200
++++ laptop	2019-06-26 18:50:35.379850791 +0200
+@@ -4,6 +4,7 @@
+ compton --config ~/.config/compton/compton.conf &
+ feh --bg-fill ~/.config/bspwm/wallpaper.jpg
+ dunst &
++dropbox start &
+ polybar mainbar & 
+ 
+ # Monitors and Desktops
