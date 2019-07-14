@@ -13,7 +13,7 @@ super + {_,shift + }w
 
 # - Focus --------------------------
 # side / browser
-super + {s, b}
+super + {b, s}
     bspc desktop -f {1, 6}
 
 super + {0-9}
@@ -22,7 +22,7 @@ super + {0-9}
 super + shift + {0-9}
 	bspc node --to-desktop {0-9} --focus
 
-super + shift + {s, b}
+super + shift + {b, s}
     bspc node --to-desktop {1, 6} --focus
 
 # - Windows ------------------------

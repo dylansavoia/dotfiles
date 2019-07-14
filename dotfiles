@@ -26,6 +26,7 @@ case "$cmd" in
 
         # .config
         mkdir -p "$name/.config"
+        rsync -a --delete ~/.config/inputrc      "$name/.config"
         rsync -a --delete ~/.config/bspwm        "$name/.config"
         rsync -a --delete ~/.config/sxhkd        "$name/.config"
         rsync -a --delete ~/.config/compton      "$name/.config"

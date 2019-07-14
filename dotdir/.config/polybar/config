@@ -5,35 +5,13 @@ foreground = ${xrdb:foreground:#fff}
 foreground-alt = ${xrdb:color15:#fff}
 primary = ${xrdb:color16:#000}
 
-[bar/sidebar]
-monitor = HDMI-0
-width = 20
-height = 100%
-
-modules-left = bspwm
-modules-center = 
-
-font-0 = Noto Sans:pixelsize=10;2
-font-1 = Font Awesome 5 Free:pixelsize=10;2
-font-2 = Font Awesome 5 Brands:pixelsize=10;2
-font-3 = Font Awesome 5 Free Solid:pixelsize=10;2
-
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-module-margin-left = 0
-
-tray-position = center
-tray-padding = 3
-
-border-size = 1
-border-color = ${colors.background-alt}
-
 [bar/mainbar]
 monitor = HDMI-0
 
 width = 100%
-height = 20
+height = 24
+
+offset-y = 1
 
 radius = 0.0
 bottom = false
@@ -96,10 +74,10 @@ pin-workspaces = true
 format = <label-state>
 format-padding = 0
 
-ws-icon-0 = 6;
-ws-icon-1 = 1;
-ws-icon-2 = 5;
-ws-icon-3 = 0;
+ws-icon-0 = 1;
+ws-icon-1 = 6;
+ws-icon-2 = 0;
+ws-icon-3 = 5;
 ws-icon-default = 
 
 label-focused = %icon%
@@ -124,32 +102,6 @@ label-empty = %icon%
 label-empty-foreground = #555
 label-empty-background = ${colors.background}
 label-empty-padding = 3
-
-
-[module/i3]
-type = internal/i3
-format = <label-state><label-mode>
-index-sort = true
-format-padding = 0
-
-label-mode = %mode%
-label-mode-padding = 8
-label-mode-background = ${colors.primary}
-
-label-focused = %index%
-label-focused-padding = 5
-label-focused-background = ${colors.primary}
-
-label-unfocused = %index%
-label-unfocused-padding = 5
-label-unfocused-background = ${colors.background-alt}
-
-label-visible = %index%
-label-visible-padding = 5
-label-visible-background = ${colors.background-alt}
-
-label-urgent = %index%
-label-urgent-padding = 5
 
 
 [module/wireless-network]
@@ -207,5 +159,3 @@ format-padding = 7
 [global/wm]
 margin-top = 5
 margin-bottom = 5
-
-; vim:ft=dosini
