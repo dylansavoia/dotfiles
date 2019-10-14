@@ -14,17 +14,20 @@ fi
 
 echo "Do you need to create partitions (Y|n): ..."
 read answ
-[[ $answ == "n" ]] && exit
-echo "Which device? (es. /dev/sda)"
-read answ
-cgdisk "$answ"
+if [[ $answ == "" ]]; then
+    echo "Which device? (es. /dev/sda)"
+    read answ
+    cgdisk "$answ"
+fi
 
 echo "Do you need to connect to Wi-Fi? (Y|n):"
 read answ
-[[ $answ == "n" ]] && exit
-wifi-menu
+if [[ $answ == "" ]]; then
+    wifi-menu
+fi
 
 # Mount Partitions
+lsblk
 echo -e "Specify the names for the root, home, boot and swap devices\n(es. sda1 sda2 sda3 sda4):"
 read partitions
 partitions=( $partitions )
