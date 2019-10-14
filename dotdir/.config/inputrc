@@ -1,5 +1,6 @@
 set completion-ignore-case on
 set show-all-if-unmodified on
+set bell-style none
 
 set colored-completion-prefix on
 set colored-stats on
