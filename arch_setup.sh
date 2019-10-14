@@ -25,7 +25,7 @@ hwclock --systohc
 
 echo -e "Set Locale as in /etc/locale.gen (es. en_US):"
 read locale
-sed -e "/$locale/s/^#//" /etc/locale.gen
+sed -i -e "/$locale/s/^#//" /etc/locale.gen
 locale-gen
 
 flocale=`grep $locale /etc/locale.gen | head -1`
@@ -54,14 +54,11 @@ fi
 
 grub-mkconfig -o /boot/grub/grub.cfg
 
-# Done
-echo "You can now Reboot"
-
 # Create User  
 echo -e "Create default user and edit /etc/sudoers file\n(You may just want to uncomment the wheel option)\nUsername: "
 read username
 
-adduser -m -g wheel $username
+useradd -m -g wheel $username
 passwd $username
 visudo
 
