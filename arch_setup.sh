@@ -41,10 +41,10 @@ echo "noarp" >> /etc/dhcpcd.conf
 # Install Packages
 ## Essential
 pacman -S xorg-server xorg-xinit xorg-xrandr xsel bash-completion \
-    awesome rofi libnotify compton pulseaudio \
+    awesome rofi libnotify compton pulseaudio pasystray \
     git openssh python jupyter-notebook bpython unzip \
     ttf-liberation ttf-font-awesome noto-fonts
-# pacman -S networkmanager
+# pacman -S networkmanager network-manager-applet
 
 ## Applications
 pacman -S ffmpeg imagemagick arandr vlc sxiv \
