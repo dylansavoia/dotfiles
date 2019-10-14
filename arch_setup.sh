@@ -99,3 +99,4 @@ ssh-copy-id dylansavoia@dylansavoia.sytes.net
 echo "Check arch_setup.sh comments for last steps."
 
 # Manually? pdfjs (for qutebrowser) ardour conda lightdm tex
+# lxappearance: change to arc
