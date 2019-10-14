@@ -69,7 +69,7 @@ echo "noarp" >> /etc/dhcpcd.conf
 ## Essential
 pacman -S xorg-server xorg-xinit xorg-xrandr xsel bash-completion
 pacman -S awesome rofi libnotify compton pulseaudio
-pacman -S git openssh feh python jupyter-notebook bpython unzip
+pacman -S git openssh python jupyter-notebook bpython unzip
 pacman -S ttf-liberation noto-fonts
 # pacman -S networkmanager
 
@@ -95,7 +95,6 @@ cd "/home/$username/.local/bin/"
 curl https://rclone.org/install.sh | sudo bash
 
 git clone https://aur.archlinux.org/dropbox.git
-git clone https://aur.archlinux.org/polybar.git
 git clone https://aur.archlinux.org/xst-git.git
 git clone https://aur.archlinux.org/mp3gain.git
 git clone https://aur.archlinux.org/jmtpfs.git
@@ -115,4 +114,4 @@ ssh-copy-id dylansavoia@dylansavoia.sytes.net
 echo "Check arch_setup.sh comments for last steps."
 # Setup Imagemagick for pdf preview
 # ... change in /etc/ImageMagick-6/policy.xml: pdf none to read|write
-# Manually? pdfjs (for qutebrowser) tesseract-ocr ardour conda lightdm
+# Manually? pdfjs (for qutebrowser) tesseract-ocr ardour conda lightdm tex

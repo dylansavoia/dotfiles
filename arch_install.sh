@@ -12,15 +12,17 @@ else
     uefi=false
 fi
 
-echo "You're going to check to connect to Wi-Fi. If not needed just Ctrl-C:"
-read
+echo "Do you need to create partitions (Y|n): ..."
+read answ
+[[ $answ == "n" ]] && exit
+cgdisk
+
+echo "Do you need to connect to Wi-Fi? (Y|n):"
+read answ
+[[ $answ == "n" ]] && exit
 wifi-menu
 
 # Mount Partitions
-echo "The installer assumes partitions already created (not formatted). Continue? (Y|n)"
-read answ
-[[ $answ == "n" ]] && exit
-
 echo -e "Specify the names for the root, home, boot and swap devices\n(es. sda1 sda2 sda3 sda4):"
 read partitions
 partitions=( $partitions )
