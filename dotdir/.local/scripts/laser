@@ -13,7 +13,6 @@
 #   - 0: Other (including not in cache)
 #   - 1: File
 #   - 2: Binaries
-#   - 3: Binaries with GUI
 #
 #   Every command followed by a ';' is executed opening a terminal
 #   es. 'htop;'
@@ -50,21 +49,17 @@ function generate () {
     shrt_p=`echo "$shrt" | awk -F ':' '{print $1 "\t" $2}'`
 
     # Binaries
-    guis=$(from_rc GUIs)
-    guis=`echo "$guis" | paste -s -d '|'`
-
     minipath=( /usr/local/bin /usr/bin )
     bins=`echo ${minipath[*]} | tr ' ' '\n' | xargs -n 1 ls -1`
 
-    bins_c=`echo "$bins" | awk 'BEGIN{OFS="\t"}{print "2", $0}' |
-        sed -re "/$guis/ s/^2/3/"`
+    bins_c=`echo "$bins" | awk 'BEGIN{OFS="\t"}{print "2", $0}'`
     bins_p=`echo "$bins" | awk '{print "" "\t" $0}'`
 
     # # Files and Dirs
     paths=$(from_rc Directories)
     paths=`echo "$paths" | tr '\n' ' '`
 
-    files=`find $paths -mindepth 1 -name ".*" -prune -o -printf "%A@\t%y\t%d\t%h/%f\n" |
+    files=`find $paths -name ".*" -prune -o -printf "%A@\t%y\t%d\t%h/%f\n" |
         awk -F '\t' '
             $2 == "d" {print 9999999999 - $3, "\t\t"$4}
             $2 != "d" {
@@ -89,7 +84,7 @@ function generate () {
 
 ### Show #######################################
 # ...in prettified form
-sel=`nl -w 4 -s ' ' $pcache | rofi -terminal xst -dmenu -i -p "Run: "` 
+sel=`nl -w 4 -s '  ' $pcache | rofi -terminal xst -dmenu -i -p "Run"` 
 
 ## If in list select original line from file,
 ## otherwise print directly.
@@ -101,8 +96,6 @@ else
     sel=`echo "0 $sel"`
 fi
 
-echo "$sel"
-
 
 ### Run #########################################
 
@@ -112,18 +105,24 @@ split=( $sel )
 category=${split[0]}
 name="${split[*]:1: ${#split[*]}}"
 
-echo $category
-echo $name
+echo "Cat: $category"
+echo "Name: $name"
 
 [[ ${#name} -lt 3 ]] && exit
 
 if [[ ${name: -1} == ";" ]] || [[ $category == 2 ]]; then
     [[ ${name: -1} == ";" ]] && name=${name:0: -1}
-    $TERMINAL -c "$name" -e bash -ic "$name" #; read -p 'Press to continue... '"
 
-elif [[ $category == 3 ]]; then
-    "$name" &
-
+    guis=$(from_rc GUIs)
+    cmd=($name)
+    for i in $guis; do
+        if [[ $i == $cmd ]]; then
+            $name &
+            cmd=""
+            break
+        fi
+    done
+    [[ $cmd == "" ]] || $TERMINAL -c "$name" -e bash -ic "$name" #; read -p 'Press to continue... '"
 else
     # first try matching by filename or pathname
     case "${name,,}" in

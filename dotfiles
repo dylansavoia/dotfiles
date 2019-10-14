@@ -27,12 +27,9 @@ case "$cmd" in
         # .config
         mkdir -p "$name/.config"
         rsync -a --delete ~/.config/inputrc      "$name/.config"
-        rsync -a --delete ~/.config/bspwm        "$name/.config"
-        rsync -a --delete ~/.config/sxhkd        "$name/.config"
+        rsync -a --delete ~/.config/awesome      "$name/.config"
         rsync -a --delete ~/.config/compton      "$name/.config"
-        rsync -a --delete ~/.config/polybar      "$name/.config"
         rsync -a --delete ~/.config/rclone       "$name/.config"
-        rsync -a --delete ~/.config/dunst        "$name/.config"
         rsync -a --delete ~/.config/zathura      "$name/.config"
         rsync -a --delete ~/.config/laser        "$name/.config"
         rsync -a --delete ~/.config/qutebrowser  "$name/.config"
@@ -58,10 +55,6 @@ case "$cmd" in
         dev=${devs[$dev]}
 
         cp -a "$dotdir" "${dotdir}_tmp"
-
-        # bspwm
-        [[ -e  "./patches/bspwm/$dev.diff" ]] &&
-        patch "${dotdir}_tmp/.config/bspwm/bspwmrc" "./patches/bspwm/$dev.diff"
 
         # .bashrc
         [[ -e  "./patches/bashrc/$dev.diff" ]] &&

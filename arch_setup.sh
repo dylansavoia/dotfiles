@@ -14,16 +14,17 @@ echo "noarp" >> /etc/dhcpcd.conf
 # Install Packages
 ## Essential
 pacman -S xorg-server xorg-xinit xorg-xrandr xsel bash-completion
-pacman -S bspwm sxhkd rofi libnotify dunst compton pulseaudio
+pacman -S awesome rofi libnotify compton pulseaudio
 pacman -S git openssh feh python jupyter-notebook bpython unzip
 pacman -S ttf-liberation noto-fonts
 # pacman -S networkmanager
 
 ## Applications
-pacman -S ffmpeg imagemagick arandr mpv sxiv                    # Image/Video
+pacman -S ffmpeg imagemagick arandr vlc sxiv                    # Image/Video
 pacman -S vifm neovim qutebrowser zathura zathura-pdf-mupdf libreoffice-fresh     # Office
 pacman -S firefox virtualbox                                    
 pacman -S entr rsync rclone wget curl tree htop pdfgrep         # Utilities
+pacman -S lxappearance arc-gtk-theme arc-icon-theme
 
 pacman -S python-numpy python-eyed3 python-pip                  # Python Essentials
 pip install pynvim

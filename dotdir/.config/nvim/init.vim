@@ -66,6 +66,7 @@ command! -nargs=1 -range Filter call Filter(<f-args>)
 command! LRUN call Run("\<Up>") 
 command! PDF call PDF() 
 command! PDFToggle call PDFToggle() 
+command! PlaylistClean call PlaylistClean() 
 command! -nargs=* INVERT call Swap(<f-args>)
 
 "For some arcane reason \x80ku translates to <Up>
@@ -93,6 +94,11 @@ endfun
 function PDF()
     write
     silent ! pandoc -s -o out.pdf %
+endfun
+
+
+function PlaylistClean()
+    call feedkeys(":%s/\\v(.{-}) - ([^-]+)-[^.]+\.mp3/\\2 - \\1.mp3\<CR>")
 endfun
 
 function Filter(str)

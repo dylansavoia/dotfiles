@@ -5,6 +5,8 @@
 # Shortcuts
 :keep:https://keep.google.com/u/0/#home
 :youtube:https://www.youtube.com/
+:Playlist Update:https://www.youtube.com/playlist?list=PLtO5M4JOGPH4tzQVb61jCjukLQG-OkS9I
+:spotify:firefox https://open.spotify.com/browse/featured;
 :calendar:https://calendar.google.com/calendar/
 :server:https://dylansavoia.sytes.net/Main/
 :reload:laser -r;
@@ -24,3 +26,4 @@ arandr
 pavucontrol
 nvidia-settings
 matlab
+lxappearance

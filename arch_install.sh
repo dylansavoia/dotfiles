@@ -5,9 +5,17 @@ echo "The installer assumes partitioning already performed. Continue? (Y|n)"
 read answ
 [[ $answ == "n" ]] && exit
 
-echo -e "Specify the names for the root, home and boot devices\n(es. sda1 sda2 sda3):"
+echo -e "Specify the names for the root, home, boot and swap devices\n(es. sda1 sda2 sda3):"
 read partitions
 partitions=( $partitions )
+
+mkfs.ext4 "/dev/${partitions[0]}"
+mkfs.ext4 "/dev/${partitions[1]}"
+mkfs.fat -F32 "/dev/${partitions[2]}"
+
+mkswap "/dev/${partitions[3]}"
+swapon "/dev/${partitions[3]}"
+
 
 echo "/dev/${partitions[0]} --> /mnt"
 mount "/dev/${partitions[0]}" /mnt
