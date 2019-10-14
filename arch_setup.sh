@@ -1,5 +1,7 @@
 #!/bin/bash
 
+maindir=`pwd`
+
 # Locale
 echo -e "Set Region and City as in /usr/share/zoneinfo\n(es. Europe Rome):"
 read city
@@ -38,20 +40,20 @@ echo "noarp" >> /etc/dhcpcd.conf
 
 # Install Packages
 ## Essential
-pacman -S xorg-server xorg-xinit xorg-xrandr xsel bash-completion
-pacman -S awesome rofi libnotify compton pulseaudio
-pacman -S git openssh python jupyter-notebook bpython unzip
-pacman -S ttf-liberation noto-fonts
+pacman -S xorg-server xorg-xinit xorg-xrandr xsel bash-completion \
+    awesome rofi libnotify compton pulseaudio \
+    git openssh python jupyter-notebook bpython unzip \
+    ttf-liberation ttf-font-awesome noto-fonts
 # pacman -S networkmanager
 
 ## Applications
-pacman -S ffmpeg imagemagick arandr vlc sxiv                    # Image/Video
-pacman -S vifm neovim qutebrowser zathura zathura-pdf-mupdf libreoffice-fresh     # Office
-pacman -S firefox virtualbox                                    
-pacman -S entr rsync rclone wget curl tree htop pdfgrep         # Utilities
-pacman -S lxappearance arc-gtk-theme arc-icon-theme
+pacman -S ffmpeg imagemagick arandr vlc sxiv \
+    vifm neovim qutebrowser zathura zathura-pdf-mupdf libreoffice-fresh \
+    firefox virtualbox \
+    entr rsync rclone wget curl tree htop pdfgrep \
+    lxappearance arc-gtk-theme arc-icon-theme \
+    python-numpy python-eyed3 python-pip
 
-pacman -S python-numpy python-eyed3 python-pip                  # Python Essentials
 pip install pynvim
 
 
@@ -66,10 +68,22 @@ cd "/home/$username/.local/bin/"
 curl https://rclone.org/install.sh | sudo bash
 
 git clone https://aur.archlinux.org/dropbox.git
-git clone https://aur.archlinux.org/xst-git.git
 git clone https://aur.archlinux.org/mp3gain.git
 git clone https://aur.archlinux.org/jmtpfs.git
-git clone https://aur-dev.archlinux.org/tesseract-git.git
+git clone https://aur.archlinux.org/xst-git.git
+
+for app in `ls "/home/$username/.local/bin/"`; do
+    echo "Installing $app"
+    cd "/home/$username/.local/bin/$app"
+    makepkg -si
+    cd ..
+done
+
+cd "/home/$username/.local/bin/xst-git/src/xst/"
+cp "$maindir/patches/xst/config.h" "./src/"
+make
+sudo make install
+
 pacman -S tesseract-data-eng
 
 echo "Install youtube-dl:"
@@ -83,6 +97,5 @@ ssh-keygen -t rsa
 ssh-copy-id dylansavoia@dylansavoia.sytes.net
 
 echo "Check arch_setup.sh comments for last steps."
-# Setup Imagemagick for pdf preview
-# ... change in /etc/ImageMagick-6/policy.xml: pdf none to read|write
-# Manually? pdfjs (for qutebrowser) tesseract-ocr ardour conda lightdm tex
+
+# Manually? pdfjs (for qutebrowser) ardour conda lightdm tex
