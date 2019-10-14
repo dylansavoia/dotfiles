@@ -15,7 +15,9 @@ fi
 echo "Do you need to create partitions (Y|n): ..."
 read answ
 [[ $answ == "n" ]] && exit
-cgdisk
+echo "Which device? (es. /dev/sda)"
+read answ
+cgdisk "$answ"
 
 echo "Do you need to connect to Wi-Fi? (Y|n):"
 read answ
