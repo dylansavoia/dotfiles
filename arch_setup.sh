@@ -1,20 +1,5 @@
 #!/bin/bash
 
-echo "This is to be executed from the new system. Do you know what you're doing?"
-read
-
-# Check UEFI Support
-echo "Verifying boot type (BIOS, UEFI)..."
-if [ -e /sys/firmware/efi/efivars ]; then
-    echo "UEFI Supported"
-    uefi=true
-else
-    echo "UEFI Not Supported, Proceed (y|N)?"
-    read answ
-    [[ $answ != "y" ]] && exit 
-    uefi=false
-fi
-
 # Locale
 echo -e "Set Region and City as in /usr/share/zoneinfo\n(es. Europe Rome):"
 read city
@@ -39,20 +24,6 @@ echo -e "127.0.0.1\tlocalhost\n ::1\tlocalhost\n 127.0.1.1\t$hostname.localdomai
 
 echo "Set root password:"
 passwd
-
-# Install GRUB
-pacman -S grub
-
-if [[ $uefi = true ]]; then
-    echo "Install UEFI GRUB"
-    pacman -S efibootmgr
-    grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-else
-    echo "Install BIOS GRUB"
-    grub-install --target=i386-pc "/dev/${partitions[2]}"
-fi
-
-grub-mkconfig -o /boot/grub/grub.cfg
 
 # Create User  
 echo -e "Create default user and edit /etc/sudoers file\n(You may just want to uncomment the wheel option)\nUsername: "

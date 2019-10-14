@@ -12,7 +12,7 @@ else
     uefi=false
 fi
 
-echo "Do you need to create partitions (Y|n): ..."
+echo "Do you need to create partitions? (Y|n):"
 read answ
 if [[ $answ == "" ]]; then
     echo "Which device? (es. /dev/sda)"
