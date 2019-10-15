@@ -145,7 +145,7 @@ nnoremap s :shell<cr>
 " Display sorting dialog
 nnoremap S :sort<cr>
 
-" Extract Archive
+" Display sorting dialog
 nnoremap ee :!extract %f<cr>
 
 " Toggle visibility of preview window

@@ -41,9 +41,10 @@ echo "noarp" >> /etc/dhcpcd.conf
 # Install Packages
 ## Essential
 pacman -S xorg-server xorg-xinit xorg-xrandr xsel bash-completion \
-    awesome rofi libnotify compton pulseaudio pasystray pavucontrol \
+    awesome rofi libnotify compton pulseaudio pasystray \
     git openssh python jupyter-notebook bpython unzip \
-    ttf-liberation ttf-font-awesome noto-fonts
+    ttf-liberation ttf-font-awesome noto-fonts \
+    cmake tesseract-data-eng
 # pacman -S networkmanager network-manager-applet
 
 ## Applications
@@ -56,6 +57,9 @@ pacman -S ffmpeg imagemagick arandr vlc sxiv \
 
 pip install pynvim
 
+echo "From now on we'll proceed in user-space..."
+read
+su - "$username"
 
 ## AUR
 mkdir -p "/home/$username/.local/bin/"
@@ -71,6 +75,7 @@ git clone https://aur.archlinux.org/dropbox.git
 git clone https://aur.archlinux.org/mp3gain.git
 git clone https://aur.archlinux.org/jmtpfs.git
 git clone https://aur.archlinux.org/xst-git.git
+git clone https://aur.archlinux.org/pdfjs.git
 
 for app in `ls "/home/$username/.local/bin/"`; do
     echo "Installing $app"
@@ -79,12 +84,16 @@ for app in `ls "/home/$username/.local/bin/"`; do
     cd ..
 done
 
-cd "/home/$username/.local/bin/xst-git/src/xst/"
-cp "$maindir/patches/xst/config.h" "./src/"
-make
-sudo make install
+if [[ -e "./dotdir" ]]; then
+    echo "dotdir found: copying configs..."
+    bash ./dotfiles restore 
 
-pacman -S tesseract-data-eng
+    echo "Compiling xst with new config.h"
+    cd "/home/$username/.local/bin/xst-git/src/xst/"
+    make
+    sudo make install
+fi
+
 
 echo "Install youtube-dl:"
 curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
@@ -98,5 +107,6 @@ ssh-copy-id dylansavoia@dylansavoia.sytes.net
 
 echo "Check arch_setup.sh comments for last steps."
 
-# Manually? pdfjs (for qutebrowser) ardour conda lightdm tex
+# ardour conda lightdm tex?
 # lxappearance: change to arc
+# sudo pacman -S cbatticon

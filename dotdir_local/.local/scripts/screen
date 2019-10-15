@@ -1,0 +1,6 @@
+#!/bin/bash
+
+import /tmp/scrocr.jpg &&
+tesseract /tmp/scrocr.jpg /tmp/scrocr &&
+sed -i '/^$/d' /tmp/scrocr.txt &&
+xsel -bi < /tmp/scrocr.txt

@@ -1,0 +1,17 @@
+--- dotdir/.Xresources	2019-10-15 10:48:03.366634849 +0200
++++ dotdir_local/.Xresources	2019-10-15 21:36:40.303328312 +0200
+@@ -57,12 +57,12 @@
+ *color15:     white1  
+ 
+ ! Basic UI
+-Xft.dpi: 120
++Xft.dpi: 150
+ Xcursor.size: 12
+ 
+ ! rofi
+ rofi.terminal: st
+-rofi.font: System San Francisco Display 12
++rofi.font: System San Francisco Display 16
+ rofi.color-enabled: true
+ 
+ rofi.hide-scrollbar: true

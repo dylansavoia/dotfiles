@@ -1,0 +1,21 @@
+#!/bin/bash
+
+sel=$(
+        join -t $'\t' <(lsblk -l --output NAME,SIZE | nl) <(lsblk -lpb --output SIZE,TYPE,MOUNTPOINT | nl) |
+        awk '/part $/ && $4 > 4096 {printf("%s\t\t%s\n"), $2, $3}' |
+        rofi -dmenu |
+        awk '{print $1}'
+    )
+[[ "$sel" == "" ]] && return
+
+echo "Where do you want to mount $sel?"
+read mpoint
+
+[[ "$mpoint" == "" ]] && mpoint="default"
+
+mpoint="/media/dylansavoia/$mpoint"
+[ -e "$mpoint" ] || mkdir -p "$mpoint"
+mountpoint -q "$mpoint" && umount "$mpoint"
+
+`sudo mount -o gid=users,fmask=113,dmask=002 "/dev/$sel" "$mpoint"`
+vifm "$mpoint"

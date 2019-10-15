@@ -116,14 +116,14 @@ c.colors.hints.bg = bkg
 c.colors.hints.match.fg = accent
 c.hints.border = "1px solid " + accent
 
-c.fonts.tabs = "14px Hack"
-c.fonts.statusbar = "14px Hack"
-c.fonts.prompts = "16px Hack"
-c.fonts.downloads = "16px Hack"
-c.fonts.keyhint = "16px Hack"
-c.fonts.hints = "bold 16px Hack"
-c.fonts.completion.category = "16px Hack"
-c.fonts.completion.entry = "16px Hack"
+c.fonts.tabs = "16px Hack"
+c.fonts.statusbar = "16px Hack"
+c.fonts.prompts = "18px Hack"
+c.fonts.downloads = "18px Hack"
+c.fonts.keyhint = "18px Hack"
+c.fonts.hints = "bold 18px Hack"
+c.fonts.completion.category = "18px Hack"
+c.fonts.completion.entry = "18px Hack"
 
 c.scrolling.smooth = True
 

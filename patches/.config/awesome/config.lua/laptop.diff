@@ -1,0 +1,11 @@
+--- config.lua	2019-10-15 18:59:07.848532426 +0200
++++ laptop	2019-10-15 18:56:59.298538729 +0200
+@@ -7,7 +7,7 @@
+ -- Themes define colours, icons, font and wallpapers.
+ beautiful.init(ConfigPath.."/theme.lua")
+ 
+-bar_width = 35
++bar_width = 50
+ 
+ -- Table of layouts
+ awful.layout.layouts = {

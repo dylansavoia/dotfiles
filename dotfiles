@@ -44,17 +44,33 @@ case "$cmd" in
 
         ;;
     "restore" )
-        echo "Choose device:"
-        echo ${devs[*]} | tr ' ' '\n' | nl -v 0 -w 1
-        read dev
-        if [ $dev -ge ${#devs[*]} ]; then
-            echo "Ma allur si propr' na fungia?!"
-            exit 1
+        if [[ "$2" == "" ]]; then
+            echo "Choose device:"
+            echo ${devs[*]} | tr ' ' '\n' | nl -v 0 -w 1
+            read dev
+
+            if [ $dev -ge ${#devs[*]} ]; then
+                echo "Ma allur si propr' na fungia?!"
+                exit 1
+            fi
+
+            dev=${devs[$dev]}
+        else
+            dev=$2
         fi
 
-        dev=${devs[$dev]}
-
+        # Create Copy
         cp -a "$dotdir" "${dotdir}_tmp"
+
+        for item in `find ./patches -mindepth 1 -type d `; do
+            if [[ -e  "$item/$dev.diff" ]]; then
+                dest=${dotdir}_tmp/${item:10}
+                patch "$dest" "$item/$dev.diff"
+            fi
+        done
+
+        echo "Done. Press Enter to continue or abort (Ctrl-C)"
+        read
 
         # .bashrc
         [[ -e  "./patches/bashrc/$dev.diff" ]] &&

@@ -1,0 +1,28 @@
+#!/bin/sh
+# reload-browser - A cross-platform wrapper for reloading the current
+# browser tab
+# Eric Radman, 2014
+# http://eradman.com/entrproject/scripts/
+
+usage() {
+	case `uname` in
+	Darwin)
+		# applescript needs the exact title
+		echo "Usage: $(basename $0) Firefox [Safari \"Google Chrome\" ...]"
+		;;
+	*)
+		# xdotool uses regular expressions
+		echo "Usage: $(basename $0) Firefox [Chrome ...]"
+		;;
+	esac
+	exit 1
+}
+[ $# -lt 1 ] && usage
+
+for app in "$@"
+do
+    xdotool search --onlyvisible --class "$app" windowfocus key \
+        --window %@ 'ctrl+r' || {
+        1>&2 echo "unable to signal an application named \"$app\""
+    }
+done

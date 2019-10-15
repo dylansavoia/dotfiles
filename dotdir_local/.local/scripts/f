@@ -1,0 +1,32 @@
+#!/bin/bash
+ret=`man $1 | awk '/^ +\-[A-za-z]/ {
+    sub(/^ +/, "");
+    flag = substr($0, 1, 2);
+
+    a = "";
+
+    getline;
+    if ($0 != "") {
+        a = $0; 
+    }
+    $0 = "_";
+
+    while ($0 != "") {
+        getline;
+        sub(/^ +/, "");
+        a = a " " $0;
+    }
+
+    if (length(a) > 100) a = substr(a, 1, index(a, "."));
+
+    if (a != ""){
+        sub(/^ +/, "", a);
+        print "\\\e[34m" flag "\\\e[0m:", a;
+    }
+}
+'`
+if [[ "$2" == "" ]]; then
+    echo -e "$ret" | less -RXF
+else
+    echo -e "$ret" | grep -i $2 | less -RXF
+fi

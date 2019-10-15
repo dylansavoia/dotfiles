@@ -1,0 +1,17 @@
+--- ../../../../dotdir/.config/awesome/autostart.sh	2019-10-15 12:12:38.363327100 +0200
++++ autostart.sh	2019-10-15 21:50:52.753287078 +0200
+@@ -17,7 +17,7 @@
+ run compton --config ~/.config/compton/compton.conf
+ 
+ # Network manager tray icon
+-run nm-applet
++# run nm-applet
+ 
+ setxkbmap -option caps:swapescape &
+ setxkbmap -layout "us,it" -option "grp:alt_shift_toggle" &
+@@ -26,4 +26,4 @@
+ # Sys Tray
+ run dropbox
+ run pasystray
+-run cbatticon
++# run cbatticon
