@@ -1,9 +1,0 @@
-map W adjust_window width
-map H adjust_window best-fit
-map ` mark_evaluate
-
-set selection-clipboard clipboard
-/* set recolor true */
-set recolor-keephue true
-set default-bg "#555555"
-set recolor-lightcolor "#1b1b1b"

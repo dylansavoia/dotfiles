@@ -1,9 +1,0 @@
-if [ -f "Makefile" ]; then
-    echo "Makefile already exists. Do you want to overwrite it? (Y|n)"    
-    read answ
-    if [ "$answ" == "n" ]; then
-        exit 0
-    fi
-fi
-
-echo -e ".SILENT:\na.out: $@\n\tgcc $@\n\nclean:\n\trm a.out" > Makefile
