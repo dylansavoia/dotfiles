@@ -66,6 +66,8 @@ mkdir -p "/home/$username/.local/bin/"
 mkdir -p "/media/$username/phone"
 mkdir -p "/media/$username/server"
 mkdir -p "/media/$username/default"
+mkdir -p "/home/$username/Downloads"
+
 cd "/home/$username/.local/bin/"
 
 ## rclone
@@ -76,6 +78,10 @@ git clone https://aur.archlinux.org/mp3gain.git
 git clone https://aur.archlinux.org/jmtpfs.git
 git clone https://aur.archlinux.org/xst-git.git
 git clone https://aur.archlinux.org/pdfjs.git
+
+echo "Installing miniconda (note: specify /home/username/Miniconda as dir)..."
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
 
 for app in `ls "/home/$username/.local/bin/"`; do
     echo "Installing $app"

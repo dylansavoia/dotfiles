@@ -9,9 +9,9 @@
  Xcursor.size: 12
  
  ! rofi
- rofi.terminal: st
--rofi.font: System San Francisco Display 12
-+rofi.font: System San Francisco Display 16
+ rofi.terminal: xst
+-rofi.font: Hack 12
++rofi.font: Hack 16
  rofi.color-enabled: true
  
  rofi.hide-scrollbar: true
