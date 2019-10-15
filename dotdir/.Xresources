@@ -61,8 +61,8 @@ Xft.dpi: 120
 Xcursor.size: 12
 
 ! rofi
-rofi.terminal: st
-rofi.font: System San Francisco Display 12
+rofi.terminal: xst
+rofi.font: System Hack 12
 rofi.color-enabled: true
 
 rofi.hide-scrollbar: true

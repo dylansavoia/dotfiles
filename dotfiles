@@ -72,10 +72,6 @@ case "$cmd" in
         echo "Done. Press Enter to continue or abort (Ctrl-C)"
         read
 
-        # .bashrc
-        [[ -e  "./patches/bashrc/$dev.diff" ]] &&
-        patch "${dotdir}_tmp/.bashrc" "./patches/bashrc/$dev.diff"
-
         shopt -s dotglob
         cd "${dotdir}_tmp"
         cp --parents -a * ~
