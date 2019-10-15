@@ -1,0 +1,10 @@
+--- dotdir/.config/qutebrowser/config.py	2019-10-15 22:36:36.736541325 +0200
++++ config.py	2019-10-15 22:36:08.239873707 +0200
+@@ -62,6 +62,7 @@
+ c.completion.scrollbar.width = 7
+ 
+ c.downloads.position = "bottom"
++c.downloads.location.directory = "/media/dylansavoia/HDD/Downloads"
+ c.downloads.remove_finished = 5000
+ 
+ c.colors.completion.scrollbar.bg = bkg_alt
