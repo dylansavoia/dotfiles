@@ -115,4 +115,4 @@ echo "Check arch_setup.sh comments for last steps."
 
 # ardour conda lightdm tex?
 # lxappearance: change to arc
-# sudo pacman -S cbatticon
+# sudo pacman -S cbatticon python-jedi

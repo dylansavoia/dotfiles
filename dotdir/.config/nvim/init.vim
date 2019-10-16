@@ -50,7 +50,6 @@ nnoremap gj j
 nnoremap zh zt
 nnoremap zl zb
 
-nnoremap <Leader>lr "rdd
 nnoremap <C-h> <C-w><C-h>
 nnoremap <C-j> <C-w><C-j>
 nnoremap <C-k> <C-w><C-k>
@@ -71,8 +70,9 @@ command! -nargs=* INVERT call Swap(<f-args>)
 
 "For some arcane reason \x80ku translates to <Up>
 nnoremap <F5> :call Run("\x80ku")<CR>
-autocmd Filetype python :nnoremap <F6> :call Run("python3 ".@%)<CR>
-autocmd Filetype c :nnoremap <F6> :call Run("make; a.out")<CR>
+vnoremap <Leader>l :yank <bar> call Run(@")<CR>
+autocmd Filetype python :nnoremap <Leader>l :call Run("python ".@%)<CR>
+autocmd Filetype c :nnoremap <Leader>l :call Run("make; a.out")<CR>
 
 "Execute On Save
 autocmd BufWritePost ~/.Xresources !xrdb %
@@ -138,5 +138,18 @@ function CopyAbove()
     call feedkeys("\<ESC>kyawjf/viwp")
 endfun
 " autocmd Filetype text :inoremap // <esc>klyiwhjpa
+
+function! GetVisualSelection()
+    " Why is this not a built-in Vim script function?!
+    let [line_start, column_start] = getpos("'<")[1:2]
+    let [line_end, column_end] = getpos("'>")[1:2]
+    let lines = getline(line_start, line_end)
+    if len(lines) == 0
+        return ''
+    endif
+    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
+    let lines[0] = lines[0][column_start - 1:]
+    return join(lines, "\n")
+endfunction
 
 source $HOME/.config/nvim/plugins.vim

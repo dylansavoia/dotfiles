@@ -193,7 +193,7 @@ fileviewer .*/,*/ tree -CL 2 %f
 
 
 " Other
-filetype *.ipynb bspc node -d 5; jupyter-notebook
+filetype *.ipynb jupyter-notebook
 filetype run.sh xst -e ./run.sh &
 filetype Session.vim nvim -S Session.vim
 
