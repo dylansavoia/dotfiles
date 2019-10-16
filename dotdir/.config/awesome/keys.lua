@@ -102,18 +102,18 @@ keys.global = gears.table.join(
               {description = "quit awesome", group = "awesome"}),
 
     -- Audio
-    awful.key({ Modkey, }, "F9",
-        function () awful.spawn.with_shell(ScriptsPath.."/set_volume switch") end,
-        {description = "Change Source", group = "awesome"}),
-    awful.key({ Modkey, }, "F10",
+    awful.key({ Modkey, }, "F8",
         function () awful.spawn.with_shell(ScriptsPath.."/set_volume -10%") end,
         {description = "Decrease Vol.", group = "awesome"}),
-    awful.key({ Modkey, }, "F11",
+    awful.key({ Modkey, }, "F9",
         function () awful.spawn.with_shell(ScriptsPath.."/set_volume +10%") end,
         {description = "Increase Vol.", group = "awesome"}),
-    awful.key({ Modkey, }, "F12",
+    awful.key({ Modkey, }, "F11",
         function () awful.spawn.with_shell(ScriptsPath.."/set_volume toggle") end,
         {description = "Toggle Audio", group = "awesome"}),
+    awful.key({ Modkey, }, "F12",
+        function () awful.spawn.with_shell(ScriptsPath.."/set_volume switch") end,
+        {description = "Change Source", group = "awesome"}),
 
     -- Other
     ---- Screen OCR

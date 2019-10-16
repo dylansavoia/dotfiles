@@ -1,0 +1,17 @@
+--- dotdir/.config/awesome/keys.lua	2019-10-15 07:48:01.119713530 +0200
++++ keys.lua	2019-10-16 08:28:43.716172397 +0200
+@@ -115,6 +115,14 @@
+         function () awful.spawn.with_shell(ScriptsPath.."/set_volume switch") end,
+         {description = "Change Source", group = "awesome"}),
+ 
++    -- Screen
++    awful.key({ Modkey, }, "F6",
++        function () awful.spawn.with_shell(ScriptsPath.."/set_brightness +25") end,
++        {description = "Increase Light", group = "awesome"}),
++    awful.key({ Modkey, }, "F5",
++        function () awful.spawn.with_shell(ScriptsPath.."/set_brightness -25") end,
++        {description = "Decrease Light", group = "awesome"}),
++
+     -- Other
+     ---- Screen OCR
+     awful.key({ Modkey, }, "F2",
