@@ -1,5 +1,3 @@
-awful.spawn.with_shell( os.getenv("HOME") .. "/.config/awesome/autostart.sh")
-
 beautiful   = require("beautiful")
 naughty     = require("naughty")
 menubar     = require("menubar")
@@ -8,6 +6,8 @@ gears       = require("gears")
 awful       = require("awful")
 gears       = require("gears")
 awful       = require("awful")
+
+awful.spawn.with_shell( os.getenv("HOME") .. "/.config/awesome/autostart.sh")
 
 require("awful.autofocus")
 require('errors')

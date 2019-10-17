@@ -41,11 +41,24 @@ echo "noarp" >> /etc/dhcpcd.conf
 # Install Packages
 ## Essential
 pacman -S xorg-server xorg-xinit xorg-xrandr xsel bash-completion \
+    lightdm lightdm-gtk-greeter \
     awesome rofi libnotify compton pulseaudio pasystray \
     git openssh python jupyter-notebook bpython unzip \
     ttf-liberation ttf-font-awesome noto-fonts \
     cmake tesseract-data-eng
 # pacman -S networkmanager network-manager-applet
+
+systemctl enable lightdm.service
+systemctl enable NetworkManager.service
+
+mkdir -p "/etc/lightdm/"
+echo -e "[greeter]
+theme-name = Arc-Dark
+icon-theme-name = Arc
+background = /usr/share/pixmaps/lightdm.jpg" > /etc/lightdm/lightdm-gtk-greeter.conf
+
+mkdir -p "/usr/share/pixmaps/"
+[[ -e "./dotdir" ]] && mv ./dotdir/.config/awesome/wallpaper.jpg /usr/share/pixmaps/lightdm.jpg
 
 ## Applications
 pacman -S ffmpeg imagemagick arandr vlc sxiv \
@@ -98,6 +111,7 @@ if [[ -e "./dotdir" ]]; then
     cd "/home/$username/.local/bin/xst-git/src/xst/"
     make
     sudo make install
+
 fi
 
 
@@ -113,6 +127,6 @@ ssh-copy-id dylansavoia@dylansavoia.sytes.net
 
 echo "Check arch_setup.sh comments for last steps."
 
-# ardour conda lightdm tex?
+# ardour tex?
 # lxappearance: change to arc
 # sudo pacman -S cbatticon python-jedi

@@ -20,7 +20,7 @@ case "$cmd" in
         mkdir -p "$name"
         # Home dotfiles
         rsync ~/.bashrc         "$name"
-        rsync ~/.bash_profile   "$name"
+        rsync ~/.profile        "$name"
         rsync ~/.xinitrc        "$name"
         rsync ~/.Xresources     "$name"
 
