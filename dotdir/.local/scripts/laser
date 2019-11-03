@@ -111,11 +111,11 @@ echo "Name: $name"
 [[ ${#name} -lt 3 ]] && exit
 
 
-if [[ ${name: -1} == ";" ]]; then
-    name=${name:0: -1}
+if [[ ${name: -2} == ";;" ]]; then
+    name=${name:0: -2}
     $TERMINAL -c "$name" -e bash -ic "$name; read -p 'Press to continue... '"
 
-elif [[ $category == 2 ]]; then
+elif [[ $category == 2 ]] || [[ ${name: -1} == ";" ]]; then
     guis=$(from_rc GUIs)
     cmd=($name)
     for i in $guis; do
@@ -153,10 +153,10 @@ else
                 #     $BROWSER "$name" &
                 #     ;;
                 text/* | inode/x-empty | message/rfc822)
-                    $TERMINAL $EDITOR "$name" &
+                    $TERMINAL -c "$EDITOR" -e $EDITOR "$name" &
                     ;;
                 inode/directory)
-                    $TERMINAL vifm "$name"
+                    $TERMINAL -c "vifm" vifm "$name"
                     ;;
                 image/*)
                     sxiv "$name" &

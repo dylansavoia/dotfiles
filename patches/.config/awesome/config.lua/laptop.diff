@@ -4,7 +4,7 @@
  -- Themes define colours, icons, font and wallpapers.
  beautiful.init(ConfigPath.."/theme.lua")
  
--bar_width = 35
+-bar_width = 40
 +bar_width = 50
  
  -- Table of layouts

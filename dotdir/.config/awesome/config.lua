@@ -7,7 +7,7 @@ ScriptsPath = os.getenv("HOME").."/.local/scripts"
 -- Themes define colours, icons, font and wallpapers.
 beautiful.init(ConfigPath.."/theme.lua")
 
-bar_width = 35
+bar_width = 40
 
 -- Table of layouts
 awful.layout.layouts = {

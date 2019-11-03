@@ -43,7 +43,7 @@
 
 " highlight group cterm=attrs ctermfg=foreground_color ctermbg=background_color
 
-highlight Win cterm=none ctermfg=white ctermbg=black
+highlight Win cterm=none ctermfg=white ctermbg=default
 highlight Directory cterm=bold ctermfg=blue ctermbg=default
 highlight Link cterm=bold ctermfg=yellow ctermbg=default
 highlight BrokenLink cterm=bold ctermfg=red ctermbg=default
@@ -57,6 +57,6 @@ highlight TopLine cterm=none ctermfg=white ctermbg=default
 highlight TopLineSel cterm=bold ctermfg=green ctermbg=default
 highlight StatusLine cterm=bold ctermfg=black ctermbg=default
 highlight WildMenu cterm=underline,reverse ctermfg=white ctermbg=black
-highlight CmdLine cterm=none ctermfg=white ctermbg=black
+highlight CmdLine cterm=none ctermfg=white ctermbg=default
 highlight ErrorMsg cterm=none ctermfg=red ctermbg=black
 highlight Border cterm=none ctermfg=white ctermbg=default
