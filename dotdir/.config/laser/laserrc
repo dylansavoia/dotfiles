@@ -1,29 +1,28 @@
 # Directories
 /home/dylansavoia/Downloads
 /home/dylansavoia/Dropbox
+/home/dylansavoia/.config
+/home/dylansavoia/.local
 
 # Shortcuts
-:keep:https://keep.google.com/u/0/#home
-:youtube:https://www.youtube.com/
+:Terminal:xst
+:Emacs:emacsclient -c
+:Keep:https://keep.google.com/u/0/#home
+:Youtube:https://www.youtube.com/
 :Playlist Update:https://www.youtube.com/playlist?list=PLtO5M4JOGPH4tzQVb61jCjukLQG-OkS9I
-:spotify:firefox https://open.spotify.com/browse/featured;
-:calendar:https://calendar.google.com/calendar/
-:server:https://dylansavoia.sytes.net/Main/
-:reload:laser -r;
-:shutdown:shutdown now;
-:suspend:systemctl suspend;
-:reboot:reboot;
+:Spotify:firefox https://open.spotify.com/browse/featured
+:Whatsapp:firefox https://web.whatsapp.com
+:Calendar:https://calendar.google.com/calendar/
+:Server:https://dylansavoia.sytes.net/Main/
+:Reload:laser -r
+:Shutdown:shutdown now
+:Suspend:systemctl suspend
+:Reboot:reboot;
 
-# GUIs
-qutebrowser
-firefox
-krita
-libreoffice
-audacity
-lmms
-ardour
-arandr
-pavucontrol
-nvidia-settings
-matlab
-lxappearance
+# Terminal
+htop
+vifm
+nvim
+bpython
+br
+broot

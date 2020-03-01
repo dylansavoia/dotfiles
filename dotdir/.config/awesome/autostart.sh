@@ -19,9 +19,11 @@ run compton --config ~/.config/compton/compton.conf
 # Network manager tray icon
 run nm-applet
 
-setxkbmap -option caps:swapescape &
 setxkbmap -layout "us,it" -option "grp:alt_shift_toggle" &
 xset r rate 200 30 &
+xset m 10 50
+setxkbmap -option caps:swapescape &
+
 
 # Sys Tray
 run dropbox

@@ -12,7 +12,7 @@
 #   Category can be:
 #   - 0: Other (including not in cache)
 #   - 1: File
-#   - 2: Binaries
+#   - 2: Terminal
 #
 #   Every command followed by a ';' is executed opening a terminal
 #   es. 'htop;'
@@ -49,17 +49,18 @@ function generate () {
     shrt_p=`echo "$shrt" | awk -F ':' '{print $1 "\t" $2}'`
 
     # Binaries
-    minipath=( /usr/local/bin /usr/bin )
-    bins=`echo ${minipath[*]} | tr ' ' '\n' | xargs -n 1 ls -1`
-
-    bins_c=`echo "$bins" | awk 'BEGIN{OFS="\t"}{print "2", $0}'`
+    # minipath=( /usr/local/bin /usr/bin )
+    # bins=`echo ${minipath[*]} | tr ' ' '\n' | xargs -n 1 ls -1`
+    bins=`comm -1 -2 <(cat ~/.bash_history | awk '{print $1}' | sort | uniq) <(ls -1 /usr/bin)`
+    echo "$bins"
+    bins_c=`echo "$bins" | awk 'BEGIN{OFS="\t"}{print "0", $0}'`
     bins_p=`echo "$bins" | awk '{print "" "\t" $0}'`
 
-    # # Files and Dirs
+    # Files and Dirs
     paths=$(from_rc Directories)
     paths=`echo "$paths" | tr '\n' ' '`
 
-    files=`find $paths -name ".*" -prune -o -printf "%A@\t%y\t%d\t%h/%f\n" |
+    files=`find $paths -printf "%A@\t%y\t%d\t%h/%f\n" |
         awk -F '\t' '
             $2 == "d" {print 9999999999 - $3, "\t\t"$4}
             $2 != "d" {
@@ -70,8 +71,7 @@ function generate () {
     fdirs_c=`echo "$files" | awk -F '\t' 'BEGIN{OFS="\t"}{print "1", $3}'` 
 
     fdirs_p=`echo "$files" | awk -F '\t' '{
-        match($3, /((\/[^\/]+){1,3}\/?)$/);
-        print $2 "\t" substr($3, RSTART, RLENGTH)
+        print $2 "\t" $3
     }'`
 
     echo -e "$shrt_c\n$bins_c\n$fdirs_c" > "$cache"
@@ -84,23 +84,19 @@ function generate () {
 
 ### Show #######################################
 # ...in prettified form
-sel=`nl -w 4 -s '  ' $pcache | rofi -terminal xst -dmenu -i -p "Run"` 
+sel=`rofi -terminal xst -dmenu -input '/tmp/.laser_pcache' -format 'd s' -i -p "Run"` 
 
 ## If in list select original line from file,
 ## otherwise print directly.
+echo "$sel"
 n=`echo $sel | awk '{print $1}'` 
 
-if [[ $n =~ ^[0-9]+$ ]]; then
+if [[ $n -ne 0 ]]; then
     sel=`sed -ne "$n p" $cache`
-else
-    sel=`echo "0 $sel"`
 fi
 
 
 ### Run #########################################
-
-# Check if shell
-
 split=( $sel )
 category=${split[0]}
 name="${split[*]:1: ${#split[*]}}"
@@ -108,63 +104,19 @@ name="${split[*]:1: ${#split[*]}}"
 echo "Cat: $category"
 echo "Name: $name"
 
-[[ ${#name} -lt 3 ]] && exit
-
-
-if [[ ${name: -2} == ";;" ]]; then
-    name=${name:0: -2}
-    $TERMINAL -c "$name" -e bash -ic "$name; read -p 'Press to continue... '"
-
-elif [[ $category == 2 ]] || [[ ${name: -1} == ";" ]]; then
-    guis=$(from_rc GUIs)
+# Check if shell
+if [[ ${name: -1} == ";" ]]; then
+    name=${name:0: -1}
+    category='t'
+else
+    t=$(from_rc Terminal)
     cmd=($name)
-    for i in $guis; do
+    for i in $t; do
         if [[ $i == $cmd ]]; then
-            $name &
-            cmd=""
+            category='t'
             break
         fi
     done
-    [[ $cmd == "" ]] || $TERMINAL -c "$name" -e bash -ic "$name"
-
-else
-    # first try matching by filename or pathname
-    case "${name,,}" in
-        http*)
-            $BROWSER "$name" &
-            ;;
-        *.txt)
-            $TERMINAL $EDITOR "$name" &
-            ;;
-        *.pdf | *.epub)
-            zathura "$name" &
-            ;;
-        *.mp3)
-            $TERMINAL mpg123 -opulse "$name" &
-            ;;
-        *.od[tsp]|*.doc|*.docx|*.ppt|*.pptx|*.xls|*.xlsx)
-            libreoffice "$name" &
-            ;;
-        *)
-            # then try matching by mimetype
-            mimetype=$(file -Lb --mime-type "$name")
-            case "$mimetype" in
-                # text/html)
-                #     $BROWSER "$name" &
-                #     ;;
-                text/* | inode/x-empty | message/rfc822)
-                    $TERMINAL -c "$EDITOR" -e $EDITOR "$name" &
-                    ;;
-                inode/directory)
-                    $TERMINAL -c "vifm" vifm "$name"
-                    ;;
-                image/*)
-                    sxiv "$name" &
-                    ;;
-                *)
-                    exit 1
-                    ;;
-            esac
-            ;;
-    esac
 fi
+
+[[ ${#name} -gt 2 ]] && launcher "$category" "$name"

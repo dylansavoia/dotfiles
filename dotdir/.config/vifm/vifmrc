@@ -7,11 +7,13 @@
 
 " ------------------------------------------------------------------------------
 
+set title
+
 " This is the actual command used to start vi.  The default is vim.
 " If you would like to use another vi clone such Elvis or Vile
 " you will need to change this setting.
 
-set vicmd=nvim
+set vicmd=emacsclient\ -c\ &
 " set vicmd=elvis\ -G\ termcap
 " set vicmd=vile
 
@@ -25,7 +27,6 @@ set vicmd=nvim
 set trash
 
 " This is how many directories to store in the directory history.
-
 set history=100
 
 " Automatically resolve symbolic links on l or Enter.

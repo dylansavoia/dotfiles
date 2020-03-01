@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+
+
+if [[ $1 == 'latex' ]]; then
+    if [[ $2 != '' ]]; then
+        path=$2
+    else
+        echo -n "Project Name: "
+        read path
+        [[ "$path" == "" ]] && exit
+    fi
+
+    if [[ -e "$path" ]]; then
+        echo "$path already exists."
+        exit
+    fi
+
+    [[ "${path: -1}" != "/" ]] && path="$path/"
+
+    mkdir -p "${path}images"
+    touch "${path}main.tex"
+    touch "${path}main.pdf"
+    runcode="zathura main.pdf &\nfind . -type f | entr -p pdflatex main.tex"
+    echo -e "$runcode" > "${path}run.sh"
+    chmod a+x "${path}run.sh"
+fi

@@ -11,7 +11,7 @@ awful.rules.rules = {
         buttons = Buttons.client,
         size_hints_honor = false,
         screen = awful.screen.preferred,
-        placement = awful.placement.no_overlap + awful.placement.no_offscreen
+        placement = awful.placement.no_overlap + awful.placement.no_offscreen + awful.placement.centered
      }
     },
 

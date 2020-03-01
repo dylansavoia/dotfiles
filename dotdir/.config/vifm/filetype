@@ -41,7 +41,7 @@
 " Pdf
 filextype *.pdf zathura %c %i &, apvlv %c, xpdf %c
 " fileviewer *.pdf pdftotext -nopgbrk %c -
-" fileviewer *.pdf /home/dylansavoia/.config/i3/scripts/pdfpreview %d/%c
+fileviewer *.pdf pdfinfo %f
 
 " PostScript
 filextype *.ps,*.eps,*.ps.gz

@@ -63,13 +63,17 @@ mkdir -p "/usr/share/pixmaps/"
 
 ## Applications
 pacman -S ffmpeg imagemagick arandr mpv sxiv \
-    vifm neovim qutebrowser zathura zathura-pdf-mupdf libreoffice-fresh \
+    vifm qutebrowser zathura zathura-pdf-mupdf libreoffice-fresh \
     firefox virtualbox \
     entr rsync rclone wget curl tree htop pdfgrep \
     lxappearance arc-gtk-theme arc-icon-theme dconf-editor \
     python-eyed3
 
-pip install pynvim
+## For Emacs
+pacman -S emacs ripgrep clang tar fd aspell aspell-en
+git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+
 
 echo "From now on we'll proceed in user-space..."
 read
@@ -93,7 +97,8 @@ git clone https://aur.archlinux.org/jmtpfs.git
 git clone https://aur.archlinux.org/xst-git.git
 git clone https://aur.archlinux.org/pdfjs.git
 
-echo "Installing miniconda (note: specify /home/username/Miniconda as dir)..."
+
+echo "Installing miniconda (note: specify /home/username/.miniconda as dir)..."
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 
@@ -130,12 +135,6 @@ echo "Check arch_setup.sh comments for last steps."
 
 
 echo "There are a few optional packages left..."
-
-echo "Stuff for nvim? (Y|n)"
-if [[ "$answ" == "" ]]; then
-    sudo pacman -S nodejs npm python-jedi
-    nvim -c "CocInstall coc-snippets coc-tsserver coc-python coc-html coc-css coc-json"
-fi
 
 echo "LaTeX? (Y|n)"
 if [[ "$answ" == "" ]]; then

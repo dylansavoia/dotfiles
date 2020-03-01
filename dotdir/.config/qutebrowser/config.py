@@ -45,23 +45,29 @@ c.hints.auto_follow = "full-match"
 c.hints.mode = "number"
 c.keyhint.blacklist = ["*"]
 
-c.tabs.min_width = -1
-c.tabs.max_width = 250
-c.tabs.padding = {'top': 5, 'bottom': 5, 'right': 7, 'left': 7}
-c.tabs.last_close = "startpage"
-c.tabs.title.format = "{current_title}"
-c.tabs.indicator.width = 0
+c.tabs.show = "never"
+# c.tabs.min_width = -1
+# c.tabs.max_width = 250
+# c.tabs.padding = {'top': 5, 'bottom': 5, 'right': 7, 'left': 7}
+# c.tabs.last_close = "startpage"
+# c.tabs.title.format = "{current_title}"
+# c.tabs.indicator.width = 0
 
-c.statusbar.widgets = ["keypress", "progress", "url", "scroll"]
+c.statusbar.widgets = ["keypress", "progress", "scroll", "tabs"]
 c.content.pdfjs = True
 
 c.prompt.radius = 1
 
-c.completion.height = "30%"
+c.completion.height = "20%"
+c.completion.show = "always"
+c.completion.shrink = True
 c.completion.scrollbar.padding = 0
 c.completion.scrollbar.width = 7
+c.input.insert_mode.leave_on_load = False
 
 c.downloads.position = "bottom"
+c.downloads.location.prompt = False
+c.downloads.location.directory = "/home/dylansavoia/Downloads"
 c.downloads.remove_finished = 5000
 
 c.colors.completion.scrollbar.bg = bkg_alt
@@ -95,8 +101,13 @@ c.colors.downloads.error.fg = "#d799aa"
 
 c.colors.prompts.border = "0px"
 c.colors.downloads.bar.bg = bkg
+c.colors.messages.error.bg = colors[2]
+c.colors.messages.error.border = colors[2]
+c.colors.messages.warning.bg = colors[12]
+c.colors.messages.warning.border = colors[12]
 
 c.colors.statusbar.normal.bg = bkg
+c.colors.statusbar.command.bg = bkg
 c.colors.statusbar.insert.bg = accent
 c.colors.statusbar.progress.bg = accent
 c.colors.statusbar.url.success.https.fg = accent_alt
@@ -106,9 +117,8 @@ c.colors.statusbar.url.fg = accent
 
 c.colors.prompts.bg = bkg
 c.colors.prompts.fg = fg
-# c.colors.prompts.border = "1px solid " + accent_alt
 c.colors.messages.info.border = accent
-c.colors.statusbar.passthrough.bg = colors[8]
+c.colors.statusbar.passthrough.bg = colors[2]
 c.colors.statusbar.caret.bg = colors[10]
 
 c.colors.hints.fg = accent_alt
@@ -116,15 +126,16 @@ c.colors.hints.bg = bkg
 c.colors.hints.match.fg = accent
 c.hints.border = "1px solid " + accent
 
-c.fonts.tabs = "14px Hack"
-c.fonts.statusbar = "14px Hack"
-c.fonts.prompts = "16px Hack"
-c.fonts.downloads = "16px Hack"
-c.fonts.keyhint = "16px Hack"
-c.fonts.hints = "bold 16px Hack"
-c.fonts.completion.category = "16px Hack"
-c.fonts.completion.entry = "16px Hack"
+c.fonts.tabs = "12px Noto Sans"
+c.fonts.statusbar = "12px Noto Sans"
+c.fonts.prompts = "14px Noto Sans"
+c.fonts.downloads = "14px Noto Sans"
+c.fonts.keyhint = "14px Noto Sans"
+c.fonts.hints = "bold 14px Noto Sans"
+c.fonts.completion.category = "14px Noto Sans"
+c.fonts.completion.entry = "14px Noto Sans"
 
 c.scrolling.smooth = True
 
-c.editor.command = ["xst", "-e",  "nvim", "{file}", "-c", "normal {line}G{column0}l"]
+
+c.editor.command = ["emacsclient", "-c", "+{line}:{column0}", "{file}"]

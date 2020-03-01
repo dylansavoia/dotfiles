@@ -18,6 +18,7 @@ Keys = require('keys')
 Buttons = require('mouse')
 -- }}}
 
+require('theme')
 require('rules')
 require('signals')
 require('bar')

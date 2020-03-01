@@ -1,0 +1,46 @@
+#!/bin/bash
+
+category="$1"
+name="$2"
+
+if [[ $category == "t" ]]; then
+    $TERMINAL -c "$name" -e bash -ic "$name; read -p 'Press to continue... '"
+
+else
+    # first try matching by filename or pathname
+    case "${name,,}" in
+        http*)
+            $BROWSER "$name" &
+            ;;
+        *.pdf | *.epub)
+            zathura "$name" &
+            ;;
+        *.mp3)
+            $TERMINAL mpg123 -opulse "$name" &
+            ;;
+        *.od[tsp]|*.doc|*.docx|*.ppt|*.pptx|*.xls|*.xlsx)
+            libreoffice "$name" &
+            ;;
+        *)
+            # then try matching by mimetype
+            mimetype=$(file -Lb --mime-type "$name")
+            case "$mimetype" in
+                # text/html)
+                #     $BROWSER "$name" &
+                #     ;;
+                text/* | inode/x-empty | message/rfc822)
+                    $EDITOR "$name" &
+                    ;;
+                inode/directory)
+                    $TERMINAL vifm "$name"
+                    ;;
+                image/*)
+                    sxiv "$name" &
+                    ;;
+                *)
+                    $name &
+                    ;;
+            esac
+            ;;
+    esac
+fi

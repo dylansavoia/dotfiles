@@ -1,25 +1,25 @@
---- dotdir/.config/qutebrowser/config.py	2019-10-15 14:56:49.109986788 +0200
-+++ dotdir_local/.config/qutebrowser/config.py	2019-10-15 14:56:11.109987256 +0200
-@@ -116,14 +116,14 @@
+--- config.py	2019-11-10 23:24:06.249994239 +0100
++++ config2.py	2019-11-10 23:23:30.999994332 +0100
+@@ -124,14 +124,14 @@
  c.colors.hints.match.fg = accent
  c.hints.border = "1px solid " + accent
  
--c.fonts.tabs = "14px Hack"
--c.fonts.statusbar = "14px Hack"
--c.fonts.prompts = "16px Hack"
--c.fonts.downloads = "16px Hack"
--c.fonts.keyhint = "16px Hack"
--c.fonts.hints = "bold 16px Hack"
--c.fonts.completion.category = "16px Hack"
--c.fonts.completion.entry = "16px Hack"
-+c.fonts.tabs = "16px Hack"
-+c.fonts.statusbar = "16px Hack"
-+c.fonts.prompts = "18px Hack"
-+c.fonts.downloads = "18px Hack"
-+c.fonts.keyhint = "18px Hack"
-+c.fonts.hints = "bold 18px Hack"
-+c.fonts.completion.category = "18px Hack"
-+c.fonts.completion.entry = "18px Hack"
+-c.fonts.tabs = "12px Noto Sans"
+-c.fonts.statusbar = "12px Noto Sans"
+-c.fonts.prompts = "14px Noto Sans"
+-c.fonts.downloads = "14px Noto Sans"
+-c.fonts.keyhint = "14px Noto Sans"
+-c.fonts.hints = "bold 14px Noto Sans"
+-c.fonts.completion.category = "14px Noto Sans"
+-c.fonts.completion.entry = "14px Noto Sans"
++c.fonts.tabs = "16px Noto Sans"
++c.fonts.statusbar = "16px Noto Sans"
++c.fonts.prompts = "18px Noto Sans"
++c.fonts.downloads = "18px Noto Sans"
++c.fonts.keyhint = "18px Noto Sans"
++c.fonts.hints = "bold 18px Noto Sans"
++c.fonts.completion.category = "18px Noto Sans"
++c.fonts.completion.entry = "18px Noto Sans"
  
  c.scrolling.smooth = True
  

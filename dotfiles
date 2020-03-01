@@ -23,6 +23,7 @@ case "$cmd" in
         rsync ~/.profile        "$name"
         rsync ~/.xinitrc        "$name"
         rsync ~/.Xresources     "$name"
+        rsync ~/.doom.d         "$name"
 
         # .config
         mkdir -p "$name/.config"
@@ -78,6 +79,12 @@ case "$cmd" in
         cd ".."
 
         rm -rf "${dotdir}_tmp"
+    
+        # Extra to config xst
+        cd /home/dylansavoia/.local/bin/xst-git/src/xst
+        make
+        sudo make install
+
         ;;
     *)
         echo "Usage: dotfiles [collect|restore]"

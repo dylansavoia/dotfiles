@@ -15,12 +15,14 @@ let g:python3_host_prog = '/usr/bin/python3'
 set number "Add numebers line
 set showcmd
 set noshowmode
+set title
 set cursorline
+set laststatus=0
 
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab 
 set hidden "Allow buffers to become hidden without saving them first
 set clipboard+=unnamedplus "Use Clipboard as default Register
-set switchbuf+=useopen
+set switchbuf=useopen
 set completeopt=menuone
 let g:netrw_banner = 0
 set autoread "updates files if needed (works with checktime)
@@ -28,128 +30,14 @@ set autoread "updates files if needed (works with checktime)
 set splitbelow
 set splitright
 
-"CUSTOM KEYS AND COMMANDS
-let mapleader = " "
-nnoremap <silent> <leader>n :call ToggleRelative()<cr>
-nnoremap <silent> <leader>h :nohlsearch<cr>
-nnoremap <leader>T :!ctags -R *<cr>
-nnoremap <silent> <leader>P :call PDFToggle()<cr>
-nnoremap * *N
-noremap <Tab> gt
-
-"Go back to last window
-nnoremap <S-j> <C-^>
-nnoremap qc :copen<cr>
-nnoremap ql :lopen<cr>
-
-nnoremap k gk
-nnoremap gk k
-nnoremap j gj
-nnoremap gj j
-
-nnoremap zh zt
-nnoremap zl zb
-
-nnoremap <C-h> <C-w><C-h>
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-l> <C-w><C-l>
-
-nnoremap <A-j> :cnext<CR>
-nnoremap <A-k> :cprev<CR>
-
-tnoremap <Esc> <C-\><C-n>
-command! Term vs | execute 'terminal' | startinsert 
-
-command! -nargs=1 -range Filter call Filter(<f-args>)
-command! LRUN call Run("\<Up>") 
-command! PDF call PDF() 
-command! PDFToggle call PDFToggle() 
-command! PlaylistClean call PlaylistClean() 
-command! -nargs=* INVERT call Swap(<f-args>)
-
-"For some arcane reason \x80ku translates to <Up>
-nnoremap <F5> :call Run("\x80ku")<CR>
-vnoremap <Leader>l :yank <bar> call Run(@")<CR>
-autocmd Filetype python :nnoremap <Leader>l :call Run("python ".@%)<CR>
-autocmd Filetype c :nnoremap <Leader>l :call Run("make; a.out")<CR>
-
-"Execute On Save
+" Execute On Save
 autocmd BufWritePost ~/.Xresources !xrdb %
 autocmd BufWritePost ~/.bashrc !source %
 autocmd BufReadPost /tmp/bash-fc.* set filetype=sh
 
-"CUSTOM FUNCTIONS
-let g:PDFBool = 0
-function PDFToggle()
-    if (g:PDFBool == 0)
-        autocmd InsertLeave * :w | silent ! pandoc -s -o out.pdf %
-        let g:PDFBool = 1
-    else
-        autocmd! InsertLeave *
-        let g:PDFBool = 0
-    endif
-endfun
-
-function PDF()
-    write
-    silent ! pandoc -s -o out.pdf %
-endfun
-
-
-function PlaylistClean()
-    call feedkeys(":%s/\\v(.{-}) - ([^-]+)-[^.]+\.mp3/\\2 - \\1.mp3\<CR>")
-endfun
-
-function Filter(str)
-    call feedkeys("gvyo\<ESC>p:.! ".a:str."\<CR>ddgvpkVjjJ`[x")
-endfun
-
-function ToggleRelative()
-	if (&relativenumber == 1)
-		set norelativenumber
-	else
-		set relativenumber
-	endif
-endfun
-
-function Run(str)
-    write
-    let exec_cmd = substitute(a:str, "\n$", "", "")  
-    let curr_buf = expand('%')
-    let term_nm = bufnr("term")
-
-    if (term_nm > -1)
-        exec "sbuffer ".term_nm
-    else
-        vs | terminal
-    endif
-
-    echom exec_cmd
-    call feedkeys("i".exec_cmd."\n\<Esc>:sb ".curr_buf."\<CR>")
-endfun
-
-function Swap(str1, str2)
-    call feedkeys("0/".a:str1."\<CR>diw/".a:str2."\<CR>viwp\<c-o>P h")
-endfun
-
-"COPY ABOVE WORD
-function CopyAbove()
-    call feedkeys("\<ESC>kyawjf/viwp")
-endfun
-" autocmd Filetype text :inoremap // <esc>klyiwhjpa
-
-function! GetVisualSelection()
-    " Why is this not a built-in Vim script function?!
-    let [line_start, column_start] = getpos("'<")[1:2]
-    let [line_end, column_end] = getpos("'>")[1:2]
-    let lines = getline(line_start, line_end)
-    if len(lines) == 0
-        return ''
-    endif
-    let lines[-1] = lines[-1][: column_end - (&selection == 'inclusive' ? 1 : 2)]
-    let lines[0] = lines[0][column_start - 1:]
-    return join(lines, "\n")
-endfunction
-
+source $HOME/.config/nvim/mappings.vim
 source $HOME/.config/nvim/plugins.vim
+
+highlight Normal ctermbg=none
+highlight EndOfBuffer ctermbg=none
+highlight LineNr ctermbg=none

@@ -30,8 +30,8 @@ local clock = wibox.widget {
         widget = wibox.layout.fixed.vertical,
         {
             widget = wibox.container.margin,
-            top = dpi(5),
-            bottom = dpi(5),
+            top = dpi(10),
+            bottom = dpi(3),
             {
                 widget = wibox.widget.textclock("%H\n%M"),
                 align  = 'center',
@@ -39,8 +39,8 @@ local clock = wibox.widget {
         },
         {
             widget = wibox.container.margin,
-            top = dpi(2),
-            bottom = dpi(5),
+            top = dpi(3),
+            bottom = dpi(10),
             {
                 widget = wibox.widget.textclock("%d\n%b"),
                 align  = 'center',
@@ -81,6 +81,22 @@ awful.screen.connect_for_each_screen(function(s)
     -- Wallpaper
     set_wallpaper(s)
 
+    local w, h
+    w = s.geometry.width
+    h = s.geometry.height
+
+    local default_layout, fair_layout
+     
+    if w > h then
+        default_layout = awful.layout.suit.tile
+        fair_layout = awful.layout.suit.fair
+    else
+        default_layout = awful.layout.suit.tile.bottom
+        fair_layout = awful.layout.suit.fair.horizontal
+    end
+
+
+
     local min_layout = {
         awful.layout.suit.max,
     }
@@ -88,20 +104,14 @@ awful.screen.connect_for_each_screen(function(s)
     -- Each screen has its own tag table.
     for i = 1, 2 do
         awful.tag.add("", {
-            layout = awful.layout.suit.tile,
+            layout = default_layout,
             layouts = min_layout,
             screen = s,
         })
     end
 
     awful.tag.add("", {
-        layout = awful.layout.suit.tile,
-        layouts = min_layout,
-        screen = s,
-    })
-
-    awful.tag.add("", {
-        layout = awful.layout.suit.fair,
+        layout = default_layout,
         layouts = min_layout,
         screen = s,
     })
@@ -111,6 +121,13 @@ awful.screen.connect_for_each_screen(function(s)
         layouts = min_layout,
         screen = s,
     })
+
+    awful.tag.add("", {
+        layout = fair_layout,
+        layouts = min_layout,
+        screen = s,
+    })
+
 
     s.tags[1]:view_only()
 

@@ -20,7 +20,7 @@ static char vtiden[] = "\033[?6c";
 
 /* Kerning / character bounding-box multipliers */
 static float cwscale = 1.0;
-static float chscale = 1.0;
+static float chscale = 1.5;
 
 /* work delimter strings. more advanced example : " `'\"()[]{}" */
 static char worddelimiters[] = " ";
@@ -55,7 +55,7 @@ static int alpha = 0xff;
 static unsigned int doubleclicktimeout = 300;
 static unsigned int tripleclicktimeout = 600;
 static char *utmp = NULL;
-static unsigned int borderpx = 10;
+static unsigned int borderpx = 12;
 static unsigned int bold_font = 0;
 // If available font weight is different from fontconfig's FC_WEIGHT (200),
 // allow infelicity between the weights:
@@ -63,7 +63,7 @@ static unsigned int max_bold_weight_infelicity = 20;
 static char stty_args[] = "stty raw pass8 nl -echo -iexten -cstopb 38400";
 static unsigned int xfps = 120;
 static unsigned int actionfps = 30;
-static char *termname = "xst-256color";
+static char *termname = "xterm-256color";
 static char *colorname[] = {
 	"#1e1e1e",
 	"#cf6a4c",

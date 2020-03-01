@@ -1,5 +1,6 @@
 local keys =  {}
 local show_all = false
+local curr_tags = {}
 
 keys.global = gears.table.join(
     -- Client Manipulation
@@ -21,39 +22,22 @@ keys.global = gears.table.join(
     awful.key({ Modkey, }, "f",  awful.client.floating.toggle,
               {description = "toggle floating", group = "client"}),
 
-    -- Client Manipulation: Special: Browser Tag
-    awful.key({ Modkey, }, "b",
-        function ()
-            local tag = awful.tag.find_by_name(awful.screen.focused(), "")
-            tag:view_only()
-        end,
-        {description = "Go To Browser", group = "client"}
-    ),
-    awful.key({ Modkey, "Shift"}, "b",
-        function ()
-            local tag = awful.tag.find_by_name(awful.screen.focused(), "")
-            client.focus:move_to_tag(tag)
-            tag:view_only()
-        end,
-        {description = "Move To Browser", group = "client"}
-    ),
 
-    
     ---- Client Manipulation: Select
     awful.key({ Modkey,           }, "j",
-        function () awful.client.focus.global_bydirection("down") end,
+        function () awful.client.focus.bydirection("down") end,
         {description = "focus down", group = "client"}
     ),
     awful.key({ Modkey,           }, "k",
-        function () awful.client.focus.global_bydirection("up") end,
+        function () awful.client.focus.bydirection("up") end,
         {description = "focus up", group = "client"}
     ),
     awful.key({ Modkey,           }, "h",
-        function () awful.client.focus.global_bydirection("left") end,
+        function () awful.client.focus.global_bydirection("left", nil, true) end,
         {description = "focus left", group = "client"}
     ),
     awful.key({ Modkey,           }, "l",
-        function () awful.client.focus.global_bydirection("right") end,
+        function () awful.client.focus.global_bydirection("right", nil, true) end,
         {description = "focus right", group = "client"}
     ),
 
@@ -92,45 +76,65 @@ keys.global = gears.table.join(
 
 
     -- Standard Programs
-    awful.key({ Modkey,           }, "Return", function () awful.spawn(Terminal) end,
-              {description = "open a terminal", group = "launcher"}),
+    -- awful.key({ Modkey,           }, "Return", function () awful.spawn(Terminal) end,
+    --           {description = "open a terminal", group = "launcher"}),
     awful.key({ Modkey,           }, "space", function () awful.spawn.with_shell('laser') end,
               {description = "open Launcher", group = "launcher"}),
-    awful.key({ Modkey, "Shift" }, "space", function () awful.spawn.with_shell('rofi -show window') end,
+    awful.key({ Modkey, }, "Return", function () awful.spawn.with_shell('rofi -show window') end,
               {description = "Show Windows", group = "launcher"}),
+    -- awful.key({ Modkey, "Shift" }, "space", function () awful.spawn.with_shell('batch_close_win') end,
+    --           {description = "open Launcher", group = "launcher"}),
     awful.key({ Modkey, "Shift" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ Modkey, "Shift"   }, "q", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
     -- Audio
-    awful.key({ Modkey, }, "F8",
+    awful.key({ Modkey, }, "F9",
         function () awful.spawn.with_shell(ScriptsPath.."/set_volume -10%") end,
         {description = "Decrease Vol.", group = "awesome"}),
-    awful.key({ Modkey, }, "F9",
+    awful.key({ Modkey, }, "F10",
         function () awful.spawn.with_shell(ScriptsPath.."/set_volume +10%") end,
         {description = "Increase Vol.", group = "awesome"}),
-    awful.key({ Modkey, }, "F10",
+    awful.key({ Modkey, }, "F11",
         function () awful.spawn.with_shell(ScriptsPath.."/set_volume toggle") end,
         {description = "Toggle Audio", group = "awesome"}),
-    awful.key({ Modkey, }, "F11",
+    awful.key({ Modkey, }, "F12",
         function () awful.spawn.with_shell(ScriptsPath.."/set_volume switch") end,
         {description = "Change Source", group = "awesome"}),
+
+    -- Screen
+    awful.key({ Modkey, }, "F6",
+        function () awful.spawn.with_shell(ScriptsPath.."/set_brightness +25") end,
+        {description = "Increase Light", group = "awesome"}),
+    awful.key({ Modkey, }, "F5",
+        function () awful.spawn.with_shell(ScriptsPath.."/set_brightness -25") end,
+        {description = "Decrease Light", group = "awesome"}),
 
     -- Other
     ---- Screen OCR
     awful.key({ Modkey, }, "F2",
         function () awful.spawn.with_shell(ScriptsPath.."/screen") end,
         {description = "OCR", group = "awesome"}),
+
     ---- Show All Tags
-    awful.key({ Modkey, "Shift"   }, "t",
+    awful.key({ Modkey, "Shift"   }, "Return",
         function ()
             if not show_all then
-                awful.tag.viewmore(awful.screen.focused().tags)
+                for s in screen do
+                    table.insert(curr_tags, s.selected_tag)
+                end
+                awful.tag.viewmore(root.tags())
                 show_all = true
             else 
-                -- awful.tag.viewnone()
-                awful.tag.history.restore(awful.screen.focused())
+                ct = client.focus.first_tag
+                awful.tag.viewnone()
+                for i = 1, #curr_tags do
+                    curr_tags[i]:view_only()
+                end
+                if ct then
+                    ct:view_only()
+                end
                 show_all = false
             end
         end,
@@ -144,9 +148,10 @@ for i = 1, 10 do
         -- View tag only.
         awful.key({ Modkey }, "#" .. i + 9,
         function ()
-              local tag = root.tags()[i]
+            local tag = root.tags()[((i-1)%(#root.tags()))+1]
               if tag then
                  tag:view_only()
+                 awful.screen.focus(tag.screen)
               end
         end,
         {description = "view tag #"..i, group = "tag"}),
@@ -165,7 +170,7 @@ for i = 1, 10 do
         awful.key({ Modkey, "Shift" }, "#" .. i + 9,
         function ()
             if client.focus then
-                local tag = root.tags()[i]
+                local tag = root.tags()[((i-1)%(#root.tags()))+1]
                 if tag then
                     client.focus:move_to_tag(tag)
                     tag:view_only()
@@ -178,7 +183,7 @@ for i = 1, 10 do
 end
 
 keys.client = gears.table.join(
-    awful.key({ Modkey, }, "w", function (c) c:kill() end,
+    awful.key({ Modkey, }, "q", function (c) c:kill() end,
               {description = "close", group = "client"})
 )
 

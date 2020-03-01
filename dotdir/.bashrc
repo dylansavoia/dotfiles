@@ -18,7 +18,7 @@ esac
 
 if [ "$color_prompt" = yes ]; then
     # PS1='${debian_chroot:+($debian_chroot)}\[\e[1;32m\]\w\[\e[0m\] \$ '
-    PS1='\[\e[1;32m\]\w\[\e[0m\] $( cpref=`basename "$CONDA_PREFIX "`; [[ "$cpref" == "Miniconda " ]] && cpref=""; echo -e "\[\e[1;31m\]$cpref\[\e[0m\]" )\$ '
+    PS1='\[\e[1;32m\]\w\[\e[0m\] $( cpref=`basename "$CONDA_PREFIX "`; [[ "$cpref" == ".miniconda " ]] && cpref=""; echo -e "\[\e[1;31m\]$cpref\[\e[0m\]" )\$ '
 fi
 
 unset color_prompt
@@ -36,8 +36,9 @@ source /usr/share/bash-completion/bash_completion
 
 # Environment Defaults 
 export INPUTRC="~/.config/inputrc"
-export EDITOR=nvim
+export EDITOR="emacsclient -c"
 export TERMINAL=xst
+export TERM=xterm-256color
 export BROWSER=qutebrowser
 
 # set PATH so it includes user's private bin directories
@@ -61,16 +62,18 @@ function cphoto () {
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/dylansavoia/Miniconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/dylansavoia/Miniconda/etc/profile.d/conda.sh" ]; then
-        . "/home/dylansavoia/Miniconda/etc/profile.d/conda.sh"
+function conda_init () {
+    __conda_setup="$('/home/dylansavoia/.miniconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+    if [ $? -eq 0 ]; then
+        eval "$__conda_setup"
     else
-        export PATH="/home/dylansavoia/Miniconda/bin:$PATH"
+        if [ -f "/home/dylansavoia/.miniconda/etc/profile.d/conda.sh" ]; then
+            . "/home/dylansavoia/.miniconda/etc/profile.d/conda.sh"
+        else
+            export PATH="/home/dylansavoia/.miniconda/bin:$PATH"
+        fi
     fi
-fi
-unset __conda_setup
+    unset __conda_setup
+}
 # <<< conda initialize <<<
 
