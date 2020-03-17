@@ -1,21 +1,35 @@
 #!/bin/bash
 
-sel=$(
-        join -t $'\t' <(lsblk -l --output NAME,SIZE | nl) <(lsblk -lpb --output SIZE,TYPE,MOUNTPOINT | nl) |
-        awk '/part $/ && $4 > 4096 {printf("%s\t\t%s\n"), $2, $3}' |
-        rofi -dmenu |
-        awk '{print $1}'
-    )
-[[ "$sel" == "" ]] && return
+mount_ico=""
+eject_ico=""
 
-echo "Where do you want to mount $sel?"
-read mpoint
+devs=`lsblk -l | awk -v mount_ico="$mount_ico" -v eject_ico="$eject_ico" '
+      BEGIN {OFS="\t"}
+      $3==1 && $6=="part" {
+          ico=($7=="") ? mount_ico : eject_ico
+          print ico, $1, "\t\t\t", $4
+      }'`
+sel=`echo -e "$devs" | rofi -dmenu -p Device -no-custom -theme themes/notification_list.rasi`
+[[ "$sel" == "" ]] && exit 1
 
-[[ "$mpoint" == "" ]] && mpoint="default"
 
-mpoint="/media/dylansavoia/$mpoint"
-[ -e "$mpoint" ] || mkdir -p "$mpoint"
-mountpoint -q "$mpoint" && umount "$mpoint"
+sel=( $sel )
+mount=${sel[0]}
+dev=${sel[1]}
 
-`sudo mount -o gid=users,fmask=113,dmask=002 "/dev/$sel" "$mpoint"`
-vifm "$mpoint"
+if [[ $mount == $mount_ico ]]; then
+      mpoint=`udisksctl mount -b "/dev/$dev" | cut -d ' ' -f 4`
+      if [[ ${mpoint:0:1} == "/" ]]; then
+          $TERMINAL -e bash -c "vifm ${mpoint:0: -1}"
+      else
+          notify-send -u critical -i "$HOME/.config/awesome/icons/drive.svg" "$mpoint"
+      fi
+else
+      outmsg=`udisksctl unmount -b "/dev/$dev" 2>&1`
+      if [[ ${outmsg:0:9} == "Unmounted"  ]]; then
+          notify-send -i "$HOME/.config/awesome/icons/eject.svg" "Device Unmounted."
+      else
+          outmsg=`echo $outmsg | cut -d ':' -f 5`
+          notify-send -u critical -i "$HOME/.config/awesome/icons/eject.svg" "$outmsg"
+      fi
+fi

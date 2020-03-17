@@ -13,7 +13,9 @@ set title
 " If you would like to use another vi clone such Elvis or Vile
 " you will need to change this setting.
 
-set vicmd=emacsclient\ -c\ &
+"set vicmd="emacsclient -c &"
+set vicmd=nvim
+
 " set vicmd=elvis\ -G\ termcap
 " set vicmd=vile
 
@@ -206,6 +208,15 @@ nnoremap <f8> :delete<cr>
 " Block particular shortcut
 "
 " nnoremap <left> <nop>
+
+command! df df -h %m 2> /dev/null
+command! diff vim -d %f %F
+command! zip zip -r %f.zip %f
+command! run !! ./%f
+command! make !!make %a
+command! mkcd :mkdir %a | cd %a
+command! vgrep vim "+grep %a"
+command! reload :write | restart
 
 source /home/dylansavoia/.config/vifm/folders
 source /home/dylansavoia/.config/vifm/filetype

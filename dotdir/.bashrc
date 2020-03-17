@@ -28,8 +28,6 @@ alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-source /usr/share/bash-completion/bash_completion
-
 ######################################################
 ##################    Custom     #####################
 ######################################################
@@ -40,6 +38,8 @@ export EDITOR="emacsclient -c"
 export TERMINAL=xst
 export TERM=xterm-256color
 export BROWSER=qutebrowser
+export LS_COLORS='di=1;3{{accent1_ind}}'
+alias record_desktop='recordmydesktop --no-frame --v_quality 1 --v_bitrate 2000000'
 
 # set PATH so it includes user's private bin directories
 PATH="$PATH:$HOME/.local/scripts/:."
@@ -77,3 +77,4 @@ function conda_init () {
 }
 # <<< conda initialize <<<
 
+# source /usr/share/bash-completion/bash_completion

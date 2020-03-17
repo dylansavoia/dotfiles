@@ -1,0 +1,7 @@
+configuration {
+  show-icons:         false;
+  theme:              "themes/mainmenu.rasi";
+  cycle:              true;
+  hide-scrollbar:     true;
+  disable-history:    false;
+}

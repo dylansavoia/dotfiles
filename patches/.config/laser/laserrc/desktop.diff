@@ -1,9 +1,0 @@
---- dotdir/.config/laser/laserrc	2019-10-11 18:39:42.726550536 +0200
-+++ laserrc	2019-10-15 22:31:55.886531900 +0200
-@@ -1,5 +1,5 @@
- # Directories
--/home/dylansavoia/Downloads
-+/media/dylansavoia/HDD/Downloads
- /home/dylansavoia/Dropbox
- 
- # Shortcuts

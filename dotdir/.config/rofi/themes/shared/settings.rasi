@@ -1,0 +1,15 @@
+@import "resolution-{{device}}.rasi"
+
+* {
+  accent:           {{accent1}};
+  background:       #1b1b1b;
+  background-light: #222222;
+  background-focus: #333333;
+  foreground:       #cfcfcf;
+  on:               #44ad4d;
+  off:              #e34039;
+
+  background-color:  @background;
+  text-color:        @foreground;
+  font:              @text-font;
+}

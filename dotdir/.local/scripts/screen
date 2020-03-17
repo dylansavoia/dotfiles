@@ -1,6 +1,14 @@
 #!/bin/bash
 
-import /tmp/scrocr.jpg &&
-tesseract /tmp/scrocr.jpg /tmp/scrocr &&
-sed -i '/^$/d' /tmp/scrocr.txt &&
-xsel -bi < /tmp/scrocr.txt
+tmpfile='/tmp/screenshot.jpg'
+import "$tmpfile"
+
+if [[ $1 == '--ocr' ]]; then
+    tesseract "$tmpfile" "${tmpfile}"
+    sed -i '/^$/d' "${tmpfile}.txt"
+    xclip -selection clipboard -i "${tmpfile}.txt"
+    notify-send -i "$HOME/.config/awesome/icons/screenshot.svg" 'Text Copied To Clipboard.'
+else
+    xclip -selection clipboard -target 'image/jpg' -i "$tmpfile"
+    notify-send -i "$HOME/.config/awesome/icons/screenshot.svg" 'Screenshot Taken.'
+fi

@@ -41,13 +41,23 @@ echo "noarp" >> /etc/dhcpcd.conf
 
 # Install Packages
 ## Essential
-pacman -S xorg-server xorg-xinit xorg-xrandr xsel bash-completion \
-    lightdm lightdm-gtk-greeter \
-    awesome rofi libnotify compton pulseaudio pasystray \
+# udisk2: (u)mount in user space
+# redshift: blue-light filter
+# tesseract-data: OCR data for tesseract-git (from AUR)
+
+pacman -S xorg-server xorg-xinit xorg-xrandr xclip bash-completion \
+    lightdm lightdm-webkit2-greeter \
+    awesome rofi libnotify picom pulseaudio pasystray \
     git openssh python jupyter-notebook bpython unzip \
     ttf-liberation ttf-font-awesome noto-fonts \
-    cmake tesseract-data-eng
-# pacman -S networkmanager network-manager-applet
+    cmake tesseract-data-eng redshift udisks2
+
+
+echo "Do you need NetworkManager and battery in system tray? (Y|n)"
+if [[ "$answ" == "" ]]; then
+    sudo pacman -S cbatticon
+    pacman -S networkmanager network-manager-applet
+fi
 
 systemctl enable lightdm.service
 systemctl enable NetworkManager.service
@@ -63,62 +73,60 @@ mkdir -p "/usr/share/pixmaps/"
 
 ## Applications
 pacman -S ffmpeg imagemagick arandr mpv sxiv \
-    vifm neovim qutebrowser zathura zathura-pdf-mupdf libreoffice-fresh \
-    firefox virtualbox \
+    qutebrowser firefox zathura zathura-pdf-mupdf libreoffice-fresh \
+    vifm highlight virtualbox handbrake \
     entr rsync rclone wget curl tree htop pdfgrep \
     lxappearance arc-gtk-theme arc-icon-theme dconf-editor \
     python-eyed3
 
-pip install pynvim
+pacman -S emacs ripgrep clang tar fd aspell aspell-en
 
 echo "From now on we'll proceed in user-space..."
 read
 su - "$username"
 
-## AUR
+## Emacs config
+git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
+~/.emacs.d/bin/doom install
+
 mkdir -p "/home/$username/.local/bin/"
 mkdir -p "/media/$username/phone"
 mkdir -p "/media/$username/server"
 mkdir -p "/media/$username/default"
 mkdir -p "/home/$username/Downloads"
 
-cd "/home/$username/.local/bin/"
-
 ## rclone
+cd "/home/$username/.local/bin/"
 curl https://rclone.org/install.sh | sudo bash
 
+echo "Install youtube-dl:"
+curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
+chmod a+rx /usr/local/bin/youtube-dl
+
+echo "Installing miniconda (note: specify /home/username/.miniconda as dir)..."
+wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
+bash Miniconda3-latest-Linux-x86_64.sh
+
+## AUR
 git clone https://aur.archlinux.org/dropbox.git
 git clone https://aur.archlinux.org/mp3gain.git
 git clone https://aur.archlinux.org/jmtpfs.git
 git clone https://aur.archlinux.org/xst-git.git
+git clone https://aur.archlinux.org/tesseract-git.git
 git clone https://aur.archlinux.org/pdfjs.git
-
-echo "Installing miniconda (note: specify /home/username/Miniconda as dir)..."
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-bash Miniconda3-latest-Linux-x86_64.sh
 
 for app in `ls "/home/$username/.local/bin/"`; do
     echo "Installing $app"
     cd "/home/$username/.local/bin/$app"
     makepkg -si
-    cd ..
 done
 
-if [[ -e "./dotdir" ]]; then
+if [[ -e "$maindir/dotdir" ]]; then
     echo "dotdir found: copying configs..."
-    bash ./dotfiles restore 
-
-    echo "Compiling xst with new config.h"
-    cd "/home/$username/.local/bin/xst-git/src/xst/"
-    make
-    sudo make install
-
+    cd "$maindir/dotdir"
+    bash "./dotfiles" restore
 fi
 
-
-echo "Install youtube-dl:"
-curl -L https://yt-dl.org/downloads/latest/youtube-dl -o /usr/local/bin/youtube-dl
-chmod a+rx /usr/local/bin/youtube-dl
 
 ## Other
 ### Create RSA key for server
@@ -126,25 +134,18 @@ chmod a+rx /usr/local/bin/youtube-dl
 # ssh-keygen -t rsa
 # ssh-copy-id dylansavoia@dylansavoia.sytes.net
 
-echo "Check arch_setup.sh comments for last steps."
-
 
 echo "There are a few optional packages left..."
-
-echo "Stuff for nvim? (Y|n)"
-if [[ "$answ" == "" ]]; then
-    sudo pacman -S nodejs npm python-jedi
-    nvim -c "CocInstall coc-snippets coc-tsserver coc-python coc-html coc-css coc-json"
-fi
 
 echo "LaTeX? (Y|n)"
 if [[ "$answ" == "" ]]; then
     sudo pacman -S texlive-core texlive-latexextra texlive-science
 fi
 
+echo "Check arch_setup.sh comments for last steps."
 read answ
 [[ "$answ" != "" ]] && exit
 
-# ardour tex?
+
 # lxappearance: change to arc
-# sudo pacman -S cbatticon 
+# dconf-editor

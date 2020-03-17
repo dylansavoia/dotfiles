@@ -15,6 +15,7 @@ fi
 echo "Do you need to create partitions? (Y|n):"
 read answ
 if [[ $answ == "" ]]; then
+    lsblk
     echo "Which device? (es. /dev/sda)"
     read answ
     cgdisk "$answ"

@@ -1,0 +1,77 @@
+@import "shared/settings.rasi"
+
+#window {
+  padding: 20px;
+  width: 500px;
+  height: 400px;
+  border-radius: 50px;
+  location: south west;
+  x-offset: 70px;
+  y-offset: -30px;
+  border: 2px;
+  border-color: @background-focus;
+}
+
+inputbar,
+prompt,
+textbox-prompt-colon,
+entry {
+  background-color: @background-focus;
+}
+
+#inputbar {
+  children: [ prompt, textbox-prompt-colon, entry ];
+  margin: @inputbar-margin;
+  background-color: @background-focus;
+  border-radius: 50px;
+
+}
+
+#prompt {
+  padding: @prompt-padding;
+  background-color: @accent;
+  text-color: @background;
+  border-radius: 50px;
+}
+
+#textbox-prompt-colon {
+  expand: false;
+  str: ": :";
+  padding: @apps-textbox-prompt-colon-padding;
+}
+
+#entry {
+  text-color: @accent;
+  padding: @entry-padding;
+}
+
+#element {
+  padding: @list-element-padding;
+  margin: @list-element-margin;
+  border: @list-element-border;
+  background-color: @background-light;
+  border-color: @background-light;
+  border-radius: @radius-huge;
+}
+
+/** For the message **/
+#textbox {
+  padding: 0 0 10px 30px;
+}
+
+#element.selected {
+  background-color: @background-focus;
+  text-color: @foreground;
+  border-color: @accent;
+}
+
+#listview {
+  columns: 2;
+}
+
+@media ( max-aspect-ratio: 1.0 ) {
+  #window {
+    x-offset: 30px;
+    y-offset: -70px;
+  }
+}

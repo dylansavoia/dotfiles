@@ -1,0 +1,32 @@
+* {
+  /* General */
+  prompt-text-font:                     "Hurmit Nerd Font Mono 18";
+  text-font:                            "Noto Sans Bold 14";
+  text-font-large:                      "Noto Sans Bold 30";
+  text-font-huge:                       "Noto Sans Bold 85";
+
+  inputbar-margin:                      20px 4px;
+  prompt-padding:                       16px 20px;
+  entry-padding:                        18px 16px 16px 0px;
+
+  /* List Menu */
+  prompt-element-padding:               26px  29px  24px  2px;
+  list-element-padding:                 20px 40px;
+  list-element-margin:                  5px;
+  list-element-border:                  0px 0px 0px 8px;
+  list-window-padding:                  150px 320px;
+  list-portrait-padding:                250px 150px;
+
+  apps-textbox-prompt-colon-padding:    16px;
+
+  /* Options Menu */
+  window-5-padding:                     100px 180px 40px;
+  window-5-port-padding:                100px 150px;
+  listview-5-spacing:                   77px;
+  element-5-padding:                    80px 100px;
+  element-5-port-padding:               125px;
+  radius-huge:                          80px;
+
+  pm-mesg-padding:                      70px 600px 80px;
+  pm-mesg-portrait-padding:             50px 165px 100px;
+}

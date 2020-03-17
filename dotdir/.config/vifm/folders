@@ -3,7 +3,7 @@ nnoremap gh :cd ~<CR>
 nnoremap g/ :cd /<CR>
 nnoremap gm :cd /media/dylansavoia<CR>
 
-nnoremap gD :cd ~/Downloads<CR>
+nnoremap gD :cd {{download_dir}}<CR>
 nnoremap gd :cd ~/Dropbox<CR>
 
 " Configs

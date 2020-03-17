@@ -42,12 +42,15 @@ echo "noarp" >> /etc/dhcpcd.conf
 # Install Packages
 ## Essential
 pacman -S xorg-server xorg-xinit xorg-xrandr xsel bash-completion \
-    lightdm lightdm-gtk-greeter \
+    lightdm lightdm-gtk-greeter pacman-contrib \
     awesome rofi libnotify compton pulseaudio pasystray \
     git openssh python jupyter-notebook bpython unzip \
     ttf-liberation ttf-font-awesome noto-fonts \
     cmake tesseract-data-eng
+
+
 # pacman -S networkmanager network-manager-applet
+# sudo pacman -S cbatticon
 
 systemctl enable lightdm.service
 systemctl enable NetworkManager.service
@@ -63,17 +66,13 @@ mkdir -p "/usr/share/pixmaps/"
 
 ## Applications
 pacman -S ffmpeg imagemagick arandr mpv sxiv \
-    vifm qutebrowser zathura zathura-pdf-mupdf libreoffice-fresh \
+    vifm neovim qutebrowser zathura zathura-pdf-mupdf libreoffice-fresh \
     firefox virtualbox \
     entr rsync rclone wget curl tree htop pdfgrep \
     lxappearance arc-gtk-theme arc-icon-theme dconf-editor \
     python-eyed3
 
-## For Emacs
-pacman -S emacs ripgrep clang tar fd aspell aspell-en
-git clone https://github.com/hlissner/doom-emacs ~/.emacs.d
-~/.emacs.d/bin/doom install
-
+pip install pynvim
 
 echo "From now on we'll proceed in user-space..."
 read
@@ -97,8 +96,7 @@ git clone https://aur.archlinux.org/jmtpfs.git
 git clone https://aur.archlinux.org/xst-git.git
 git clone https://aur.archlinux.org/pdfjs.git
 
-
-echo "Installing miniconda (note: specify /home/username/.miniconda as dir)..."
+echo "Installing miniconda (note: specify /home/username/Miniconda as dir)..."
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 bash Miniconda3-latest-Linux-x86_64.sh
 
@@ -136,6 +134,12 @@ echo "Check arch_setup.sh comments for last steps."
 
 echo "There are a few optional packages left..."
 
+echo "Stuff for nvim? (Y|n)"
+if [[ "$answ" == "" ]]; then
+    sudo pacman -S nodejs npm python-jedi
+    nvim -c "CocInstall coc-snippets coc-tsserver coc-python coc-html coc-css coc-json"
+fi
+
 echo "LaTeX? (Y|n)"
 if [[ "$answ" == "" ]]; then
     sudo pacman -S texlive-core texlive-latexextra texlive-science
@@ -146,4 +150,3 @@ read answ
 
 # ardour tex?
 # lxappearance: change to arc
-# sudo pacman -S cbatticon 

@@ -1,8 +1,9 @@
-# Directories
-/home/dylansavoia/Downloads
-/home/dylansavoia/Dropbox
-/home/dylansavoia/.config
-/home/dylansavoia/.local
+# Find
+/home/dylansavoia -maxdepth 1
+{{download_dir}}
+/home/dylansavoia/Dropbox -name '\.*' -prune -o
+/home/dylansavoia/.config -maxdepth 2
+/home/dylansavoia/.local/scripts
 
 # Shortcuts
 :Terminal:xst
@@ -15,14 +16,5 @@
 :Calendar:https://calendar.google.com/calendar/
 :Server:https://dylansavoia.sytes.net/Main/
 :Reload:laser -r
-:Shutdown:shutdown now
-:Suspend:systemctl suspend
-:Reboot:reboot;
-
-# Terminal
-htop
-vifm
-nvim
-bpython
-br
-broot
+:Power:power.sh
+:Mount:mnt

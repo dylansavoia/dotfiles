@@ -13,3 +13,6 @@
 (add-hook 'lsp-mode-hook (lambda ()
   (setq company-backends (cdr company-backends))
 ) 1)
+
+
+(add-hook 'org-mode-hook 'org-fragtog-mode)

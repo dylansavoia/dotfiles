@@ -3,6 +3,17 @@ cmd="$1"
 dotdir="./dotdir"
 devs=('desktop' 'laptop')
 
+sed_files='
+./dotdir_tmp/.config/qutebrowser/config.py
+./dotdir_tmp/.config/awesome/theme.lua
+./dotdir_tmp/.config/vifm/folders
+./dotdir_tmp/.config/vifm/colors/Default.vifm
+./dotdir_tmp/.config/laser/laserrc
+./dotdir_tmp/.config/rofi/themes/shared/settings.rasi
+./dotdir_tmp/.bashrc
+./dotdir_tmp/.Xresources
+'
+
 case "$cmd" in
     "collect" )
         name="$2"
@@ -32,6 +43,7 @@ case "$cmd" in
         rsync -a --delete ~/.config/compton      "$name/.config"
         rsync -a --delete ~/.config/rclone       "$name/.config"
         rsync -a --delete ~/.config/zathura      "$name/.config"
+        rsync -a --delete ~/.config/rofi         "$name/.config"
         rsync -a --delete ~/.config/laser        "$name/.config"
         rsync -a --delete ~/.config/qutebrowser  "$name/.config"
         rsync -a --delete ~/.config/nvim --exclude plugged --exclude spell  "$name/.config"
@@ -51,7 +63,7 @@ case "$cmd" in
             read dev
 
             if [ $dev -ge ${#devs[*]} ]; then
-                echo "Ma allur si propr' na fungia?!"
+                echo "Device Out Of Boundaries"
                 exit 1
             fi
 
@@ -63,16 +75,45 @@ case "$cmd" in
         # Create Copy
         cp -a "$dotdir" "${dotdir}_tmp"
 
-        for item in `find ./patches -mindepth 1 -type d `; do
+        ## Apply Patches
+        for item in `find ./patches/structural -mindepth 1 -type d `; do
             if [[ -e  "$item/$dev.diff" ]]; then
-                dest=${dotdir}_tmp/${item:10}
+                dest=${dotdir}_tmp/${item:20}
                 patch "$dest" "$item/$dev.diff"
             fi
         done
 
-        echo "Done. Press Enter to continue or abort (Ctrl-C)"
+        ## Apply Substitutions
+        # NOTE: sed can use any character as a delimiter instead of /
+        vardir=./patches/variables
+
+        #meta substitution for colorscheme
+        clrcmd=`head -n 16 $vardir/colorscheme |
+             awk -F = '{print "s@{{" $1 "}}@" $2 "@"}' | tr '\n' ';'`
+        sed "$clrcmd" "$vardir/colorscheme" > "$vardir/colorscheme.done"
+
+        sedcmd=`cat $vardir/$dev $vardir/default $vardir/colorscheme.done|
+             sort -u -t= -k1,1 |
+             awk -F = '{print "s@{{" $1 "}}@" $2 "@"}' | tr '\n' ';'`
+        rm "$vardir/colorscheme.done"
+
+        for f in $sed_files; do
+            sed -i "$sedcmd" "$f"
+        done
+
+
+        echo "Done. Change System Files (Enter). Abort (Ctrl-C)"
         read
 
+        # Extra
+        # CURRENT LAPTOP REQUIRES SPECIAL "CARE" FOR LIGHTDM DON'T TOUCH THIS!
+        # sudo cp ./patches/structural/lightdm-webkit2-greeter.conf /etc/lightdm/
+        # sudo cp ./patches/structural/lightdm.conf /etc/lightdm/
+        # cd /home/dylansavoia/.local/bin/xst-git/src/xst
+        # make
+        # sudo make install
+
+        # Modify System Files
         shopt -s dotglob
         cd "${dotdir}_tmp"
         cp --parents -a * ~
@@ -80,10 +121,6 @@ case "$cmd" in
 
         rm -rf "${dotdir}_tmp"
     
-        # Extra to config xst
-        cd /home/dylansavoia/.local/bin/xst-git/src/xst
-        make
-        sudo make install
 
         ;;
     *)

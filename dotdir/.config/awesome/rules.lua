@@ -1,3 +1,5 @@
+local controls = require('controls')
+
 -- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
     -- All clients will match this rule.
@@ -7,8 +9,8 @@ awful.rules.rules = {
         border_color = beautiful.border_normal,
         focus = awful.client.focus.filter,
         raise = true,
-        keys = Keys.client,
-        buttons = Buttons.client,
+        keys = controls.keymapping.client,
+        buttons = controls.mouse_buttons,
         size_hints_honor = false,
         screen = awful.screen.preferred,
         placement = awful.placement.no_overlap + awful.placement.no_offscreen + awful.placement.centered
@@ -27,10 +29,4 @@ awful.rules.rules = {
         properties = { floating = true }
     },
 
-    { 
-        rule_any = { class = {"qutebrowser", "firefox"} },
-        properties = { tag = "", switchtotag = true }
-    }
-
 }
-

@@ -1,16 +1,23 @@
-import re
-reg = re.compile("#[A-Fa-f0-9]{6,8}")
+bkg         = "{{bkg}}"
+bkg_alt     = "{{bkg_alt}}"
+fg          = "{{fg}}"
+fg_alt      = "{{fg_alt}}"
+accent1     = "{{accent1}}"
+accent1_fg = "{{accent1_fg}}"
+accent2     = "{{accent2}}"
+accent2_fg = "{{accent2_fg}}"
+accent3     = "{{accent3}}"
+accent3_fg = "{{accent3_fg}}"
+urgent      = "{{urgent}}"
+warning     = "{{warning}}"
+warning_fg =  "{{warning_fg}}"
+fontbase    = "{{font}}"
+font        = "18px " + fontbase
+monospace   = "{{monospace}}"
 
-with open("/home/dylansavoia/.Xresources") as f:
-    colors = reg.findall(f.read())
-
-bkg = colors[0]
-bkg_alt = colors[1]
-fg  = colors[14]
-fg_alt = colors[15]
-accent = colors[8]
-accent_alt = colors[9]
-
+###############################################################################
+#                                   Bindings                                  #
+###############################################################################
 config.unbind("m")
 config.unbind("`")
 config.unbind("go")
@@ -18,7 +25,9 @@ config.unbind("go")
 config.bind("gy", "open https://youtube.com")
 config.bind("gs", "open https://dylansavoia.sytes.net/Main")
 config.bind("gog", "open https://google.com")
-    
+
+config.bind("<Ctrl-P>", "completion-item-focus prev", mode='command')
+config.bind("<Ctrl-N>", "completion-item-focus next", mode='command')
 config.bind("<Ctrl-P>", "enter-mode passthrough")
 config.bind("<Ctrl-P>", "leave-mode", mode="passthrough")
 config.bind("b", "set-cmd-text -s :buffer")
@@ -41,20 +50,22 @@ config.bind("gdd", "download-delete")
 config.bind("to", "tab-only")
 config.bind("ZZ", "close")
 
+###############################################################################
+#                                     MISC                                    #
+###############################################################################
 c.hints.auto_follow = "full-match"
 c.hints.mode = "number"
 c.keyhint.blacklist = ["*"]
+c.scrolling.smooth = True
+c.editor.command = ["emacsclient", "-c", "+{line}:{column0}", "{file}"]
+c.zoom.default = 125
 
 c.tabs.show = "never"
-# c.tabs.min_width = -1
-# c.tabs.max_width = 250
-# c.tabs.padding = {'top': 5, 'bottom': 5, 'right': 7, 'left': 7}
-# c.tabs.last_close = "startpage"
-# c.tabs.title.format = "{current_title}"
-# c.tabs.indicator.width = 0
+c.tabs.last_close = "startpage"
 
 c.statusbar.widgets = ["keypress", "progress", "scroll", "tabs"]
 c.content.pdfjs = True
+c.content.notifications = False
 
 c.prompt.radius = 1
 
@@ -67,75 +78,81 @@ c.input.insert_mode.leave_on_load = False
 
 c.downloads.position = "bottom"
 c.downloads.location.prompt = False
-c.downloads.location.directory = "/home/dylansavoia/Downloads"
+c.downloads.location.directory = "{{download_dir}}"
 c.downloads.remove_finished = 5000
 
+###############################################################################
+#                                    Colors                                   #
+###############################################################################
 c.colors.completion.scrollbar.bg = bkg_alt
-c.colors.completion.scrollbar.fg = accent
+c.colors.completion.scrollbar.fg = accent1
 
 c.colors.tabs.even.bg = bkg
 c.colors.tabs.bar.bg = bkg
 c.colors.tabs.odd.bg = bkg
-c.colors.tabs.selected.even.bg = accent
-c.colors.tabs.selected.odd.bg = accent
+c.colors.tabs.selected.even.bg = accent1
+c.colors.tabs.selected.odd.bg = accent1
 
 c.colors.completion.fg = bkg_alt
 c.colors.completion.odd.bg = bkg
 c.colors.completion.even.bg = bkg
-c.colors.completion.category.bg = accent
-c.colors.completion.category.border.top = accent
+c.colors.completion.category.bg = accent1
+c.colors.completion.category.border.top = accent1
 c.colors.completion.item.selected.fg = fg_alt
 c.colors.completion.item.selected.bg = bkg
-c.colors.completion.item.selected.border.bottom = accent_alt
-c.colors.completion.item.selected.border.top = accent_alt
-c.colors.completion.item.selected.match.fg = colors[11]
-c.colors.completion.match.fg = accent_alt
+c.colors.completion.item.selected.border.bottom = accent1_fg
+c.colors.completion.item.selected.border.top = accent1_fg
+c.colors.completion.item.selected.match.fg = accent2_fg
+c.colors.completion.match.fg = accent1_fg
 
 c.colors.downloads.start.bg = bkg
 c.colors.downloads.stop.bg = bkg
 c.colors.downloads.error.bg = bkg
 c.colors.downloads.system.bg = "none"
-c.colors.downloads.start.fg = "#ffffff"
-c.colors.downloads.stop.fg = accent_alt
-c.colors.downloads.error.fg = "#d799aa"
+c.colors.downloads.start.fg = fg_alt
+c.colors.downloads.stop.fg = accent1_fg
+c.colors.downloads.error.fg = urgent
 
 c.colors.prompts.border = "0px"
 c.colors.downloads.bar.bg = bkg
-c.colors.messages.error.bg = colors[2]
-c.colors.messages.error.border = colors[2]
-c.colors.messages.warning.bg = colors[12]
-c.colors.messages.warning.border = colors[12]
+c.colors.messages.error.bg = urgent
+c.colors.messages.error.border = urgent
+c.colors.messages.warning.bg = warning
+c.colors.messages.warning.border = warning
 
 c.colors.statusbar.normal.bg = bkg
+c.colors.statusbar.normal.fg = fg
 c.colors.statusbar.command.bg = bkg
-c.colors.statusbar.insert.bg = accent
-c.colors.statusbar.progress.bg = accent
-c.colors.statusbar.url.success.https.fg = accent_alt
-c.colors.statusbar.url.success.http.fg = accent_alt
-c.colors.statusbar.url.warn.fg = colors[7]
-c.colors.statusbar.url.fg = accent
+c.colors.statusbar.insert.bg = accent1
+c.colors.statusbar.progress.bg = accent1
+c.colors.statusbar.url.success.https.fg = accent1_fg
+c.colors.statusbar.url.success.http.fg = accent1_fg
+c.colors.statusbar.url.warn.fg = warning_fg
+c.colors.statusbar.url.fg = accent1
 
 c.colors.prompts.bg = bkg
 c.colors.prompts.fg = fg
-c.colors.messages.info.border = accent
-c.colors.statusbar.passthrough.bg = colors[2]
-c.colors.statusbar.caret.bg = colors[10]
+c.colors.messages.info.border = accent1
+c.colors.statusbar.passthrough.bg = accent2
+c.colors.statusbar.caret.bg = accent3
 
-c.colors.hints.fg = accent_alt
+c.colors.hints.fg = accent1_fg
 c.colors.hints.bg = bkg
-c.colors.hints.match.fg = accent
-c.hints.border = "1px solid " + accent
+c.colors.hints.match.fg = accent1
+c.hints.border = "1px solid " + accent1
 
-c.fonts.tabs = "12px Noto Sans"
-c.fonts.statusbar = "12px Noto Sans"
-c.fonts.prompts = "14px Noto Sans"
-c.fonts.downloads = "14px Noto Sans"
-c.fonts.keyhint = "14px Noto Sans"
-c.fonts.hints = "bold 14px Noto Sans"
-c.fonts.completion.category = "14px Noto Sans"
-c.fonts.completion.entry = "14px Noto Sans"
-
-c.scrolling.smooth = True
-
-
-c.editor.command = ["emacsclient", "-c", "+{line}:{column0}", "{file}"]
+###############################################################################
+#                                    Fonts                                    #
+###############################################################################
+c.fonts.tabs = font
+c.fonts.statusbar = font
+c.fonts.prompts = font
+c.fonts.downloads = font
+c.fonts.keyhint = font
+c.fonts.hints = "bold " + font
+c.fonts.completion.category = font
+c.fonts.completion.entry = font
+c.fonts.web.family.sans_serif = fontbase
+c.fonts.web.family.serif = fontbase
+c.fonts.web.family.standard = fontbase
+c.fonts.web.family.fixed = monospace

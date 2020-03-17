@@ -10,6 +10,9 @@
       (:prefix-map ("t" . "toggle")
         :desc "Flyspell"    "s"  #'flyspell-mode
       )
+      (:prefix-map ("s" . "search")
+        :desc "Global"    "g"  #'counsel-rg
+      )
 )
 
 (defun custom-auto-correct-next-word ()

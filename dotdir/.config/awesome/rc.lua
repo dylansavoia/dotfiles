@@ -1,3 +1,13 @@
+Modkey = "Mod4"
+Terminal = os.getenv("TERMINAL") or "xterm"
+Editor = os.getenv("EDITOR") or "nano"
+ConfigPath = os.getenv("HOME").."/.config/awesome"
+ScriptsPath = os.getenv("HOME").."/.local/scripts"
+
+editor_cmd = Terminal .. " -e " .. Editor
+----------------------------------------------------------------
+--                         Imports                            --
+----------------------------------------------------------------
 beautiful   = require("beautiful")
 naughty     = require("naughty")
 menubar     = require("menubar")
@@ -7,18 +17,11 @@ awful       = require("awful")
 gears       = require("gears")
 awful       = require("awful")
 
-awful.spawn.with_shell( os.getenv("HOME") .. "/.config/awesome/autostart.sh")
+xresources  = require("beautiful.xresources")
+dpi         = xresources.apply_dpi
 
-require("awful.autofocus")
-require('errors')
+awful.spawn.with_shell(os.getenv("HOME").."/.config/awesome/autostart.sh")
+beautiful.init(ConfigPath.."/theme.lua")
 
--- Useful Globals {{{
-require('config')
-Keys = require('keys')
-Buttons = require('mouse')
--- }}}
-
-require('theme')
 require('rules')
 require('signals')
-require('bar')

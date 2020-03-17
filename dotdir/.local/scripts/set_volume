@@ -15,6 +15,6 @@ else
     if [[ "$1" == "toggle" ]]; then
         pactl set-sink-mute $sink toggle
     else
-        pactl set-sink-volume $sink $1 
+        pactl set-sink-volume $sink $1
     fi
 fi

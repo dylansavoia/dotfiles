@@ -16,16 +16,19 @@ function run {
 # Desktop effects
 run compton --config ~/.config/compton/compton.conf
 
-# Network manager tray icon
-run nm-applet
-
 setxkbmap -layout "us,it" -option "grp:alt_shift_toggle" &
 xset r rate 200 30 &
 xset m 10 50
 setxkbmap -option caps:swapescape &
-
+laser -r
+run redshift &
 
 # Sys Tray
 run dropbox
 run pasystray
-run cbatticon
+
+# Turns out a chassis_type = 3 is a desktop
+if [[ $(</sys/class/dmi/id/chassis_type) != 3 ]]; then
+    run cbatticon
+    run nm-applet
+fi
