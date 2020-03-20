@@ -36,3 +36,6 @@
 (add-hook 'text-mode-hook #'restyle-margins)
 
 (add-hook 'org-mode-hook (lambda () (display-line-numbers-mode 0)))
+
+;; Compensates for Doom choices
+(remove-hook 'text-mode-hook #'auto-fill-mode)

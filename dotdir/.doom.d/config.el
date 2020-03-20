@@ -20,6 +20,8 @@
 (setq-default header-line-format " ")
 
 (yas-global-mode t)
+(global-visual-line-mode 1)
+(auto-fill-mode -1)
 
 (add-to-list 'default-frame-alist '(internal-border-width . 5))
 ;; (set-face-attribute 'header-line nil :inherit 'default :background)
