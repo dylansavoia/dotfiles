@@ -39,7 +39,6 @@ export TERMINAL=xst
 export TERM=xterm-256color
 export BROWSER=qutebrowser
 export LS_COLORS='di=1;3{{accent1_ind}}'
-alias record_desktop='recordmydesktop --no-frame --v_quality 1 --v_bitrate 2000000'
 
 # set PATH so it includes user's private bin directories
 PATH="$PATH:$HOME/.local/scripts/:."
@@ -47,17 +46,24 @@ PATH="$PATH:$HOME/.local/scripts/:."
 alias normalize="mp3gain -r *"
 alias ffplay="ffplay -x 1"
 alias calc="bpython -i ~/.local/scripts/calc.py"
+alias recordmydesktop='recordmydesktop --no-frame --v_quality 1 --v_bitrate 2000000'
+alias emacs="emacsclient -c"
 
 alias mserver="sshfs dylansavoia@dylansavoia.sytes.net:/var/www/html/Main /media/dylansavoia/server"
 alias umserver="sudo umount /media/dylansavoia/server"
 alias mphone="jmtpfs /media/dylansavoia/phone"
 alias umphone="sudo umount /media/dylansavoia/phone"
-
 alias server="mountpoint -q /media/dylansavoia/server/ || mserver; cd /media/dylansavoia/server/"
 alias phone="mountpoint -q /media/dylansavoia/phone/ || mphone; cd /media/dylansavoia/phone/"
 
 function cphoto () {
     mogrify -strip -sampling-factor 4:2:0 -quality 85 $1 
+}
+
+function aur_install () {
+    git clone "https://aur.archlinux.org/$1.git" "$HOME/.local/bin/$1"
+    cd "$HOME/.local/bin/$1"
+    makepkg -si
 }
 
 # >>> conda initialize >>>

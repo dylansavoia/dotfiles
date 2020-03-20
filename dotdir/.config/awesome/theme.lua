@@ -3,7 +3,7 @@ local theme = {}
 --------------------------------------------
 --            User Options                --
 --------------------------------------------
-local fontbase = "Noto Sans "
+local fontbase = "{{font}} "
 local bkg,     fg,     accent
 local bkg_alt, fg_alt, urgent, acc2
 
@@ -37,7 +37,7 @@ theme.fg_urgent     = fg_alt
 theme.fg_minimize   = fg
 
 theme.useless_gap   = dpi(5)
-theme.border_width  = dpi(1.5)
+theme.border_width  = dpi(0)
 theme.border_focus  = accent
 theme.border_normal = bkg
 theme.border_marked = acc2
@@ -56,23 +56,20 @@ theme.icon_theme = nil
 --                    Notifications                    --
 ---------------------------------------------------------
 theme.notification_font    = fontbase.."12"
-theme.notification_margin  = dpi(10)
+theme.notification_margin  = dpi(25)
+theme.notification_padding = dpi(10)
+theme.notification_spacing = dpi(20)
 theme.notification_border_color = bkg_alt
 theme.notification_icon_size = dpi(50)
 theme.notification_shape = function (cr, w, h)
   gears.shape.rounded_rect(cr, w, h, 50)
 end
 
-naughty.config.padding = dpi(20)
-naughty.config.spacing = dpi(15)
-naughty.config.defaults.margin = dpi(20)
+naughty.config.padding = beautiful.notification_padding
 naughty.config.defaults.border_width = dpi(2)
-naughty.config.defaults.position = "bottom_right"
-
-naughty.config.presets.normal.icon = ConfigPath.."/icons/info.svg"
-naughty.config.presets.low.icon = ConfigPath.."/icons/warning.svg"
-naughty.config.presets.critical.icon = ConfigPath.."/icons/error.svg"
-naughty.config.presets.critical.bg = bkg
-naughty.config.presets.critical.border_color = urgent
+naughty.config.defaults.position = "top_middle"
+naughty.config.defaults.timeout = 3
+naughty.config.presets.critical.bg = theme.bg_normal
+naughty.config.presets.critical.border_color = theme.bg_urgent
 
 return theme

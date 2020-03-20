@@ -47,7 +47,7 @@ echo "noarp" >> /etc/dhcpcd.conf
 
 pacman -S xorg-server xorg-xinit xorg-xrandr xclip bash-completion \
     lightdm lightdm-webkit2-greeter \
-    awesome rofi libnotify picom pulseaudio pasystray \
+    awesome rofi libnotify picom pulseaudio pulsemixer pasystray \
     git openssh python jupyter-notebook bpython unzip \
     ttf-liberation ttf-font-awesome noto-fonts \
     cmake tesseract-data-eng redshift udisks2
@@ -114,6 +114,7 @@ git clone https://aur.archlinux.org/jmtpfs.git
 git clone https://aur.archlinux.org/xst-git.git
 git clone https://aur.archlinux.org/tesseract-git.git
 git clone https://aur.archlinux.org/pdfjs.git
+git clone https://aur.archlinux.org/mons.git
 
 for app in `ls "/home/$username/.local/bin/"`; do
     echo "Installing $app"

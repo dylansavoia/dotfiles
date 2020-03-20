@@ -52,3 +52,4 @@
 ;(package! builtin-package :recipe (:branch "develop"))
 ;
 (package! org-fragtog :recipe (:host github :repo "io12/org-fragtog"))
+(package! hl-line :disable t)

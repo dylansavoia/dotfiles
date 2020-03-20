@@ -9,6 +9,13 @@ pkg_fn.icons = {
     default = ""
 }
 
+function pkg_fn.update_table(main, second)
+    for k,v in pairs(second) do
+        main[k] = v
+    end
+    return main
+end
+
 function pkg_fn.create_tag(scr, front)
     local default_layout, min_layout
     local tag, min
@@ -36,5 +43,16 @@ function pkg_fn.create_tag(scr, front)
     return tag
 end
 
+function pkg_fn.unique_notif(args, n)
+    if n and not n.is_expired then
+        n.title = args.title or n.title
+        n.message = args.message or n.message
+        n.icon = args.icon or n.icon
+        n.timeout = args.timeout or n.timeout
+    else
+        n = args
+    end
+    return n
+end
 
 return pkg_fn

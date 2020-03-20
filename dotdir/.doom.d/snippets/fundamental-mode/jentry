@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: Journal Entry
+# uuid: jentry
+# key: entry
+# condition: t
+# --
+# `(format-time-string "%d %b %y")` - $1
+`(format-time-string "%a, %H:%M")` - $0

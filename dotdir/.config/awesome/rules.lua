@@ -30,3 +30,28 @@ awful.rules.rules = {
     },
 
 }
+
+-- ruled.notification.connect_signal('request::rules', function()
+--     ruled.notification.append_rule {
+--         rule       = { urgency = 'normal' },
+--         properties = {
+--           border_color = beautiful.bg_focus,
+--           icon = ConfigPath.."/icons/info.svg"
+--         }
+--     }
+
+--     ruled.notification.append_rule {
+--         rule       = { urgency = 'low' },
+--         properties = {
+--           icon = ConfigPath.."/icons/warning.svg"
+--         }
+--     }
+
+--     ruled.notification.append_rule {
+--         rule       = { urgency = 'critical' },
+--         properties = {
+--           border_color = beautiful.bg_urgent,
+--           icon = ConfigPath.."/icons/error.svg"
+--         }
+--     }
+-- end)

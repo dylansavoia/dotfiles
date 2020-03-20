@@ -1,20 +1,40 @@
 #!/bin/bash
+
 if [[ "$1" == "switch" ]]; then
-    switch=($(pactl list short sinks | awk '/SUSPENDED|IDLE/ {print $2}'))
-    pactl set-default-sink $switch
+    sink=(`pactl list short sinks |
+             awk '/SUSPENDED|IDLE/ {print $2}'`)
+    pactl set-default-sink $sink
 
-    ins=($(pactl list short sink-inputs | awk '{print $1}'))
+    ins=(`pactl list short sink-inputs | cut -f 1`)
+    for ind in ${ins[@]}; do
+        pacmd move-sink-input $ind $sink
+    done
 
-    for input in ${ins[@]}; do
-        pacmd move-sink-input $input $switch 
-    done 
+    sink=`echo $sink | cut -d '.' -f 4`
+    notify-send -i "$HOME/.config/awesome/icons/switch.svg" 'Volume' "$sink"
+
+elif [[ "$1" == "toggle" ]]; then
+    pulsemixer --toggle-mute
+    mute=(`pulsemixer --get-mute`)
+
+    if [[ "$mute" == '1' ]]; then
+        notify-send -i "$HOME/.config/awesome/icons/volume-mute.svg" 'Volume' "Device Muted"
+    else
+        notify-send -i "$HOME/.config/awesome/icons/volume.svg" 'Volume' "Device Unmuted"
+    fi
 
 else
-    sink=$(pactl list short sinks | awk '/RUNNING/ {print $1}')
-    [[ "$sink" == "" ]] && sink=1
-    if [[ "$1" == "toggle" ]]; then
-        pactl set-sink-mute $sink toggle
-    else
-        pactl set-sink-volume $sink $1
-    fi
+    # Returns two arguments. This way it's implicit
+    # we're only using the first
+    cmd="$1"
+    vol=(`pulsemixer --get-volume`)
+    eval "let vol=$vol$cmd"
+    pulsemixer --set-volume $vol
+
+    icon='volume-up'
+    [[ ${cmd:0:1} == '-' ]] && icon='volume-down'
+
+    vol=(`pulsemixer --get-volume`)
+    notify-send -i "$HOME/.config/awesome/icons/$icon.svg" 'Volume' "Volume    $vol"
 fi
+

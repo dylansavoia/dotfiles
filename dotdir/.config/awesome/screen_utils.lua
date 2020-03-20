@@ -1,18 +1,6 @@
 local commons = require('commons')
 local pkg_fn = {}
 
-
-function printtb (t)
-    local msg = ""
-    for k in pairs(t) do
-        msg = msg..tostring(t[k]).."\n"
-    end
-    naughty.notify({
-        title = "debug",
-        text = msg
-    })
-end
-
 local systray = wibox.widget.systray()
 systray:set_horizontal(false)
 
@@ -199,9 +187,7 @@ function pkg_fn.add_sidebar(s)
     if horizontal_bar then bardata.height = beautiful.wibar_width
     else bardata.width = beautiful.wibar_width end
 
-    -- Create the wibox
     s.statusbar = awful.wibar(bardata)
-
 end
 
 return pkg_fn

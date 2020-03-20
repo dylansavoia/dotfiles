@@ -9,6 +9,12 @@ devs=`lsblk -l | awk -v mount_ico="$mount_ico" -v eject_ico="$eject_ico" '
           ico=($7=="") ? mount_ico : eject_ico
           print ico, $1, "\t\t\t", $4
       }'`
+
+if [[ "$devs" == "" ]]; then
+    notify-send "No Devices Found."
+    exit
+fi
+
 sel=`echo -e "$devs" | rofi -dmenu -p Device -no-custom -theme themes/notification_list.rasi`
 [[ "$sel" == "" ]] && exit 1
 

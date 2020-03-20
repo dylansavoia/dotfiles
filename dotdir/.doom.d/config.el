@@ -1,41 +1,28 @@
 ;;; $DOOMDIR/config.el -*- lexical-binding: t; -*-
-
-;; Place your private configuration here! Remember, you do not need to run 'doom
-;; refresh' after modifying this file!
-
-
-;; Some functionality uses this to identify you, e.g. GPG configuration, email
-;; clients, file templates and snippets.
 (setq user-full-name "Dylan Savoia"
       user-mail-address "dylansavoia@gmail.com")
 
-(setq doom-theme 'doom-one)
-
-;; Doom exposes five (optional) variables for controlling fonts in Doom. Here
-;; are the three important ones:
-;;
-;; + `doom-font'
-;; + `doom-variable-pitch-font'
-;; + `doom-big-font' -- used for `doom-big-font-mode'
-;;
-;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
-;; font string. You generally only need these two:
+;; Doom / Org
+(setq doom-theme 'custom)
 (setq doom-font (font-spec :family "Liberation Mono" :size 20))
-
-;; There are two ways to load a theme. Both assume the theme is installed and
-;; available. You can either set `doom-theme' or manually load a theme with the
-;; `load-theme' function. These are the defaults.
-
-;; If you intend to use org, it is recommended you change this!
 (setq org-directory "~/.doom/org/")
-;; If you want to change the style of line numbers, change this to `relative' or
-;; `nil' to disable it:
-(setq display-line-numbers-type t)
-
 
 ;; GUI
-(setq-default line-spacing 5)
-(global-visual-line-mode)
+(setq-default line-spacing 0.5)
+(setq display-line-numbers-type t)
+(setq-default display-line-numbers-width 0)
+(global-hl-line-mode 0)
+
+(setq org-startup-indented t)
+(setq org-pretty-entities t)
+(setq org-ellipsis "  ")
+(setq org-bullets-bullet-list '(" "))
+(setq-default header-line-format " ")
+
+(yas-global-mode t)
+
+(add-to-list 'default-frame-alist '(internal-border-width . 5))
+;; (set-face-attribute 'header-line nil :inherit 'default :background)
 
 (setq company-idle-delay 0)
 (setq company-minimum-prefix-length 1)
@@ -51,7 +38,6 @@
 
 (load! "hooks.el")
 (load! "mappings.el")
-
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

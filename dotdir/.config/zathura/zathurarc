@@ -4,5 +4,17 @@ map ` mark_evaluate
 
 set selection-clipboard clipboard
 set recolor-keephue true
-set default-bg "#555555"
-set recolor-lightcolor "#1b1b1b"
+set recolor-lightcolor "{{black0}}"
+
+set default-bg "{{bkg_alt}}"
+set default-fg "{{fg}}"
+set inputbar-bg "{{bkg}}"
+set inputbar-fg "{{fg}}"
+set statusbar-bg "{{bkg}}"
+set statusbar-fg "{{fg}}"
+
+set notification-error-bg "{{urgent}}"
+set notification-error-fg "{{fg}}"
+set notification-warning-bg "{{warning}}"
+set notification-warning-fg "{{fg}}"
+set font "{{font}} 10"

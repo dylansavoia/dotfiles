@@ -9,6 +9,7 @@ sed_files='
 ./dotdir_tmp/.config/vifm/folders
 ./dotdir_tmp/.config/vifm/colors/Default.vifm
 ./dotdir_tmp/.config/laser/laserrc
+./dotdir_tmp/.config/zathura/zathurarc
 ./dotdir_tmp/.config/rofi/themes/shared/settings.rasi
 ./dotdir_tmp/.bashrc
 ./dotdir_tmp/.Xresources
@@ -34,7 +35,7 @@ case "$cmd" in
         rsync ~/.profile        "$name"
         rsync ~/.xinitrc        "$name"
         rsync ~/.Xresources     "$name"
-        rsync ~/.doom.d         "$name"
+        rsync -a --delete ~/.doom.d  "$name"
 
         # .config
         mkdir -p "$name/.config"

@@ -2,7 +2,7 @@
 /home/dylansavoia -maxdepth 1
 {{download_dir}}
 /home/dylansavoia/Dropbox -name '\.*' -prune -o
-/home/dylansavoia/.config -maxdepth 2
+/home/dylansavoia/.config -maxdepth 2 -mindepth 1
 /home/dylansavoia/.local/scripts
 
 # Shortcuts
@@ -18,3 +18,4 @@
 :Reload:laser -r
 :Power:power.sh
 :Mount:mnt
+:Setup Monitor:monitor_setup.sh

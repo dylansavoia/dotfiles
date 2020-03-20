@@ -15,9 +15,6 @@ else
         *.pdf | *.epub)
             zathura "$name" &
             ;;
-        *.mp3)
-            $TERMINAL mpg123 -opulse "$name" &
-            ;;
         *.od[tsp]|*.doc|*.docx|*.ppt|*.pptx|*.xls|*.xlsx)
             libreoffice "$name" &
             ;;
@@ -36,6 +33,9 @@ else
                     ;;
                 image/*)
                     sxiv "$name" &
+                    ;;
+                audio/* | video/*)
+                    mpv --player-operation-mode=pseudo-gui "$name" &
                     ;;
                 *)
                     $name &

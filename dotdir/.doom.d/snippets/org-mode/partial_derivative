@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: Partial Derivative
+# uuid: partdev
+# key: partial
+# condition: t
+# --
+\frac{\partial $2}{\partial{$1}} $0

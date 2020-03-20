@@ -10,7 +10,7 @@ local dirmap  = {down=1, up=-1, left=-1, right=1}
 local sizemap = {down=1, up=0, left=0, right=1}
 
 -------------------------------------------------------------------------------
---                                 Keymapping                                --
+--                                 Functions                                 --
 -------------------------------------------------------------------------------
 local function remove_empty_tag(tag)
     if not tag then
@@ -141,6 +141,17 @@ local function focuswap_or_move(d, c)
     end
 end
 
+local function incmw_wrapper(a)
+    -- Safety control to not degenerate the size
+    -- to zero. For some reason this causes pc to freeze.
+    local tag = awful.screen.focused().selected_tag
+    if tag.master_width_factor + a < 0.1 then return end
+    awful.tag.incmwfact(a, tag)
+end
+
+-------------------------------------------------------------------------------
+--                                 Keymapping                                --
+-------------------------------------------------------------------------------
 keymapping.global = gears.table.join(
     ---- Client Manipulation: Select
     awful.key({ Modkey, }, "j",
@@ -198,16 +209,16 @@ keymapping.global = gears.table.join(
     ),
 
     ---- Layout: Resize Layout
-    awful.key({ Modkey, "Mod1" }, "l",     function () awful.tag.incmwfact( 0.10) end,
+    awful.key({ Modkey, "Mod1" }, "l",     function () incmw_wrapper( 0.10) end,
         {description = "increase master width factor", group = "layout"}
     ),
-    awful.key({ Modkey, "Mod1" }, "h",     function () awful.tag.incmwfact(-0.10) end,
+    awful.key({ Modkey, "Mod1" }, "h",     function () incmw_wrapper(-0.10) end,
         {description = "decrease master width factor", group = "layout"}
     ),
-    awful.key({ Modkey, "Mod1" }, "j",     function () awful.tag.incmwfact( 0.10) end,
+    awful.key({ Modkey, "Mod1" }, "j",     function () incmw_wrapper( 0.10) end,
         {description = "increase master width factor", group = "layout"}
     ),
-    awful.key({ Modkey, "Mod1" }, "k",     function () awful.tag.incmwfact(-0.10) end,
+    awful.key({ Modkey, "Mod1" }, "k",     function () incmw_wrapper(-0.10) end,
         {description = "decrease master width factor", group = "layout"}
     ),
 
@@ -232,11 +243,11 @@ keymapping.global = gears.table.join(
 
     -- Audio
     awful.key({ Modkey, }, "F9",
-        function () awful.spawn.with_shell(ScriptsPath.."/set_volume -10%") end,
+        function () awful.spawn.with_shell(ScriptsPath.."/set_volume -10") end,
         {description = "Decrease Vol.", group = "awesome"}
     ),
     awful.key({ Modkey, }, "F10",
-        function () awful.spawn.with_shell(ScriptsPath.."/set_volume +10%") end,
+        function () awful.spawn.with_shell(ScriptsPath.."/set_volume +10") end,
         {description = "Increase Vol.", group = "awesome"}
     ),
     awful.key({ Modkey, }, "F11",
@@ -276,9 +287,9 @@ keymapping.global = gears.table.join(
 
     ---- Debug Info
     awful.key({ Modkey, }, "/", function ()
-        naughty.notify({
+        naughty.notification({
             title = "Debug Info",
-            text = tostring(awful.screen.focused()).."\n"..tostring(client.focus)
+            message = tostring(awful.screen.focused()).."\n"..tostring(client.focus)
         })
         end,
         {description = "Debug Info", group = "tag"}
