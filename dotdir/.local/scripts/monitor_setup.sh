@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rofi_command="rofi -dmenu -i -theme themes/notification_buttons.rasi"
+rofi_command="rofi -p Monitor -dmenu -i -theme themes/notification_buttons.rasi"
 
 # Variable passed to rofi
 options="Primary Only\nMirror\nExtend Left\nExtend Right\nExtend Top\nExtend Bottom"

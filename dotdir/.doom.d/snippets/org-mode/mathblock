@@ -1,7 +1,0 @@
-# -*- mode: snippet -*-
-# name: Math block
-# uuid: mathblock
-# key: $$
-# condition: t
-# --
-\$\$ $0 \$\$

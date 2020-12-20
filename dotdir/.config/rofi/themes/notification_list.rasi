@@ -3,20 +3,13 @@
 #window {
   padding: 20px;
   width: 500px;
-  height: 400px;
+  height: 420px;
   border-radius: 50px;
   location: south west;
   x-offset: 70px;
   y-offset: -30px;
   border: 2px;
   border-color: @background-focus;
-}
-
-inputbar,
-prompt,
-textbox-prompt-colon,
-entry {
-  background-color: @background-focus;
 }
 
 #inputbar {
@@ -49,8 +42,6 @@ entry {
   padding: @list-element-padding;
   margin: @list-element-margin;
   border: @list-element-border;
-  background-color: @background-light;
-  border-color: @background-light;
   border-radius: @radius-huge;
 }
 

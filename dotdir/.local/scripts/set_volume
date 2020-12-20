@@ -11,16 +11,16 @@ if [[ "$1" == "switch" ]]; then
     done
 
     sink=`echo $sink | cut -d '.' -f 4`
-    notify-send -i "$HOME/.config/awesome/icons/switch.svg" 'Volume' "$sink"
+    notify-send -i "$HOME/.config/awesome/icons/switch.svg" 'Volume Text' "$sink"
 
 elif [[ "$1" == "toggle" ]]; then
     pulsemixer --toggle-mute
     mute=(`pulsemixer --get-mute`)
 
     if [[ "$mute" == '1' ]]; then
-        notify-send -i "$HOME/.config/awesome/icons/volume-mute.svg" 'Volume' "Device Muted"
+        notify-send -i "$HOME/.config/awesome/icons/volume-mute.svg" 'Volume Text' "Muted"
     else
-        notify-send -i "$HOME/.config/awesome/icons/volume.svg" 'Volume' "Device Unmuted"
+        notify-send -i "$HOME/.config/awesome/icons/volume.svg" 'Volume Text' "Unmuted"
     fi
 
 else
@@ -35,6 +35,6 @@ else
     [[ ${cmd:0:1} == '-' ]] && icon='volume-down'
 
     vol=(`pulsemixer --get-volume`)
-    notify-send -i "$HOME/.config/awesome/icons/$icon.svg" 'Volume' "Volume    $vol"
+    notify-send -i "$HOME/.config/awesome/icons/$icon.svg" 'Volume' "$vol"
 fi
 

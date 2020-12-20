@@ -1,0 +1,40 @@
+font:
+    size: 14.0
+    offset:
+        x: 0
+        y: 10
+
+    glyph_offset:
+        x: 0
+        y: 5
+
+window:
+    padding:
+        x: 3
+        y: 0
+
+    dynamic_padding: true
+
+colors:
+    foreground:  '{{fg}}'
+    background:  '{{bkg}}'
+
+    normal:
+        black:   '{{black0}}'
+        red:     '{{red0}}'
+        green:   '{{green0}}'
+        yellow:  '{{yellow0}}'
+        blue:    '{{blue0}}'
+        magenta: '{{magenta0}}'
+        cyan:    '{{cyan0}}'
+        white:   '{{white0}}'
+
+    bright:
+        black:   '{{black1}}'
+        red:     '{{red1}}'
+        green:   '{{green1}}'
+        yellow:  '{{yellow1}}'
+        blue:    '{{blue1}}'
+        magenta: '{{magenta1}}'
+        cyan:    '{{cyan1}}'
+        white:   '{{white1}}'

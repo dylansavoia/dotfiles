@@ -3,6 +3,7 @@ Terminal = os.getenv("TERMINAL") or "xterm"
 Editor = os.getenv("EDITOR") or "nano"
 ConfigPath = os.getenv("HOME").."/.config/awesome"
 ScriptsPath = os.getenv("HOME").."/.local/scripts"
+ThemesPath = require('gears.filesystem').get_themes_dir()
 
 editor_cmd = Terminal .. " -e " .. Editor
 ----------------------------------------------------------------
@@ -25,3 +26,5 @@ beautiful.init(ConfigPath.."/theme.lua")
 
 require('rules')
 require('signals')
+require('notifications')
+require('dashboard')

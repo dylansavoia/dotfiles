@@ -1,0 +1,43 @@
+/* Google Apps: General */
+svg {
+    opacity: 1 !important;
+    fill: #cfcfcf;
+}
+
+/* Drive */
+div.h-w.a-w.a-w-Xi.a-mb-w::after {
+    content: none;
+}
+
+/* Wikipedia */
+.mwe-math-element { filter: invert(1); }
+.vector-menu-tabs li {
+    background-image: none;
+}
+#mw-head { background-color: #1b1b1b; }
+#mw-searchButton { background-color: #aaaaaa }
+
+
+@media (max-width: 650px) {
+    /* Whatsapp Web */
+    .i5ly3._2NwAr { display: none }
+    ._36Q2N.two   { min-width: 0  }
+
+    /* Google Keep */
+    .PvRhvb.PvRhvb-qAWA2,
+    /* Gmail  */
+    .nH.oy8Mbf.nn.aeN,
+    /* Spotify */
+    .volume-bar, .Root__nav-bar,
+    .now-playing-bar__left
+    { display: none }
+
+    /* Spotify */
+    body { min-width: 0 }
+    .now-playing-bar { justify-content: center }
+    .now-playing-bar__center { margin-left: -100px }
+    .now-playing-bar__right {
+        min-width: 0;
+        width: 90px;
+    }
+}

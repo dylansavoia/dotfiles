@@ -9,10 +9,10 @@ nnoremap j gj
 nnoremap gj j
 
 nnoremap zh zt
+nnoremap zm z.
 nnoremap zl zb
 
 nnoremap * *N
-noremap <Tab> gt
 nnoremap <S-j> <C-^>
 vmap s S
 imap <c-x><c-p> <plug>(fzf-complete-path)
@@ -25,28 +25,39 @@ tnoremap <C-w><C-j> <C-\><C-N><C-w>j
 tnoremap <C-w><C-k> <C-\><C-N><C-w>k
 tnoremap <C-w><C-l> <C-\><C-N><C-w>l
 
+
 " Leader Based
 let mapleader = " "
-nnoremap <silent> <leader>h :nohlsearch<cr>
-nnoremap <leader>sp :set spell<cr>
-nnoremap <leader>g/ :vimgrep // **<left><left><left><left>
-nmap     <leader>gs <leader>g/
-nnoremap <leader>sh :Term<cr>
 
-nnoremap <leader>f  :Files<cr>
+"" Mix
+nnoremap <silent> <leader>h :nohlsearch<cr>
+nnoremap <leader><leader>  :Files<cr>
+nnoremap <leader>,  :Buffers<cr>
 nnoremap <leader>b  :Buffers<cr>
-nnoremap <leader>l  :BLines<cr>
-nnoremap <leader>gl :Lines<cr>
-nnoremap <leader>w  :Windows<cr>
 nnoremap <leader>/  :History/<cr>
 nnoremap <leader>?  :History/<cr>
 nnoremap <leader>:  :History:<cr>
-
+"" Open
+nnoremap <leader>ot :Term<cr>
+nnoremap <leader>oh :History<cr>
+nnoremap <leader>or :History<cr>
+"" Toggle
+nnoremap <leader>ts :set spell!<cr>
+nnoremap <leader>tz :Goyo<cr>
+"" Buffer
+nnoremap <leader>bl  :BLines<cr>
+nnoremap <leader>bt  :BTags<cr>
+nnoremap <leader>bs  :VimgrepBuf //<left>
+"" Global
+nnoremap <leader>gl :Lines<cr>
+nnoremap <leader>gs :vimgrep // **<left><left><left><left>
+nnoremap <leader>gt :Tags<cr>
+"" Run
 vnoremap <Leader>r :yank <bar> call Run(@")<CR>
 autocmd Filetype python :nnoremap <Leader>r :call Run("python ".@%)<CR>
 autocmd Filetype c :nnoremap <Leader>r :call Run("make; a.out")<CR>
-"For some arcane reason \x80ku translates to <Up>
 nnoremap <Leader>R :call Run("\x80ku")<CR>
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""      Custom Function       """"""""""""
@@ -71,10 +82,18 @@ function Run(str)
     endif
 
     echom exec_cmd
-    call feedkeys("i".exec_cmd."\n\<c-\>\<c-n>:sb ".curr_buf."\<CR>")
+    startinsert
+    call feedkeys(exec_cmd."\n\<c-\>\<c-n>:sb ".curr_buf."\<CR>")
 endfun
 
-command! -nargs=1 -range Filter call Filter(<f-args>)
+" Search in all currently opened buffers
+function! VimgrepBuf(pattern)
+  call setqflist([])
+  exe 'bufdo silent! vimgrepadd ' . a:pattern . ' %'
+endfunction
+command! -nargs=1 VimgrepBuf call VimgrepBuf(<f-args>)
+
+" command! -nargs=1 -range Filter call Filter(<f-args>)
 " function Filter(str)
 "     call feedkeys("gvyo\<ESC>p:.! ".a:str."\<CR>ddgvpkVjjJ`[x")
 " endfun

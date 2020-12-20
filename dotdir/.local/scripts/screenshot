@@ -1,0 +1,15 @@
+#!/bin/bash
+
+tmpfile='/tmp/screenshot.jpg'
+import "$tmpfile"
+
+if [[ $1 == '--ocr' ]]; then
+    tesseract "$tmpfile" "${tmpfile}"
+    sed -i '/^$/d' "${tmpfile}.txt"
+    xclip -selection clipboard -i "${tmpfile}.txt"
+    notify-send -i "$HOME/.config/awesome/icons/screenshot.svg" 'Screenshot' 'Text Copied To Clipboard'
+else
+    dragon-drag-and-drop -x "$tmpfile" &
+    # xclip -selection clipboard -target 'image/jpg' -i "$tmpfile"
+    notify-send -i "$HOME/.config/awesome/icons/screenshot.svg" 'Screenshot' 'Screenshot Taken'
+fi

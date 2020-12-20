@@ -4,13 +4,7 @@
   padding: @list-window-padding;
   width: 100%;
   height: 100%;
-}
-
-inputbar,
-prompt,
-textbox-prompt-colon,
-entry {
-  background-color: @background-focus;
+  background-color: @background;
 }
 
 #inputbar {
@@ -18,13 +12,12 @@ entry {
   margin: @inputbar-margin;
   background-color: @background-focus;
   border-radius: 50px;
-
 }
 
 #prompt {
   padding: @prompt-padding;
   background-color: @accent;
-  text-color: @background;
+  text-color: @background-focus;
   border-radius: 50px;
 }
 
@@ -43,8 +36,7 @@ entry {
   padding: @list-element-padding;
   margin: @list-element-margin;
   border: @list-element-border;
-  background-color: @background-light;
-  border-color: @background-light;
+  border-radius: 50px;
 }
 
 #element.selected {

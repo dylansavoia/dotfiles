@@ -1,6 +1,6 @@
 local controls = require('controls')
+local commons  = require('commons')
 
--- Rules to apply to new clients (through the "manage" signal).
 awful.rules.rules = {
     -- All clients will match this rule.
     { rule = { },
@@ -26,32 +26,12 @@ awful.rules.rules = {
               "pop-up",
             }
         },
-        properties = { floating = true }
+        properties = { floating = true, sticky = true }
     },
 
+    {
+        rule = { name = "./run.sh" },
+        callback = function (c) commons.move_to_bkg(c) end
+    }
+
 }
-
--- ruled.notification.connect_signal('request::rules', function()
---     ruled.notification.append_rule {
---         rule       = { urgency = 'normal' },
---         properties = {
---           border_color = beautiful.bg_focus,
---           icon = ConfigPath.."/icons/info.svg"
---         }
---     }
-
---     ruled.notification.append_rule {
---         rule       = { urgency = 'low' },
---         properties = {
---           icon = ConfigPath.."/icons/warning.svg"
---         }
---     }
-
---     ruled.notification.append_rule {
---         rule       = { urgency = 'critical' },
---         properties = {
---           border_color = beautiful.bg_urgent,
---           icon = ConfigPath.."/icons/error.svg"
---         }
---     }
--- end)

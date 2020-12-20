@@ -19,7 +19,6 @@
 }
 
 #element-text {
-  background-color: @background-light;
   border-radius: @radius-huge;
 }
 

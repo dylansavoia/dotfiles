@@ -1,16 +1,6 @@
 local screen_utils = require('screen_utils')
 local commons = require('commons')
 
-function printtb (t)
-    local msg = ""
-    for k in pairs(t) do
-        msg = msg..tostring(t[k]).."\n"
-    end
-    naughty.notify({
-        title = "debug",
-        text = msg
-    })
-end
 ------------------------------------------------
 --                  Errors                    --
 ------------------------------------------------
@@ -44,33 +34,27 @@ end
 ------------------------------------------------
 client.connect_signal("unmanage", function (c)
     local t = awful.screen.focused().selected_tag
-    awful.screen.focus(awful.screen.focused())
+    local nc = #t:clients()
+    client.focus = t:clients()[nc]
 
-    if #t:clients() == 0 then
+    if nc == 0 then
         t.name = commons.icons["empty"]
     end
 end)
 
 
 client.connect_signal("manage", function (c)
+    local dirs = {"bottom"}
     local titlebar = {
         bg_normal = beautiful.bg_normal,
-        bg_focus = beautiful.bg_focus,
-        size = dpi(3),
-        position = "bottom",
+        bg_focus = '#FFFFFFAA',
+        size = dpi(2),
     }
-    awful.titlebar(c, titlebar):setup({
-        widget = wibox.container.background,
-    })
-
-    local ttop = titlebar
-    ttop.position = "top"
-    awful.titlebar(c, ttop):setup({
-        widget = wibox.container.background,
-    })
-
-    c.shape = function(cr, w, h)
-        gears.shape.rounded_rect(cr, w, h, 8)
+    for _, d in ipairs(dirs) do
+        titlebar.position = d
+        awful.titlebar(c, titlebar):setup({
+            widget = wibox.container.background,
+        })
     end
 
     if awesome.startup
@@ -78,6 +62,9 @@ client.connect_signal("manage", function (c)
       and not c.size_hints.program_position then
         awful.placement.no_offscreen(c)
     end
+
+    -- IS_SLAVE: user-defined. Set in controls.lua
+    if IS_SLAVE then awful.client.setslave(c) end
 end)
 
 
@@ -88,78 +75,63 @@ end)
 
 client.connect_signal("focus", function(c)
     c.border_color = beautiful.border_focus
+    local t = awful.screen.focused().selected_tag
+    if t.name ~= commons.icons.bkg then
+        local ico = commons.icons[c.class]
+        if not ico then ico = commons.icons["default"] end
+        t.name = ico
+    end
 
-    local ico = commons.icons[c.instance]
-    if not ico then ico = commons.icons["default"] end
-    awful.screen.focused().selected_tag.name = ico
+    -- Dashboard
+    Dashboard.screen = c.screen
+    awful.placement.top_left(Dashboard, {
+        honor_workarea = true,
+        honor_padding = true,
+        margins = beautiful.useless_gap,
+    })
+    Dashboard.systray.screen = c.screen
+    local layouts = Dashboard.layoutboxes.children
+
+    for _, v in pairs(layouts) do v.visible = false end
+    layouts[c.screen.index].visible = true
 end)
 
 client.connect_signal("unfocus", function(c)
     c.border_color = beautiful.border_normal
 end)
 
--- client.connect_signal("request::titlebars", function (c)
--- end)
+------------------------------------------------
+--                   Tags                     --
+------------------------------------------------
+-- Focus urgent clients automatically
+client.connect_signal("property::urgent", function(c)
+    if c.first_tag.name == commons.icons.bkg then return end
+    local prevt = awful.screen.focused().selected_tag
+    commons.remove_empty_tag(prevt)
+    c:jump_to()
+end)
 
 ------------------------------------------------
 --                  Screen                    --
 ------------------------------------------------
-screen.connect_signal("property::geometry", screen_utils.set_wallpaper)
+screen.connect_signal("request::wallpaper", screen_utils.set_wallpaper)
 
 awful.screen.connect_for_each_screen(function(s)
-    screen_utils.set_wallpaper(s)
+    s.is_horizontal = true  -- s.geometry.width > s.geometry.height
     screen_utils.add_sidebar(s)
+    commons.create_tag(s):view_only()
 end)
 
-
 ------------------------------------------------
---              Notifications                 --
+--                  Other                     --
 ------------------------------------------------
-local volnotif
-naughty.connect_signal("request::display", function(n)
-    if n.title == "Volume" then
-        n.title = ""
-        n.width = 275
-        n.timeout = 1
-        -- n.position = "bottom_middle"
-        volnotif = commons.unique_notif(n, volnotif)
-        if volnotif ~= n then return end
-    end
+local keyboards = gears.string.split(awesome.xkb_get_group_names():sub(1, 8), "+")
 
-    local wicon
-    if n.icon then wicon = {
-            align = "center",
-            widget = naughty.widget.icon
-        }
-    end
-
-    naughty.layout.box {
-        notification = n,
-        type = "notification",
-        position = n.position,
-        widget_template = {
-            widget   = wibox.container.constraint,
-            strategy = "max",
-            width = dpi(0),
-            {
-                id     = "background_role",
-                widget = naughty.container.background,
-                forced_width = n.width,
-                {
-                    widget  = wibox.container.margin,
-                    margins = beautiful.notification_margin,
-                    {
-                        widget = wibox.layout.fixed.vertical,
-                        spacing = dpi(20),
-                        wicon,
-                        {
-                            align = "center",
-                            widget = naughty.widget.message,
-                        },
-                    }
-                }
-            }
-        }
-    }
-
+awesome.connect_signal("xkb::group_changed", function ()
+    naughty.notification({
+        title = "Keyboard Layout",
+        icon  = ConfigPath..'/icons/keyboard.svg',
+        -- message = awesome.xkb_get_group_names(),
+        message = keyboards[awesome.xkb_get_layout_group() + 2]:upper()
+    })
 end)

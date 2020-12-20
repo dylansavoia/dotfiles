@@ -4,7 +4,7 @@ category="$1"
 name="$2"
 
 if [[ $category == "t" ]]; then
-    $TERMINAL -c "$name" -e bash -ic "$name; read -p 'Press to continue... '"
+    $TERMINAL -e bash -ic "$name; read -p 'Press to continue... '"
 
 else
     # first try matching by filename or pathname
@@ -22,14 +22,11 @@ else
             # then try matching by mimetype
             mimetype=$(file -Lb --mime-type "$name")
             case "$mimetype" in
-                # text/html)
-                #     $BROWSER "$name" &
-                #     ;;
                 text/* | inode/x-empty | message/rfc822)
-                    $EDITOR "$name" &
+                    $TERMINAL -e nvim "$name" &
                     ;;
                 inode/directory)
-                    $TERMINAL vifm "$name"
+                    $TERMINAL -e vifm "$name"
                     ;;
                 image/*)
                     sxiv "$name" &

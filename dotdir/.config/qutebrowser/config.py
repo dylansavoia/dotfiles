@@ -1,3 +1,4 @@
+config.load_autoconfig()
 ###############################################################################
 #                                   Variables                                 #
 ###############################################################################
@@ -16,7 +17,7 @@ urgent_fg    = "{{urgent_fg}}"
 warning      = "{{warning}}"
 warning_fg   = "{{warning_fg}}"
 fontbase     = "{{font}}"
-font         = "18px " + fontbase
+font         = "20px " + fontbase
 monospace    = "{{monospace}}"
 download_dir = "{{download_dir}}"
 
@@ -28,24 +29,37 @@ config.unbind("go")
 config.bind("gy", "open https://youtube.com")
 config.bind("gs", "open https://dylansavoia.sytes.net/Main")
 config.bind("gog", "open https://google.com")
+config.bind("gof", "spawn firefox {url}")
 
 config.bind("<Ctrl-P>", "completion-item-focus prev", mode='command')
 config.bind("<Ctrl-N>", "completion-item-focus next", mode='command')
 config.bind("<Ctrl-P>", "enter-mode passthrough")
 config.bind("<Ctrl-P>", "leave-mode", mode="passthrough")
-config.bind("b", "set-cmd-text -s :buffer")
-config.bind("gof", "spawn firefox {url}")
 config.bind("gn", "set-cmd-text -s :tab-give")
 
+# Buffers
+config.bind("<space>,", "set-cmd-text -s :buffer")
+config.bind("<space>bb", "set-cmd-text -s :buffer")
+
+# Downloads
+config.bind("<space>dO", "spawn launcher 0 " + download_dir)
+config.bind("<space>do", "download-open launcher 0 ")
+config.bind("<space>dc", "download-cancel")
+config.bind("<space>dd", "download-delete")
+
+
+# Tabs
+config.bind("<space>tw", "config-cycle -t tabs.tabs_are_windows true false")
+
+# Config
+config.bind("<space>ce", "config-edit")
+config.bind("<space>cs", "config-source")
+
+config.bind("<space>h", "help")
+
+# Misc
 config.bind(";d", "hint all download")
 config.bind(";i", "hint inputs")
-
-config.unbind("gd")
-config.bind("gdo", "spawn launcher 0 " + download_dir)
-config.bind("gdO", "download-open launcher 0 ")
-config.bind("gdc", "download-cancel")
-config.bind("gdd", "download-delete")
-
 config.bind("to", "tab-only")
 config.bind("ZZ", "close")
 
@@ -56,14 +70,16 @@ c.hints.auto_follow = "full-match"
 c.hints.mode = "number"
 c.keyhint.blacklist = ["*"]
 c.scrolling.smooth = True
-c.editor.command = ["emacsclient", "-c", "+{line}:{column0}", "{file}"]
+c.editor.command = ["alacritty", "-e", "nvim", "-f", "{file}", "-c", "normal {line}G{column0}l"]
 c.zoom.default = 125
+c.tabs.tabs_are_windows = True
 
 c.tabs.show = "never"
-c.tabs.last_close = "startpage"
+c.tabs.last_close = "close"
 
-c.statusbar.widgets = ["url", "keypress", "progress", "scroll", "tabs"]
-c.content.pdfjs = True
+c.statusbar.widgets = ["keypress", "progress"]
+c.statusbar.show = 'in-mode'
+c.content.pdfjs = False
 c.content.notifications = False
 
 c.prompt.radius = 1
@@ -130,6 +146,11 @@ c.colors.statusbar.url.success.http.fg = accent1_fg
 c.colors.statusbar.url.warn.fg = warning_fg
 c.colors.statusbar.url.error.fg = urgent_fg
 
+c.colors.contextmenu.menu.bg = bkg
+c.colors.contextmenu.menu.fg = fg
+c.colors.contextmenu.selected.fg = accent1_fg
+c.colors.contextmenu.disabled.fg = bkg_alt
+
 c.colors.prompts.bg = bkg
 c.colors.prompts.fg = fg
 c.colors.messages.info.border = accent1
@@ -139,10 +160,15 @@ c.colors.hints.bg = bkg
 c.colors.hints.match.fg = accent1
 c.hints.border = "0px solid " + accent1
 
+c.colors.webpage.bg = bkg
+c.colors.webpage.darkmode.enabled = True
+c.colors.webpage.prefers_color_scheme_dark = True
+c.colors.webpage.darkmode.policy.images = 'never'
+c.content.user_stylesheets = '~/.config/qutebrowser/custom.css'
+
 ###############################################################################
 #                                    Fonts                                    #
 ###############################################################################
-c.fonts.tabs = font
 c.fonts.statusbar = font
 c.fonts.prompts = font
 c.fonts.downloads = font

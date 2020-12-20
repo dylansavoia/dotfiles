@@ -1,21 +1,15 @@
 # Find
-/home/dylansavoia -maxdepth 1
-{{download_dir}}
-/home/dylansavoia/Dropbox -name '\.*' -prune -o
-/home/dylansavoia/.config -maxdepth 2 -mindepth 1
-/home/dylansavoia/.local/scripts
+{{download_dir}} -maxdepth 5
+/home/dylansavoia/Home \( -name '\.*' -o -name '*\.svg' \) -prune -o
+/home/dylansavoia/Home/Projects/dotfiles/dotdir/.config
+/home/dylansavoia/.local -maxdepth 2
 
 # Shortcuts
-:Terminal:xst
-:Emacs:emacsclient -c
-:Keep:https://keep.google.com/u/0/#home
-:Youtube:https://www.youtube.com/
-:Playlist Update:https://www.youtube.com/playlist?list=PLtO5M4JOGPH4tzQVb61jCjukLQG-OkS9I
-:Spotify:firefox https://open.spotify.com/browse/featured
-:Whatsapp:firefox https://web.whatsapp.com
-:Calendar:https://calendar.google.com/calendar/
+:Calculator:ipython -i ~/.local/scripts/calc.py;
+:Syncthing:syncthing -browser-only
+:Power:power.sh
+:YouTube:https://www.youtube.com/
 :Server:https://dylansavoia.sytes.net/Main/
 :Reload:laser -r
-:Power:power.sh
 :Mount:mnt
 :Setup Monitor:monitor_setup.sh

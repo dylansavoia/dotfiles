@@ -1,0 +1,148 @@
+# A valid snippet should starts with:
+#
+#		snippet trigger_word [ "description" [ options ] ]
+#
+# and end with:
+#
+#		endsnippet
+#
+# Snippet options:
+#
+#		b - Beginning of line.
+#		i - In-word expansion.
+#		w - Word boundary.
+#		r - Regular expression
+#		e - Custom context snippet
+#		A - Snippet will be triggered automatically, when condition matches.
+#
+# Basic example:
+#
+#		snippet emitter "emitter properties" b
+#		private readonly ${1} = new Emitter<$2>()
+#		public readonly ${1/^_(.*)/$1/}: Event<$2> = this.$1.event
+#		endsnippet
+#
+# Online reference: https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt
+
+snippet beg "begin{} / end{}" bA
+\begin{$1}
+	$0
+\end{$1}
+endsnippet
+
+snippet mm "Math Env" bwA
+\begin{equation}
+	$1
+\end{equation}
+$0
+endsnippet
+
+snippet mk "Math Env" bwA
+$ $1 $$0
+endsnippet
+
+snippet pmat "Matrix(" wA
+\begin{pmatrix}
+	$1
+\end{pmatrix}
+$0
+endsnippet
+
+snippet bmat "Matrix[" wA
+\begin{bmatrix}
+	$1
+\end{bmatrix}
+$0
+endsnippet
+
+snippet "([a-zA-Z])(hat|bar|tilde|vec|dot)" "Postscripts" riA
+`!p snip.rv = f'\{match.group(2)}{{{match.group(1)}}}'`
+endsnippet
+snippet "([a-zA-Z])d([1-3])" "dot" riA
+`!p snip.rv = f'\{"d"*int(match.group(2))}ot{{{match.group(1)}}}'`
+endsnippet
+
+snippet "norm" "Norm" wA
+\| $1 \|$0
+endsnippet
+
+snippet mk "Math Env" bwA
+$ $1 $$0
+endsnippet
+
+snippet '//' "\frac{}{}" iA
+\\frac{$1}{$2} $0
+endsnippet
+
+snippet mf "Fraction" i
+\\frac{${VISUAL}}{$1}$0
+endsnippet
+
+snippet '(?<!\\)(sin|cos|arccot|cot|csc|ln|log|exp|star)' "Fns" rwA
+`!p snip.rv = f'\{match.group(1)}'`($1)$0
+endsnippet
+
+snippet 'sqrt' "sqrt" wA
+\sqrt{${1:${VISUAL}}}$0
+endsnippet
+
+snippet part "d/dx" w
+\frac{\partial $1}{\partial $2} $0
+endsnippet
+
+snippet '(\d+)/' "() Fraction" wrA
+`!p snip.rv = f'\\frac{{{match.group(1)}}}'`{$1}$0
+endsnippet
+
+snippet '(\d+)/' "() Fraction" wrA
+`!p snip.rv = f'\\frac{{{match.group(1)}}}'`{$1}$0
+endsnippet
+
+snippet 'lr(' "left( .. right)" wA
+\left( $1 \right)$0
+endsnippet
+snippet 'lr{' "left{ .. right}" wA
+\left{ $1 \right)$0
+endsnippet
+snippet 'lr[' "left[ .. right]" wA
+\left[ $1 \right]$0
+endsnippet
+
+snippet article "Article Doc" b
+\documentclass{article}
+\title{$1}
+\author{Dylan Savoia}
+
+\usepackage[utf8]{inputenc}
+\usepackage[]{geometry}
+\usepackage{amsmath}
+\usepackage{float}
+
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\renewcommand{\arraystretch}{1.8}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\pagenumbering{arabic}
+
+$0
+
+\end{document}
+endsnippet
+
+
+
+# TO BE CHECKED
+# `!p snip.rv = f'{match.group(1)}_{{{match.group(2)}}}'` 
+snippet '_' "Subscript" iA
+_{$1}$0
+endsnippet
+
+snippet '^' "Superscript" iA
+^{$1}$0
+endsnippet

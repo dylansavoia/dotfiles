@@ -1,0 +1,16 @@
+#!/bin/bash
+
+while read file
+do
+    case "$1" in
+        *d) rm "$file";;
+        *r) convert -rotate 90 "$file" "$file";;
+        *c)
+            mkdir -p ./selected
+            cp "$file" ./selected;;
+        *m)
+            mkdir -p ./selected
+            mv "$file" ./selected;;
+    esac
+done
+

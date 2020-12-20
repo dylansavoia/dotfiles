@@ -3,16 +3,19 @@ cmd="$1"
 dotdir="./dotdir"
 devs=('desktop' 'laptop')
 
+vardir=./variables
+default_theme=aurora
+
 sed_files='
-./dotdir_tmp/.config/qutebrowser/config.py
-./dotdir_tmp/.config/awesome/theme.lua
-./dotdir_tmp/.config/vifm/folders
-./dotdir_tmp/.config/vifm/colors/Default.vifm
-./dotdir_tmp/.config/laser/laserrc
-./dotdir_tmp/.config/zathura/zathurarc
-./dotdir_tmp/.config/rofi/themes/shared/settings.rasi
-./dotdir_tmp/.bashrc
-./dotdir_tmp/.Xresources
+.config/qutebrowser/config.py
+.config/awesome/theme.lua
+.config/vifm/folders
+.config/laser/laserrc
+.config/zathura/zathurarc
+.config/alacritty/alacritty.yml
+.config/rofi/themes/shared/settings.rasi
+.config/nvim/plugins.vim
+.Xresources
 '
 
 case "$cmd" in
@@ -35,18 +38,24 @@ case "$cmd" in
         rsync ~/.profile        "$name"
         rsync ~/.xinitrc        "$name"
         rsync ~/.Xresources     "$name"
-        rsync -a --delete ~/.doom.d  "$name"
+        rsync ~/.gtkrc-2.0      "$name"
 
         # .config
         mkdir -p "$name/.config"
         rsync -a --delete ~/.config/inputrc      "$name/.config"
         rsync -a --delete ~/.config/awesome      "$name/.config"
-        rsync -a --delete ~/.config/compton      "$name/.config"
+        rsync -a --delete ~/.config/picom        "$name/.config"
         rsync -a --delete ~/.config/rclone       "$name/.config"
         rsync -a --delete ~/.config/zathura      "$name/.config"
+        rsync -a --delete ~/.config/kitty        "$name/.config"
         rsync -a --delete ~/.config/rofi         "$name/.config"
         rsync -a --delete ~/.config/laser        "$name/.config"
         rsync -a --delete ~/.config/qutebrowser  "$name/.config"
+        rsync -a --delete ~/.config/gtk-3.0      "$name/.config"
+        rsync -a --delete ~/.config/sxiv         "$name/.config"
+
+        mkdir -p "$name/.config/coc"
+        rsync -a --delete ~/.config/coc/ultisnips  "$name/.config/coc"
         rsync -a --delete ~/.config/nvim --exclude plugged --exclude spell  "$name/.config"
         rsync -a --delete ~/.config/vifm --exclude Trash --exclude vifminfo "$name/.config"
 
@@ -61,67 +70,79 @@ case "$cmd" in
         if [[ "$2" == "" ]]; then
             echo "Choose device:"
             echo ${devs[*]} | tr ' ' '\n' | nl -v 0 -w 1
+            echo -n ">>> "
             read dev
 
             if [ $dev -ge ${#devs[*]} ]; then
                 echo "Device Out Of Boundaries"
                 exit 1
             fi
-
             dev=${devs[$dev]}
         else
             dev=$2
         fi
 
+        # Choose Theme
+        if [[ "$3" == "" ]]; then
+            echo -n "Choose Theme (Default \"$default_theme\"): "
+            read theme
+            [[ $theme == "" ]] && theme=$default_theme
+            if [[ ! -d "$vardir/$theme" ]]; then
+                echo -e "\e[0;31mTheme \"$theme\" does not exist.\e[0m"
+                exit
+            fi
+        else
+            theme=$3
+        fi
+
+        echo -e "\nSelected Theme:\t\t$theme"
+        echo -e "Selected Device:\t$dev\n"
+
         # Create Copy
         cp -a "$dotdir" "${dotdir}_tmp"
 
         ## Apply Patches
-        for item in `find ./patches/structural -mindepth 1 -type d `; do
-            if [[ -e  "$item/$dev.diff" ]]; then
-                dest=${dotdir}_tmp/${item:20}
-                patch "$dest" "$item/$dev.diff"
-            fi
-        done
+        # for item in `find ./patches/structural -mindepth 1 -type d `; do
+        #     if [[ -e  "$item/$dev.diff" ]]; then
+        #         dest=${dotdir}_tmp/${item:20}
+        #         patch "$dest" "$item/$dev.diff"
+        #     fi
+        # done
 
         ## Apply Substitutions
         # NOTE: sed can use any character as a delimiter instead of /
-        vardir=./patches/variables
 
-        #meta substitution for colorscheme
-        clrcmd=`head -n 16 $vardir/colorscheme |
+        ### meta substitution for colorscheme
+        clrcmd=`head -n 16 $vardir/$theme/colorscheme |
              awk -F = '{print "s@{{" $1 "}}@" $2 "@"}' | tr '\n' ';'`
-        sed "$clrcmd" "$vardir/colorscheme" > "$vardir/colorscheme.done"
+        clrscheme=`sed "$clrcmd" "$vardir/$theme/colorscheme"`
 
-        sedcmd=`cat $vardir/$dev $vardir/default $vardir/colorscheme.done|
+        ### Create sed command and apply to all $sed_files
+        sedcmd=`cat $vardir/$dev $vardir/default <(echo "$clrscheme") |
              sort -u -t= -k1,1 |
              awk -F = '{print "s@{{" $1 "}}@" $2 "@"}' | tr '\n' ';'`
-        rm "$vardir/colorscheme.done"
 
-        for f in $sed_files; do
-            sed -i "$sedcmd" "$f"
-        done
+        for f in $sed_files; do sed -i "$sedcmd" "./dotdir_tmp/$f"; done
 
-
-        echo "Done. Change System Files (Enter). Abort (Ctrl-C)"
+        echo "Press Enter to apply changes. Abort (Ctrl-C)"
         read
 
-        # Extra
-        # CURRENT LAPTOP REQUIRES SPECIAL "CARE" FOR LIGHTDM DON'T TOUCH THIS!
-        # sudo cp ./patches/structural/lightdm-webkit2-greeter.conf /etc/lightdm/
-        # sudo cp ./patches/structural/lightdm.conf /etc/lightdm/
-        # cd /home/dylansavoia/.local/bin/xst-git/src/xst
-        # make
-        # sudo make install
+        ## Modify System Files
+        ### Wallpaper
+        cp "$vardir/$theme/wallpaper.jpg" ./dotdir_tmp/.config/awesome/
+        sudo cp "$vardir/$theme/wallpaper.jpg" /usr/share/lightdm-webkit/themes/lightdm-webkit-theme-aether/src/img/wallpapers/main_wallpaper.jpg
 
-        # Modify System Files
+        ### Everything else
         shopt -s dotglob
         cd "${dotdir}_tmp"
         cp --parents -a * ~
         cd ".."
 
+        ## Cleanup
         rm -rf "${dotdir}_tmp"
-    
+
+        ## Final Application
+        xrdb -merge "$HOME/.Xresources"
 
         ;;
     *)

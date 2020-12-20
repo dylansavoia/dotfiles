@@ -1,25 +1,26 @@
 " Basics
-nnoremap gh :cd ~<CR>
+nnoremap gh :cd ~/Home<CR>
 nnoremap g/ :cd /<CR>
 nnoremap gm :cd /media/dylansavoia<CR>
 
-nnoremap gD :cd {{download_dir}}<CR>
-nnoremap gd :cd ~/Dropbox<CR>
+nnoremap gd :cd {{download_dir}}<CR>
 
 " Configs
-nnoremap gC :cd /home/dylansavoia/.config<CR>
-nnoremap gcd :cd /home/dylansavoia/.config/dunst<CR>
+nnoremap gC :cd ~/.config<CR>
+nnoremap gcd :cd ~/.config/dunst<CR>
 nnoremap gci3 :cd ~/.config/i3/<CR>
-nnoremap gcnv :cd /home/dylansavoia/.config/nvim<CR>
-nnoremap gcpb :cd /home/dylansavoia/.config/polybar<CR>
+nnoremap gcnv :cd ~/.config/nvim<CR>
+nnoremap gcpb :cd ~/.config/polybar<CR>
 nnoremap gcqb :cd ~/.config/qutebrowser<CR>
 nnoremap gcr :cd ~/.config/ranger<CR>
 nnoremap gcfm :cd ~/.config/vifm<CR>
-nnoremap gcz :cd /home/dylansavoia/.config/zathura<CR>
+nnoremap gcz :cd ~/.config/zathura<CR>
 
 " Other
-nnoremap glqb :cd /home/dylansavoia/.local/share/qutebrowser<CR>
-nnoremap gP :cd /home/dylansavoia/Dropbox/Projects<CR>
-nnoremap gpm :cd /home/dylansavoia/Dropbox/Projects/Web/Main<CR>
+nnoremap glqb :cd ~/.local/share/qutebrowser<CR>
+nnoremap gP :cd ~/Home/Projects<CR>
+nnoremap gpm :cd ~/Home/Projects/Web/Main<CR>
 
-nnoremap gL :cd /home/dylansavoia/.local<CR>
+nnoremap gL :cd ~/.local<CR>
+nnoremap gU :cd ~/Home/University<CR>
+nnoremap gT :cd ~/Home/Texts<CR>

@@ -11,63 +11,54 @@ shopt -s autocd
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
 # Prompt colors
-case "$TERM" in
-    xterm-color|*-256color)
-        color_prompt=yes;
-esac
-
-if [ "$color_prompt" = yes ]; then
-    # PS1='${debian_chroot:+($debian_chroot)}\[\e[1;32m\]\w\[\e[0m\] \$ '
-    PS1='\[\e[1;32m\]\w\[\e[0m\] $( cpref=`basename "$CONDA_PREFIX "`; [[ "$cpref" == ".miniconda " ]] && cpref=""; echo -e "\[\e[1;31m\]$cpref\[\e[0m\]" )\$ '
-fi
-
-unset color_prompt
+PS1='\[\e[1;32m\]\w\[\e[0m\] \$ '
 
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
-######################################################
-##################    Custom     #####################
-######################################################
-
-# Environment Defaults 
-export INPUTRC="~/.config/inputrc"
-export EDITOR="emacsclient -c"
-export TERMINAL=xst
-export TERM=xterm-256color
-export BROWSER=qutebrowser
-export LS_COLORS='di=1;3{{accent1_ind}}'
-
 # set PATH so it includes user's private bin directories
 PATH="$PATH:$HOME/.local/scripts/:."
 
+#############################################################
+######################    Custom     ########################
+#############################################################
+export INPUTRC="~/.config/inputrc"
+export EDITOR="nvim"
+export TERMINAL=alacritty
+export BROWSER=qutebrowser
+export LS_COLORS='di=1;93'
+
+#############################################################
+######################    Aliases    ########################
+#############################################################
 alias normalize="mp3gain -r *"
-alias ffplay="ffplay -x 1"
 alias calc="bpython -i ~/.local/scripts/calc.py"
 alias recordmydesktop='recordmydesktop --no-frame --v_quality 1 --v_bitrate 2000000'
 alias emacs="emacsclient -c"
+alias autocrop='mogrify -trim +repage'
 
-alias mserver="sshfs dylansavoia@dylansavoia.sytes.net:/var/www/html/Main /media/dylansavoia/server"
+# Mounts
+alias mserver="sshfs dylansavoia@dylansavoia.sytes.net:/srv/http/Main /media/dylansavoia/server"
 alias umserver="sudo umount /media/dylansavoia/server"
 alias mphone="jmtpfs /media/dylansavoia/phone"
 alias umphone="sudo umount /media/dylansavoia/phone"
-alias server="mountpoint -q /media/dylansavoia/server/ || mserver; cd /media/dylansavoia/server/"
-alias phone="mountpoint -q /media/dylansavoia/phone/ || mphone; cd /media/dylansavoia/phone/"
+alias server="mountpoint -q /media/dylansavoia/server/ || mserver; vifm /media/dylansavoia/server/"
+alias phone="mountpoint -q /media/dylansavoia/phone/ || mphone; vifm /media/dylansavoia/phone/"
 
 function cphoto () {
-    mogrify -strip -sampling-factor 4:2:0 -quality 85 $1 
+    mogrify -sampling-factor 4:2:0 -quality 85 "$@"
 }
 
 function aur_install () {
-    git clone "https://aur.archlinux.org/$1.git" "$HOME/.local/bin/$1"
-    cd "$HOME/.local/bin/$1"
+    git clone "https://aur.archlinux.org/$1.git" "$HOME/.local/bin/$1" &&
+    cd "$HOME/.local/bin/$1" &&
     makepkg -si
 }
 
+
 # >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
 function conda_init () {
     __conda_setup="$('/home/dylansavoia/.miniconda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
     if [ $? -eq 0 ]; then
@@ -82,5 +73,3 @@ function conda_init () {
     unset __conda_setup
 }
 # <<< conda initialize <<<
-
-# source /usr/share/bash-completion/bash_completion
