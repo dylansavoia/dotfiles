@@ -2,4 +2,4 @@
 
 shopt -s dotglob
 cd "./restore/termux"
-cp --parents -a * ~
+cp --parents -aL * ~
