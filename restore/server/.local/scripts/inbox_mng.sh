@@ -1,7 +1,7 @@
 #!/bin/bash
 src_file="$1"
 dst_path="$2"
-tmpname="/tmp/inbox_mng_file"
+tmpname="${src_file}.bkp"
 
 declare -A tag_map
 

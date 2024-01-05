@@ -7,3 +7,5 @@ echo "Copied config files"
 
 fcrontab crontab
 rm ~/crontab
+
+sed -i -e '/icons/d' ~/.config/vifm/vifmrc
