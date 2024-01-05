@@ -38,6 +38,8 @@ case "$cmd" in
     "restore" )
         case "$dev" in
             "desktop"|"laptop" ) source .scripts/restore_pc.sh $dev;;
+            "termux" )           source .scripts/restore_termux.sh $dev;;
+            *) echo "Restore not available for $dev"
         esac
     ;;
 
