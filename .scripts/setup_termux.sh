@@ -7,4 +7,3 @@ echo "Enable storage"
 termux-setup-storage
 
 source .scripts/restore_termux.sh
-echo "Config copied"
