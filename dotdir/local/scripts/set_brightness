@@ -1,0 +1,5 @@
+#!/bin/bash
+curr=`cat /sys/class/backlight/intel_backlight/brightness`
+eval "let curr=$curr$1"
+[[ $curr -le 0 ]] && curr=1
+echo $curr > /sys/class/backlight/intel_backlight/brightness

@@ -1,0 +1,43 @@
+@import "shared/settings.rasi"
+@import "shared/option-menu.rasi"
+
+* {
+  font:                      @text-font-large;
+}
+
+#window {
+  padding: @window-5-padding;
+  width: 100%;
+  height: 100%;
+  background-color: @background;
+}
+
+#listview {
+  spacing: @listview-5-spacing;
+}
+
+/** Message Textbox (Implicit)**/
+#textbox {
+  font: @text-font-huge;
+  padding: @pm-mesg-padding;
+}
+
+#element-text {
+  padding: @element-5-padding;
+}
+
+
+@media ( max-aspect-ratio: 1.0 ) {
+  #window {
+    padding: @window-5-port-padding;
+  }
+
+  /* It's the message (implicit) */
+  #textbox {
+    padding: @pm-mesg-portrait-padding;
+  }
+
+  #element-text {
+    padding: @element-5-port-padding;
+  }
+}

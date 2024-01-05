@@ -1,0 +1,8 @@
+@import "notification_list.rasi"
+#window {
+  width: 600px;
+}
+
+#listview {
+  columns: 2;
+}

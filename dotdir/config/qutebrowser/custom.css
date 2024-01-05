@@ -1,0 +1,127 @@
+:root {
+    --accent: {{accent1}};
+    --accent-fg: {{accent1_fg}};
+    --clr-bkg: {{bkg}};
+    --clr-alt-bkg: {{bkg_alt}};
+    /* --yt-spec-static-brand-red: var(--accent-fg) !important; */
+    /* --yt-spec-brand-button-background: var(--accent) !important */
+    scroll-behavior: smooth;
+
+    /* Whatsapp */
+    --intro-border: {{accent1_fg}};
+    --butterbar-default-background: {{bkg_alt}};
+    --app-background-stripe: {{bkg_alt}};
+    --conversation-panel-background: {{bkg}};
+    --background-default-active: {{bkg_alt}};
+    --rich-text-panel-background: {{bkg}};
+    --panel-header-background: {{bkg}};
+    --outgoing-background: {{accent1}};
+    --incoming-background: {{accent2}};
+}
+
+/* WA side-bar */
+._2Ts6i._3RGKj
+{max-width: 75px}
+
+/* Calendar */
+.tNDBE, .ef2wWc,
+/* Ecosia */
+.results-wrapper,
+body {
+    /* background: none; */
+    /* background-color: var(--clr-bkg) !important */
+}
+
+::-webkit-scrollbar { display: none; }
+
+div.landing-main
+{background-color: #bfbfbf}
+
+/* Ecosia */
+.search-section__content,
+.land-background::after,
+.above-fold-cta-section[data-v-2d811700],
+.above-fold-cta-section
+{
+    background: none !important;
+    background-color: transparent !important
+}
+.above-fold-cta-section__description,
+.scroll-down.icon-button,
+div.cta {display: none !important}
+.land-background {color: #333 !important}
+.result-title,
+.result-title:focus,
+.result-title:hover {
+    color: var(--accent);
+}
+
+/* svg { */
+/*     opacity: 1 !important; */
+/*     fill: #cfcfcf; */
+/* } */
+
+/* Drive */
+div.h-w.a-w.a-w-Xi.a-mb-w::after {
+    content: none;
+}
+
+/* Spotify */
+.progress-bar__fg { background-color: var(--accent) }
+.progress-bar--is-active .progress-bar__fg { background-color: var(--accent-fg) }
+
+/* YouTube */
+.ytp-gradient-bottom,
+.ytp-gradient-top,
+/* Drive */
+.a-w-Mr::after
+{
+    background-image: none !important;
+}
+
+._1dEQH:after,
+/* Whatsapp strange loading effect */
+#initial_startup .graphic::after
+{
+    background: none !important;
+}
+._3gYev {display: none}
+
+/* Google Keep */
+.PvRhvb-ibnC6b.gk6SMd {
+    background-color: var(--accent) !important;
+}
+.IZ65Hb-TBnied {border: none}
+.IZ65Hb-TBnied::before,
+.VIpgJd-TUo6Hb .IZ65Hb-s2gQvd::before
+{
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #0000005f;
+}
+
+@media (max-width: 650px) {
+    /* Google Keep */
+    .PvRhvb-qAWA2,
+    /* Whatsapp Web */
+    ._1Flk2._2DPZK { display: none }
+    ._3QfZd.two    { min-width: 0  }
+
+    /* Gmail  */
+    .nH.oy8Mbf.nn.aeN,
+    /* Spotify */
+    .volume-bar, .Root__nav-bar,
+    .now-playing-bar__left
+    { display: none }
+
+    /* Spotify */
+    body { min-width: 0 }
+    .now-playing-bar-container {min-width: 0}
+    .now-playing-bar { justify-content: center }
+    .now-playing-bar__right {
+        min-width: 0;
+        width: 90px;
+    }
+}

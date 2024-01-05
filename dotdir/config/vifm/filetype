@@ -1,0 +1,65 @@
+" Pdf
+fileviewer *.pdf pdfinfo %f
+
+" Images
+fileviewer *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm identify
+filetype *.bmp,*.jpg,*.jpeg,*.png,*.gif,*.xpm
+    \ sxiv %f %d &,
+    \ {Firefox} firefox
+
+" Audio / Video
+fileviewer *.mp3 mp3info
+fileviewer *.flac soxi
+fileviewer *.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.vob,*.flv,*.m2v,*.mov,*.webm,*.ts,*.m4v
+         \ ffprobe -pretty %c 2>&1
+
+" Object
+filetype *.o nm %f | less
+
+" Java
+filetype *.jar java -jar &
+
+" GIMP
+filextype *.xcf gimp &
+
+" Archives
+filetype *.rar,*.tar,*.tar.bz2,*.tbz2,*.tgz,*.tar.gz,*.tar.xz,*.txz,*.zip,*.war,*.ear,*.oxt,*.7z
+       \ {Extract}
+       \ ~/.local/scripts/extract
+
+fileviewer *.zip,*.jar,*.war,*.ear,*.oxt zip -sf %c
+fileviewer *.tgz,*.tar.gz tar -tzf %c
+fileviewer *.tar.bz2,*.tbz2 tar -tjf %c
+fileviewer *.tar.txz,*.txz xz --list %c
+fileviewer *.rar unrar v %c
+fileviewer *.7z 7z l %c
+
+
+" Directories
+fileviewer .*/,*/ tree -CL 2 %f
+
+
+" Other
+filetype *.ipynb awesome-client "require('commons').move_to_bkg(client.focus)"; jupyter-notebook
+filetype run.sh
+    \ {Run Script} alacritty -e ./run.sh &,
+    \ {NeoVim} nvim
+filetype Session.vim nvim -S 
+
+
+" Default
+fileviewer * highlight -O xterm256 -s xoria256 --force %c
+" filetype *,.* ~/.local/scripts/launcher 0 %i %f &
+
+filetype *.wav,*.mp3,*.flac,*.m4a,*.wma,*.ape,*.ac3,*.og[agx],*.spx,*.opus,*.avi,*.mp4,*.wmv,*.dat,*.3gp,*.ogv,*.mkv,*.mpg,*.mpeg,*.vob,*.fl[icv],*.m2v,*.mov,*.webm,*.ts,*.mts,*.m4v,*.r[am],*.qt,*.divx,*.as[fx] mpv --player-operation-mode=pseudo-gui
+
+filetype *.pdf,*.epub zathura %c %i &
+filetype *.odt,*.ods,*.doc,*.docx,*.xls,*.xlsx,*.odp,*.pptx libreoffice %f &
+
+
+" Extra :file commands
+filetype *.html,*.htm
+    \ {Neovim} nvim,
+    \ {Qutebrowser} qutebrowser,
+    \ {Firefox} firefox,
+

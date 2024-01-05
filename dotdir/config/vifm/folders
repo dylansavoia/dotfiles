@@ -1,0 +1,29 @@
+" Basics
+nnoremap gh :cd ~/Home<CR>
+nnoremap g/ :cd /<CR>
+nnoremap gm :cd /media/dylansavoia<CR>
+
+nnoremap gd :cd {{download_dir}}<CR>
+
+" Configs
+nnoremap gC :cd ~/.config<CR>
+nnoremap gcd :cd ~/.config/dunst<CR>
+nnoremap gci3 :cd ~/.config/i3/<CR>
+nnoremap gcnv :cd ~/.config/nvim<CR>
+nnoremap gcpb :cd ~/.config/polybar<CR>
+nnoremap gcqb :cd ~/.config/qutebrowser<CR>
+nnoremap gcr :cd ~/.config/ranger<CR>
+nnoremap gcfm :cd ~/.config/vifm<CR>
+nnoremap gcz :cd ~/.config/zathura<CR>
+
+" Other
+nnoremap glqb :cd ~/.local/share/qutebrowser<CR>
+
+nnoremap gL :cd ~/.local<CR>
+nnoremap gU :cd ~/Home/University<CR>
+nnoremap gT :cd ~/Home/Texts<CR>
+
+nnoremap glp :cd "/media/dylansavoia/HDD/Local Projects"<CR>
+nnoremap gw :cd /home/dylansavoia/Home/Work<CR>
+nnoremap gb :cd "/home/dylansavoia/Home/Server Content/Notes/Projects/Blog Posts"<CR>
+nnoremap gs :cd "/home/dylansavoia/Home/Server Content"<CR>
