@@ -4,8 +4,9 @@ dev="$2"
 devs=('desktop' 'laptop' 'termux' 'server')
 
 # Auto-detect
-[ -n "${ANDROID_ROOT}" ] && dev='termux'
-[ -n "`grep ARM /etc/os-release`" ] && dev='server'
+if [ -n "${ANDROID_ROOT}" ];              then dev='termux'
+elif [ -n "`grep ARM /etc/os-release`" ]; then dev='server'
+fi
 
 # Choose Device
 if [[ "$dev" == "" ]]; then
