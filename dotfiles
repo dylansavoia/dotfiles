@@ -1,56 +1,45 @@
 #!/bin/bash
 cmd="$1"
+dev="$2"
 devs=('desktop' 'laptop' 'termux' 'server')
-vardir=./variables
-themes=(`ls -1d "$vardir"/*/ | cut -d / -f3`)
 
-default_theme=`cat .current_theme`
+# Auto-detect
+[ -n "${ANDROID_ROOT}" ] && dev='termux'
+[ -n "`grep ARM /etc/os-release`" ] && dev='server'
+
+# Choose Device
+if [[ "$dev" == "" ]]; then
+    echo "Choose device:"
+    echo ${devs[*]} | tr ' ' '\n' | nl -v 0 -w 1
+    echo -n ">>> "
+    read dev
+
+    if [ $dev -ge ${#devs[*]} ]; then
+        echo "Invalid device. Run again"
+        exit 1
+    fi
+
+    dev=${devs[$dev]}
+fi
+
+echo -e "Selected Device:\t$dev\n"
 
 case "$cmd" in
+    "setup" )
+        case "$dev" in
+            "termux" ) source .scripts/setup_termux.sh;;
+            "server" ) source .scripts/setup_server.sh;;
+            * ) echo "Setup not available for $dev"
+        esac
+    ;;
+
     "collect" ) source .scripts/collect.sh "$2" ;;
     "restore" )
-        if [[ "$2" == "" ]]; then
-            echo "Choose device:"
-            echo ${devs[*]} | tr ' ' '\n' | nl -v 0 -w 1
-            echo -n ">>> "
-            read dev
-
-            if [ $dev -ge ${#devs[*]} ]; then
-                echo "Device Out Of Boundaries"
-                exit 1
-            fi
-            dev=${devs[$dev]}
-        else
-            dev=$2
-        fi
-
-        # Choose Theme
-        if [[ "$3" == "" ]]; then
-            echo "Choose Theme (Default \"$default_theme\"):"
-            echo ${themes[*]} | tr ' ' '\n' | nl -v 0 -w 1
-            read theme
-
-            if [[ $theme == "" ]]; then
-                theme=$default_theme
-            elif [ $theme -ge ${#themes[*]} ]; then
-                echo "Theme Out Of Boundaries"
-                exit 1
-            else
-                theme=${themes[$theme]}
-            fi
-        fi
-
-        echo -e "\nSelected Theme:\t\t$theme"
-        echo -e "Selected Device:\t$dev\n"
-
-        ## Save current theme name
-        echo "$theme" > .current_theme
-
         case "$dev" in
-            "desktop"|"laptop" ) source .scripts/restore_pc.sh $dev $theme;;
+            "desktop"|"laptop" ) source .scripts/restore_pc.sh $dev;;
         esac
+    ;;
 
-        ;;
     *)
         echo "Usage: dotfiles [setup|collect|restore]"
     ;;

@@ -1,13 +1,13 @@
 #!/bin/bash
-[[ $1 != "dotdir/"* ]] && exit
+[[ $1 != "restore/arch/"* ]] && exit
 notify-send "Updating File: $1"
 
-vardir=./variables
+vardir=./restore/variables
 theme=`cat .current_theme`
 dev='laptop'
 [[ $(</sys/class/dmi/id/chassis_type) == 3 ]] && dev='desktop'
 
-clrcmd=`head -n 16 $vardir/$theme/colorscheme |
+clrcmd=`head -n 16 "$vardir/$theme/colorscheme" |
      awk -F = '{print "s@{{" $1 "}}@" $2 "@"}' | tr '\n' ';'`
 clrscheme=`sed "$clrcmd" "$vardir/$theme/colorscheme"`
 

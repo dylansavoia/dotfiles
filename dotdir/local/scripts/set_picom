@@ -1,6 +1,0 @@
-#!/bin/bash
-
-param="$1"
-value="$2"
-
-sed -i "s/$param=.*/$param=$value/" ~/.config/picom/picom.conf
