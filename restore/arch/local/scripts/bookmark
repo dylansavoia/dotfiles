@@ -1,0 +1,4 @@
+#!/bin/sh
+
+path=$(pwd)
+echo "nnoremap $1 :cd $path<CR>" >> ~/Home/dotfiles/dotdir/.config/vifm/folders

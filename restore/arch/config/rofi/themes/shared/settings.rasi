@@ -1,0 +1,14 @@
+@import "resolution-{{device}}.rasi"
+
+* {
+  accent:           {{accent1_fg}};
+  background:       {{bkg}}99;
+  background-focus: {{bkg_alt}}BB;
+  foreground:       {{fg}};
+  on:               #44ad4d;
+  off:              #e34039;
+
+  background-color:  #00000000;
+  text-color:        @foreground;
+  font:              @text-font;
+}

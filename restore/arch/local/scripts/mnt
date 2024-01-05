@@ -1,0 +1,41 @@
+#!/bin/bash
+
+mount_ico=""
+eject_ico=""
+
+devs=`lsblk -l | awk -v mount_ico="$mount_ico" -v eject_ico="$eject_ico" '
+      BEGIN {OFS="\t"}
+      $3==1 && $6=="part" {
+          ico=($7=="") ? mount_ico : eject_ico
+          print ico, $1, "\t\t\t", $4
+      }'`
+
+if [[ "$devs" == "" ]]; then
+    notify-send "No Devices Found"
+    exit
+fi
+
+sel=`echo -e "$devs" | rofi -dmenu -p Device -no-custom -theme themes/notification_list.rasi`
+[[ "$sel" == "" ]] && exit 1
+
+
+sel=( $sel )
+mount=${sel[0]}
+dev=${sel[1]}
+
+if [[ $mount == $mount_ico ]]; then
+      mpoint=`udisksctl mount -b "/dev/$dev" | cut -d ' ' -f 4`
+      if [[ ${mpoint:0:1} == "/" ]]; then
+          $TERMINAL -e bash -c "vifm ${mpoint:0: -1}"
+      else
+          notify-send -u critical -i "$HOME/.config/awesome/icons/drive.svg" "$mpoint"
+      fi
+else
+      outmsg=`udisksctl unmount -b "/dev/$dev" 2>&1`
+      if [[ ${outmsg:0:9} == "Unmounted"  ]]; then
+          notify-send -i "$HOME/.config/awesome/icons/eject.svg" "Device Unmounted"
+      else
+          outmsg=`echo $outmsg | cut -d ':' -f 5`
+          notify-send -u critical -i "$HOME/.config/awesome/icons/eject.svg" "$outmsg"
+      fi
+fi

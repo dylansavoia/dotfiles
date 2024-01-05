@@ -1,0 +1,45 @@
+#!/bin/bash
+
+category="$1"
+name="$2"
+
+if [[ $category == "t" ]]; then
+    $TERMINAL -e bash -ic "$name; read -p 'Press to continue... '"
+elif [[ $category == "q" ]]; then
+    qbfast "https://www.ecosia.org/search?q=$name" &
+
+else
+    # first try matching by filename or pathname
+    case "${name,,}" in
+        http*)
+            qbfast "$name" &
+            ;;
+        *.pdf | *.epub)
+            zathura "$name" &
+            ;;
+        *.od[tsp]|*.doc|*.docx|*.ppt|*.pptx|*.xls|*.xlsx)
+            libreoffice "$name" &
+            ;;
+        *)
+            # then try matching by mimetype
+            mimetype=$(file -Lb --mime-type "$name")
+            case "$mimetype" in
+                text/* | inode/x-empty | message/rfc822)
+                    $TERMINAL -e nvim "$name" &
+                    ;;
+                inode/directory)
+                    $TERMINAL -e vifm "$name"
+                    ;;
+                image/*)
+                    sxiv "$name" &
+                    ;;
+                audio/* | video/*)
+                    mpv --player-operation-mode=pseudo-gui "$name" &
+                    ;;
+                *)
+                    $name &
+                    ;;
+            esac
+            ;;
+    esac
+fi

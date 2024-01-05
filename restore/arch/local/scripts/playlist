@@ -1,0 +1,41 @@
+#!/bin/bash
+if [[ "$1" == "download" || "$1" == "d" ]]; then
+    youtube-dl -x --audio-format mp3 --audio-quality 0 https://www.youtube.com/playlist?list=PLtO5M4JOGPH4tzQVb61jCjukLQG-OkS9I
+
+elif [[ "$1" == "update" || "$1" == "u" ]]; then
+    # Update Tags
+    echo -n "Do you want to write tags? (Y|n): ";
+    read answ
+    [[ "$answ" != 'n' ]] && python ~/.local/scripts/mp3_tags.py .
+
+    # Normalize
+    echo -n "Do you want to normalize? (Y|n): ";
+    read answ
+    [[ "$answ" != 'n' ]] && mp3gain -r *
+
+    # Copy Tracks to phone
+    echo -n "Do you want to copy tracks on phone? (Y|n): ";
+    read answ
+
+    phoneDir="/media/dylansavoia/phone"
+    if [[ "$answ" != 'n' ]]; then
+        echo "Copying Tracks to phone..."
+        mountpoint -q $phoneDir || jmtpfs $phoneDir
+        [[ $? -ne 0 ]] && return
+        cp * "$phoneDir/SD card/Music/"
+        [[ $? -ne 0 ]] && (echo "Copy Failed"; return)
+
+        # Update current_tracks
+        ls "$phoneDir/SD card/Music" > current_tracks.txt
+        rclone copy -v current_tracks.txt pcloud:/
+        awk -F ' - ' '{gsub(/\(.+\)/, "", $2); print $2 }' current_tracks.txt > "$phoneDir/SD card/Android/lib.txt"
+        rm current_tracks.txt
+    fi
+
+    # Update Library
+    echo -n "Do you want to Backup to pcloud? (Y|n): ";
+    read answ
+    [[ "$answ" != 'n' ]] && rclone -v copy . pcloud:Library
+
+fi
+
