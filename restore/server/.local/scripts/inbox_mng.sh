@@ -5,17 +5,19 @@ tmpname="${src_file}.bkp"
 
 declare -A tag_map
 
-# AI
 tag_map["#aipaper"]="Notes/content/AI/reading_list#Papers"
 tag_map["#aiblog"]="Notes/content/AI/reading_list#Blog Posts"
 tag_map["#airepo"]="Notes/content/AI/reading_list#Repositories"
-tag_map["#ai"]="Notes/content/AI/reading_list#Uncategorised"
-
-# Computer Science
-tag_map["#cs"]="Notes/content/cs/reading_list#Uncategorised"
-
-# Learning
-tag_map["#learning"]="Notes/mental_health/learning/Learning#Other"
+tag_map["#aivideo"]="Notes/content/AI/reading_list#YouTube Videos"
+tag_map["#ai"]="Notes/content/AI/reading_list#Other"
+tag_map["#seo"]="Notes/content/blogging/Blogging#SEO"
+tag_map["#graphics"]="Notes/content/graphics/Graphics#Other"
+tag_map["#learning"]="Notes/content/learning/reading_list#Other"
+tag_map["#maths"]="Notes/content/maths/Maths#Other Maths"
+tag_map["#physics"]="Notes/content/maths/Maths#Other Physics"
+tag_map["#workout"]="Notes/fitness/workouts/Workouts#Other"
+tag_map["#cs"]="Notes/content/cs/reading_list#Other"
+tag_map["#model"]="Notes/wellbeing/life_advice/Life_Advice#Role Models"
 
 
 function process_line {
