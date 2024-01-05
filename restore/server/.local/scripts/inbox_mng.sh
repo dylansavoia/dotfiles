@@ -18,6 +18,7 @@ tag_map["#physics"]="Notes/content/maths/Maths#Other Physics"
 tag_map["#workout"]="Notes/fitness/workouts/Workouts#Other"
 tag_map["#cs"]="Notes/content/cs/reading_list#Other"
 tag_map["#model"]="Notes/wellbeing/life_advice/Life_Advice#Role Models"
+tag_map["#children"]="Notes/content/parenting/Parenting#Other"
 
 
 function process_line {
