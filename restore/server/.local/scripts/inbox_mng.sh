@@ -1,5 +1,6 @@
 #!/bin/bash
-filename=$1
+src_file="$1"
+dst_path="$2"
 tmpname="/tmp/inbox_mng_file"
 
 declare -A tag_map
@@ -8,10 +9,10 @@ declare -A tag_map
 tag_map["#aipaper"]="Notes/content/AI/reading_list#Papers"
 tag_map["#aiblog"]="Notes/content/AI/reading_list#Blog Posts"
 tag_map["#airepo"]="Notes/content/AI/reading_list#Repositories"
-tag_map["#ai"]="Notes/content/AI/reading_list#Uncatecorized"
+tag_map["#ai"]="Notes/content/AI/reading_list#Uncategorised"
 
 # Computer Science
-tag_map["#cs"]="Notes/content/cs/reading_list#Uncatecorized"
+tag_map["#cs"]="Notes/content/cs/reading_list#Uncategorised"
 
 # Learning
 tag_map["#learning"]="Notes/mental_health/learning/Learning#Other"
@@ -32,7 +33,7 @@ function append_to_file {
     anchor=`echo "$1" | cut -d '#' -f2`
     line=$2
 
-    sed -i "/^#\+ *$anchor/a $line\n" "$path"
+    sed -i "/^#\+ *$anchor/a $line\n" "$dst_path/$path"
 }
 
 while IFS= read -r line; do
@@ -45,7 +46,7 @@ while IFS= read -r line; do
         append_to_file "$matching_file" "$line"
     fi
 
-done < "$filename"
+done < "$src_file"
 
-mv "$tmpname" "$filename"
+mv "$tmpname" "$src_file"
 

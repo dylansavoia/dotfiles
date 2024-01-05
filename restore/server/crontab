@@ -1,0 +1,6 @@
+# m h dom mon dow command
+0 1 * * * rclone copy -v --exclude "*/.git/**" /srv/Drive/ drive:/ >> ~/cron.log
+0 1 * * * ~/.local/scripts/inbox_mng.sh \
+    "/srv/Drive/Home/Server Content/Notes/Home/inbox" \
+    "/srv/Drive/Home/Server Content" 
+# 0 10-23 * * * cd /srv/http/Main/API/Assistant; python assistant.py >> ~/cron.log

@@ -23,7 +23,7 @@ if [[ "$dev" == "" ]]; then
     dev=${devs[$dev]}
 fi
 
-echo -e "Selected Device:\t$dev\n"
+echo -e "Selected Device:\t$dev"
 
 case "$cmd" in
     "setup" )
@@ -38,7 +38,8 @@ case "$cmd" in
     "restore" )
         case "$dev" in
             "desktop"|"laptop" ) source .scripts/restore_pc.sh $dev;;
-            "termux" )           source .scripts/restore_termux.sh $dev;;
+            "termux" )           source .scripts/restore_termux.sh;;
+            "server" )           source .scripts/restore_server.sh;;
             *) echo "Restore not available for $dev"
         esac
     ;;
