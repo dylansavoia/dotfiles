@@ -57,6 +57,10 @@ function video_trim () {
     ffmpeg -i $name -ss $2 -to $3 -c:a copy -c:v copy ${name%.*}.min.mp4
 }
 
+function pacman_all () {
+    sudo pacman -Rns $(pacman -Qsq "$1")
+}
+
 
 # >>> conda initialize >>>
 function conda_init () {

@@ -16,4 +16,4 @@ sedcmd=`cat $vardir/$dev $vardir/default <(echo "$clrscheme") |
      awk -F = '{print "s@{{" $1 "}}@" $2 "@"}' | tr '\n' ';'`
 
 sed "$sedcmd" "$1" > "$1.copy"
-mv "$1.copy" "$HOME/.${1#*/}" 
+mv "$1.copy" "$HOME/.${1#*/*/}" 

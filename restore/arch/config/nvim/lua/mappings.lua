@@ -37,3 +37,4 @@ vim.keymap.set('n', '<leader>tu',  vim.cmd.UndotreeToggle)
 vim.keymap.set('n', '<leader>y',  '<cmd>%y<CR>')
 vim.keymap.set('n', 'gx',  '<cmd> silent execute "!launcher 0 " . shellescape("<cfile>")<CR>')
 vim.keymap.set('n', 'go',  'Bf:l:e %:h/<cfile><CR>', {silent=true}) -- Tiny macro to jump to file path
+vim.keymap.set('n', 'gO',  'Bf:lgx', {silent=true, noremap=false}) -- Tiny macro to open link
