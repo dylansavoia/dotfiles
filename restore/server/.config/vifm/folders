@@ -4,4 +4,4 @@ nnoremap gL :cd ~/.local<CR>
 nnoremap gC :cd ~/.config<CR>
 nnoremap gH :cd ~<CR>
 nnoremap gs :cd "/srv/Drive/Home/Server Content"<CR>
-nnoremap gS :cd /srv/Drive/http/Main/<CR>
+nnoremap gS :cd /srv/http/Main/<CR>
