@@ -5,11 +5,11 @@ tmpname="${src_file}.bkp"
 
 declare -A tag_map
 
-tag_map["#aipaper"]="Notes/content/AI/reading_list#Papers"
-tag_map["#aiblog"]="Notes/content/AI/reading_list#Blog Posts"
-tag_map["#airepo"]="Notes/content/AI/reading_list#Repositories"
-tag_map["#aivideo"]="Notes/content/AI/reading_list#YouTube Videos"
-tag_map["#ai"]="Notes/content/AI/reading_list#Other"
+tag_map["#aipaper"]="Notes/content/cs/AI/reading_list#Papers"
+tag_map["#aiblog"]="Notes/content/cs/AI/reading_list#Blog Posts"
+tag_map["#airepo"]="Notes/content/cs/AI/reading_list#Repositories"
+tag_map["#aivideo"]="Notes/content/cs/AI/reading_list#YouTube Videos"
+tag_map["#ai"]="Notes/content/cs/AI/reading_list#Other"
 tag_map["#seo"]="Notes/content/blogging/Blogging#SEO"
 tag_map["#graphics"]="Notes/content/graphics/Graphics#Other"
 tag_map["#learning"]="Notes/content/learning/reading_list#Other"

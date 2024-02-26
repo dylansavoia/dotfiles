@@ -1,0 +1,5 @@
+nnoremap gh :cd /srv/Drive/Home<CR>
+nnoremap g/ :cd /<CR>
+nnoremap gL :cd ~/.local<CR>
+nnoremap gH :cd ~<CR>
+nnoremap gs :cd "/srv/Drive/Home/Server Content"<CR>
