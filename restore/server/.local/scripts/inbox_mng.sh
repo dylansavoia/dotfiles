@@ -19,6 +19,9 @@ tag_map["#workout"]="Notes/fitness/workouts/Workouts#Other"
 tag_map["#cs"]="Notes/content/cs/reading_list#Other"
 tag_map["#model"]="Notes/wellbeing/life_advice/Life_Advice#Role Models"
 tag_map["#children"]="Notes/content/parenting/Parenting#Other"
+tag_map["#cooking"]="Notes/content/cooking/Cooking#Other"
+tag_map["#work"]="Notes/content/work/reading_list#Other"
+tag_map["#book"]="Notes/content/books/reading_list#New Books"
 
 
 function process_line {

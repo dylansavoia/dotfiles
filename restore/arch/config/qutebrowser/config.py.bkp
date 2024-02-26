@@ -93,17 +93,12 @@ c.keyhint.blacklist = ["*"]
 c.new_instance_open_target = 'window'
 c.scrolling.bar = 'never'
 c.scrolling.smooth = True
-c.tabs.tabs_are_windows = False
+c.tabs.tabs_are_windows = True
 c.window.title_format = '{current_title} - QB'
 c.zoom.default = {{qbZoom}}
 
-c.tabs.show = "multiple"
-c.tabs.favicons.show = "never"
-c.tabs.max_width = 100
-c.tabs.min_width = 50
+c.tabs.show = "never"
 c.tabs.last_close = "close"
-c.tabs.title.format = ""
-c.tabs.indicator.width = 0
 
 c.statusbar.widgets = []
 c.statusbar.show = 'always'
@@ -111,7 +106,6 @@ c.content.pdfjs = False
 c.content.notifications.enabled = True
 c.content.notifications.presenter = 'libnotify'
 c.content.blocking.method = 'adblock'
-c.content.javascript.clipboard = 'access-paste'
 
 c.prompt.radius = 1
 
@@ -133,11 +127,11 @@ c.fileselect.multiple_files.command = ['alacritty', '--class', 'vifm,vifm', '-e'
 ###############################################################################
 #                                    Colors                                   #
 ###############################################################################
+c.colors.tabs.even.bg = bkg
 c.colors.tabs.bar.bg = bkg
-c.colors.tabs.even.bg = accent1
-c.colors.tabs.odd.bg = accent1
-c.colors.tabs.selected.even.bg = accent1_fg
-c.colors.tabs.selected.odd.bg = accent1_fg
+c.colors.tabs.odd.bg = bkg
+c.colors.tabs.selected.even.bg = accent1
+c.colors.tabs.selected.odd.bg = accent1
 
 c.colors.completion.fg = fg
 c.colors.completion.odd.bg = bkg
@@ -166,7 +160,7 @@ c.colors.messages.error.border = urgent
 c.colors.messages.warning.bg = warning
 c.colors.messages.warning.border = warning
 
-c.colors.statusbar.normal.bg = bkg_alt
+c.colors.statusbar.normal.bg = bkg
 c.colors.statusbar.normal.fg = bkg
 c.colors.statusbar.insert.fg = accent1
 c.colors.statusbar.insert.bg = accent1
@@ -202,8 +196,8 @@ c.hints.border = "0px solid " + accent1
 c.colors.webpage.bg = bkg
 c.colors.webpage.darkmode.enabled = True
 c.colors.webpage.preferred_color_scheme = 'dark'
-c.colors.webpage.darkmode.policy.images = 'smart-simple'
-c.colors.webpage.darkmode.threshold.background = 180
+c.colors.webpage.darkmode.policy.images = 'smart'
+c.colors.webpage.darkmode.threshold.background = 205
 c.colors.webpage.darkmode.threshold.foreground = 150
 c.content.user_stylesheets = '~/.config/qutebrowser/custom.css'
 
@@ -221,8 +215,6 @@ c.fonts.web.family.sans_serif = fontbase
 c.fonts.web.family.serif = fontbase
 c.fonts.web.family.standard = fontbase
 c.fonts.web.family.fixed = monospace
-c.fonts.tabs.selected = "2px " + fontbase
-c.fonts.tabs.unselected = "2px " + fontbase
 
 ###############################################################################
 #                                   Dismissed                                 #

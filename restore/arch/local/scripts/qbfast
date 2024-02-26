@@ -9,7 +9,7 @@ _qute_bin="/usr/bin/qutebrowser"
 
 # notify-send "$_url"
 
-printf '{"args": ["%s"], "target_arg": null, "version": "%s", "protocol_version": %d, "cwd": "%s"}\n' \
+printf '{"args": ["%s"], "target_arg": "tab", "version": "%s", "protocol_version": %d, "cwd": "%s"}\n' \
        "${_url}" \
        "${_qb_version}" \
        "${_proto_version}" \
